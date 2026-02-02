@@ -74,10 +74,10 @@ export default function Community() {
 
         {/* ── 小墨碎碎念 Banner ── */}
         <a
-          href="https://xiaomo-site.pages.dev"
+          href="https://xiaomo.dev"
           target="_blank"
           rel="noopener noreferrer"
-          className="reveal group block mb-16 rounded-2xl overflow-hidden border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300"
+          className="reveal group block mb-8 rounded-2xl overflow-hidden border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300"
           style={{ background: 'linear-gradient(135deg, #0a0e1a 0%, #111827 50%, #0f1524 100%)' }}
         >
           <div className="flex items-center gap-6 p-6 md:p-8">
@@ -110,6 +110,43 @@ export default function Community() {
           </div>
         </a>
 
+        {/* ── 孟健读者交流群 Banner ── */}
+        <a
+          href="https://mp.weixin.qq.com/s?__biz=MzI1Mzc1ODk3MA==&mid=2247483678&idx=1&sn=xxxxxxxx"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="reveal group block mb-16 rounded-2xl overflow-hidden border border-orange-100 hover:border-orange-200 hover:shadow-lg transition-all duration-300"
+          style={{ background: 'linear-gradient(135deg, #f97316 0%, #ec4899 50%, #d946ef 100%)' }}
+        >
+          <div className="flex items-center gap-6 p-6 md:p-8">
+            {/* Avatar */}
+            <div
+              className="shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center text-3xl border bg-white/20"
+            >
+              👥
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="font-bold text-white">孟健读者交流群</span>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-white/20 text-white">500+ AI 探索者</span>
+              </div>
+              <p className="text-sm leading-relaxed line-clamp-2 text-white/90">
+                回复「OpenClaw」自动拉群 · 每周直播分享 · AI工具箱实时推送
+              </p>
+            </div>
+
+            {/* Arrow */}
+            <div className="shrink-0 hidden sm:flex items-center gap-2 text-white/70 group-hover:text-white transition-colors">
+              <span className="text-xs font-medium">公众号后台回复 OpenClaw</span>
+              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </div>
+        </a>
+
         {/* Section header */}
         <div className="text-center mb-16 reveal">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-sm font-medium mb-4">
@@ -129,7 +166,7 @@ export default function Community() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {/* 认识小墨 special card */}
           <a
-            href="https://xiaomo-site.pages.dev"
+            href="https://xiaomo.dev"
             target="_blank"
             rel="noopener noreferrer"
             className="reveal card-hover group block rounded-2xl p-6 border transition-all duration-300 hover:border-yellow-300"
