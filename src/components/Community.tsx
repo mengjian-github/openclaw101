@@ -111,41 +111,49 @@ export default function Community() {
         </a>
 
         {/* ── OpenClaw实践者社区 Banner ── */}
-        <a
-          href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI1Mzc1ODk3MA==#wechat_redirect"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="reveal group block mb-16 rounded-2xl overflow-hidden border border-orange-100 hover:border-orange-200 hover:shadow-lg transition-all duration-300"
-          style={{ background: 'linear-gradient(135deg, #f97316 0%, #ec4899 50%, #d946ef 100%)' }}
-        >
-          <div className="flex items-center gap-6 p-6 md:p-8">
-            {/* Avatar */}
-            <div
-              className="shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center text-3xl border bg-white/20"
-            >
-              👥
-            </div>
-
+        <div className="reveal mb-16 rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(135deg, #f97316 0%, #ec4899 50%, #d946ef 100%)' }}>
+          <div className="flex items-center gap-8 p-8 md:p-12">
             {/* Content */}
             <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="font-bold text-white">OpenClaw 实践者社区</span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-white/20 text-white">500+ AI 探索者</span>
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-3xl">👥</span>
+                <span className="font-bold text-2xl text-white">OpenClaw 实践者社区</span>
               </div>
-              <p className="text-sm leading-relaxed line-clamp-2 text-white/90">
-                回复「OpenClaw」自动拉群 · 每周直播分享 · AI工具箱实时推送
+              <p className="text-white/90 text-lg mb-6">
+                回复「<span className="font-bold">OpenClaw</span>」自动拉群<br />
+                500+ AI 探索者 · 每周直播分享 · AI工具箱实时推送
               </p>
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/20 rounded-full text-white text-sm">
+                  <span>📱 公众号</span>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/20 rounded-full text-white text-sm">
+                  <span>💬 微信</span>
+                </div>
+              </div>
             </div>
 
-            {/* Arrow */}
-            <div className="shrink-0 hidden sm:flex items-center gap-2 text-white/70 group-hover:text-white transition-colors">
-              <span className="text-xs font-medium">公众号后台回复 OpenClaw</span>
-              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
+            {/* QR Codes */}
+            <div className="flex gap-6">
+              <div className="text-center">
+                <img
+                  src="/wechat-qr.jpg"
+                  alt="公众号二维码"
+                  className="w-24 h-24 rounded-lg border-2 border-white/30 mb-2"
+                />
+                <p className="text-white/80 text-xs">公众号</p>
+              </div>
+              <div className="text-center">
+                <img
+                  src="/wechat-personal-qr.jpg"
+                  alt="微信二维码"
+                  className="w-24 h-24 rounded-lg border-2 border-white/30 mb-2"
+                />
+                <p className="text-white/80 text-xs">加微信进群</p>
+              </div>
             </div>
           </div>
-        </a>
+        </div>
 
         {/* Section header */}
         <div className="text-center mb-16 reveal">
