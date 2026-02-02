@@ -1,0 +1,47 @@
+---
+title: OpenClaw 入门指南
+description: 从零开始安装和配置你的第一个 OpenClaw AI 助理
+date: 2026-01-15
+author: 孟健
+tags: [入门, 安装, 配置]
+---
+
+# OpenClaw 入门指南
+
+欢迎来到 OpenClaw 101！本文将带你从零开始，搭建属于你自己的 AI 私人助理。
+
+## 前置要求
+
+- 一台 Linux 服务器（推荐 Ubuntu 22.04+）
+- Node.js 18+
+- Docker（可选但推荐）
+
+## 安装步骤
+
+### 1. 克隆仓库
+
+```bash
+git clone https://github.com/openclaw/openclaw.git
+cd openclaw
+```
+
+### 2. 配置环境变量
+
+```bash
+cp .env.example .env
+# 编辑 .env 填入你的 API Key
+```
+
+### 3. 启动服务
+
+```bash
+docker-compose up -d
+```
+
+恭喜！你的 OpenClaw 已经运行了 🎉
+
+## 下一步
+
+- 配置 [Telegram 频道](/resources)
+- 探索 [技能市场](https://clawhub.com)
+- 加入 [Discord 社区](https://discord.com/invite/clawd)
