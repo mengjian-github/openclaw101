@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { getFeaturedResources, categoryMeta, stats, type Resource } from '@/data/resources';
+import { BookOpen, ArrowRight } from 'lucide-react';
 
 const colorMap: Record<string, string> = {
   blue: 'border-blue-200 bg-blue-50 text-blue-700',
@@ -43,8 +44,8 @@ function ResourceCard({ r, i }: { r: Resource; i: number }) {
 
       <div className="flex items-center justify-between">
         <span className="text-xs text-gray-400">{r.source}</span>
-        <span className="text-blue-600 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          访问 ↗
+        <span className="text-blue-600 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1">
+          访问 <ArrowRight className="w-3 h-3" />
         </span>
       </div>
     </a>
@@ -79,12 +80,13 @@ export default function ResourcesSection() {
         {/* Section header */}
         <div className="text-center mb-6 reveal">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-4">
-            📚 精选收录
+            <BookOpen className="w-4 h-4" />
+            精选收录
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="section-title">
             全网优质资源聚合
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="section-subtitle">
             从阿里云、腾讯云到 DigitalOcean，从 B站到 Codecademy —— 一站式获取 OpenClaw 最佳教程。
           </p>
         </div>
@@ -133,10 +135,10 @@ export default function ResourcesSection() {
         <div className="text-center reveal">
           <a
             href="/resources"
-            className="group inline-flex items-center gap-2 px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
           >
             查看全部 {stats.totalResources}+ 篇资源
-            <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+            <ArrowRight className="w-4 h-4" />
           </a>
           <p className="text-gray-500 text-sm mt-3">
             持续更新中 · <a href="https://github.com/mengjian-github/openclaw101" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">欢迎提交 PR 补充资源</a>
