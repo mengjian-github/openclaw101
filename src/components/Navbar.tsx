@@ -1,12 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { BookOpen, Github, Menu, X, PawPrint } from 'lucide-react';
 
 const links = [
   { label: '什么是 OpenClaw', href: '#what-is' },
   { label: '学习路径', href: '#getting-started' },
   { label: '技能', href: '#skills' },
-  { label: '📚 资源', href: '#resources' },
+  { label: '资源', href: '#resources' },
   { label: '社区', href: '#community' },
 ];
 
@@ -27,16 +28,16 @@ export default function Navbar() {
           ? 'backdrop-blur-md border-b border-white/10 py-3'
           : 'py-4 sm:py-5'
       }`}
-      // Add safe-area padding for iOS/WeChat in-app browser
       style={{
-        backgroundColor: scrolled ? 'rgba(15, 23, 42, 0.9)' : 'transparent',
+        backgroundColor: scrolled ? 'rgba(10, 15, 28, 0.9)' : 'transparent',
         paddingTop: scrolled ? 'calc(env(safe-area-inset-top) + 0.75rem)' : 'calc(env(safe-area-inset-top) + 1rem)',
       }}
     >
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="font-bold text-base sm:text-lg whitespace-nowrap" style={{ color: '#fff' }}>
-          🐾 <span className="gradient-text">OpenClaw</span> 101
+        <a href="#" className="font-bold text-base sm:text-lg whitespace-nowrap flex items-center gap-2" style={{ color: '#fff' }}>
+          <PawPrint className="w-5 h-5 text-primary-400" />
+          <span className="gradient-text">OpenClaw</span> 101
         </a>
 
         {/* Desktop links */}
@@ -53,19 +54,21 @@ export default function Navbar() {
           ))}
           <a
             href="/resources"
-            className="text-sm transition-colors duration-200 font-medium"
+            className="text-sm transition-colors duration-200 font-medium flex items-center gap-1.5"
             style={{ color: '#10B981' }}
           >
+            <BookOpen className="w-4 h-4" />
             全部资源
           </a>
           <a
             href="https://github.com/mengjian-github/openclaw101"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors duration-200"
+            className="text-sm px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors duration-200 flex items-center gap-2"
             style={{ color: '#fff' }}
           >
-            ⭐ GitHub
+            <Github className="w-4 h-4" />
+            GitHub
           </a>
         </div>
 
@@ -77,20 +80,16 @@ export default function Navbar() {
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
         >
           {mobileOpen ? (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <X className="w-6 h-6" />
           ) : (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            <Menu className="w-6 h-6" />
           )}
         </button>
       </div>
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden backdrop-blur-md border-t border-white/10 px-4 py-4" style={{ backgroundColor: 'rgba(15, 23, 42, 0.95)' }}>
+        <div className="md:hidden backdrop-blur-md border-t border-white/10 px-4 py-4" style={{ backgroundColor: 'rgba(10, 15, 28, 0.95)' }}>
           {links.map((l) => (
             <a
               key={l.href}
@@ -105,19 +104,21 @@ export default function Navbar() {
           <a
             href="/resources"
             onClick={() => setMobileOpen(false)}
-            className="block py-3 transition-colors duration-200 hover:text-white font-medium"
+            className="block py-3 transition-colors duration-200 hover:text-white font-medium flex items-center gap-2"
             style={{ color: '#10B981' }}
           >
+            <BookOpen className="w-4 h-4" />
             全部资源 →
           </a>
           <a
             href="https://github.com/mengjian-github/openclaw101"
             target="_blank"
             rel="noopener noreferrer"
-            className="block py-3 transition-colors duration-200 hover:text-white"
+            className="block py-3 transition-colors duration-200 hover:text-white flex items-center gap-2"
             style={{ color: 'rgba(255,255,255,0.6)' }}
           >
-            ⭐ GitHub
+            <Github className="w-4 h-4" />
+            GitHub
           </a>
         </div>
       )}
