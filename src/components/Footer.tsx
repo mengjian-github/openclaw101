@@ -27,6 +27,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
               <li><a href="https://discord.com/invite/clawd" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Discord</a></li>
               <li><a href="https://www.reddit.com/r/ThinkingDeeplyAI/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Reddit</a></li>
+              <li><a href="https://xiaomo-site.pages.dev" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">🐈‍⬛ 认识小墨</a></li>
               <li><a href="https://github.com/mengjian-github/openclaw101" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">贡献资源 (PR)</a></li>
             </ul>
           </div>

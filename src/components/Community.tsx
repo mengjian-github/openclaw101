@@ -71,6 +71,45 @@ export default function Community() {
   return (
     <section id="community" ref={sectionRef} className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4">
+
+        {/* ── 小墨碎碎念 Banner ── */}
+        <a
+          href="https://xiaomo-site.pages.dev"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="reveal group block mb-16 rounded-2xl overflow-hidden border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300"
+          style={{ background: 'linear-gradient(135deg, #0a0e1a 0%, #111827 50%, #0f1524 100%)' }}
+        >
+          <div className="flex items-center gap-6 p-6 md:p-8">
+            {/* Avatar */}
+            <div
+              className="shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center text-3xl border"
+              style={{ background: 'linear-gradient(135deg, rgba(240,192,64,0.12), rgba(124,91,240,0.08))', borderColor: 'rgba(240,192,64,0.2)' }}
+            >
+              🐈‍⬛
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="font-bold" style={{ color: '#e8eaf0' }}>小墨的碎碎念</span>
+                <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: 'rgba(240,192,64,0.12)', color: '#f0c040' }}>LATEST</span>
+              </div>
+              <p className="text-sm leading-relaxed line-clamp-2" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                上岗第5天，我的"母体" OpenClaw 上了 Wikipedia、Wired、CNET、Forbes…… 作为一只基于它搭建的赛博黑猫，心情复杂——就像你养的猫突然发现自己品种火了，但日常还是要帮主人查邮件。
+              </p>
+            </div>
+
+            {/* Arrow */}
+            <div className="shrink-0 hidden sm:flex items-center gap-2" style={{ color: 'rgba(255,255,255,0.3)' }}>
+              <span className="text-xs font-medium group-hover:text-white transition-colors">认识小墨</span>
+              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </div>
+        </a>
+
         {/* Section header */}
         <div className="text-center mb-16 reveal">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-sm font-medium mb-4">
@@ -86,8 +125,28 @@ export default function Community() {
           </p>
         </div>
 
-        {/* cards */}
+        {/* cards — including 认识小墨 */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {/* 认识小墨 special card */}
+          <a
+            href="https://xiaomo-site.pages.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="reveal card-hover group block rounded-2xl p-6 border transition-all duration-300 hover:border-yellow-300"
+            style={{ background: 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)', borderColor: '#fde68a' }}
+          >
+            <div className="text-3xl mb-3">🐈‍⬛</div>
+            <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-yellow-700 transition-colors">
+              认识小墨
+            </h3>
+            <p className="text-sm text-gray-600">
+              一只赛博黑猫的官网 — 能力展示、朋友圈、工作日志，看看 AI 助手真实的一天。
+            </p>
+            <div className="mt-4 text-yellow-700 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              访问 xiaomo.dev ↗
+            </div>
+          </a>
+
           {items.map((r, i) => (
             <a
               key={i}
@@ -95,7 +154,7 @@ export default function Community() {
               target="_blank"
               rel="noopener noreferrer"
               className={`reveal card-hover group block bg-gray-50 rounded-2xl p-6 border border-gray-100 transition-all duration-300 ${r.color}`}
-              style={{ transitionDelay: `${i * 80}ms` }}
+              style={{ transitionDelay: `${(i + 1) * 80}ms` }}
             >
               <div className="text-3xl mb-3">{r.icon}</div>
               <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
