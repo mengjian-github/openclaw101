@@ -110,7 +110,7 @@ export default function Community() {
           </div>
         </a>
 
-        {/* ── 孟健读者交流群 Banner ── */}
+        {/* ── OpenClaw实践者社区 Banner ── */}
         <a
           href="https://mp.weixin.qq.com/s?__biz=MzI1Mzc1ODk3MA==&mid=2247483678&idx=1&sn=xxxxxxxx"
           target="_blank"
@@ -129,7 +129,7 @@ export default function Community() {
             {/* Content */}
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-1">
-                <span className="font-bold text-white">孟健读者交流群</span>
+                <span className="font-bold text-white">OpenClaw 实践者社区</span>
                 <span className="text-xs px-2 py-0.5 rounded-full bg-white/20 text-white">500+ AI 探索者</span>
               </div>
               <p className="text-sm leading-relaxed line-clamp-2 text-white/90">
