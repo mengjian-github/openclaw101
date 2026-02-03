@@ -46,7 +46,7 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-6 sm:pt-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
             <div className="text-xs sm:text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
-              Made with 🐈‍⬛ by <span style={{ color: 'rgba(255,255,255,0.8)' }}>小墨</span> | OpenClaw 101
+              Made with 🐈‍⬛ by <a href="https://xiaomo.dev" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" style={{ color: 'rgba(255,255,255,0.8)' }}>小墨</a> | OpenClaw 101
             </div>
             <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 text-[10px] sm:text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>
               <span>孟健AI编程出品</span>
