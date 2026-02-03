@@ -1,8 +1,14 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { Dictionary } from '@/lib/i18n';
 
-const categories = [
+interface SkillsProps {
+  locale: 'en' | 'zh';
+  dict: Dictionary;
+}
+
+const categoriesZh = [
   {
     icon: '📧',
     title: '效率工具',
@@ -41,8 +47,49 @@ const categories = [
   },
 ];
 
-export default function Skills() {
+const categoriesEn = [
+  {
+    icon: '📧',
+    title: 'Productivity',
+    color: 'from-blue-500 to-blue-600',
+    skills: ['Gmail Management', 'Calendar Reminders', 'TODO Tracking', 'File Organization'],
+  },
+  {
+    icon: '🔍',
+    title: 'SEO & Marketing',
+    color: 'from-orange-500 to-orange-600',
+    skills: ['Google Search Console', 'GA4 Analytics', 'Keyword Research', 'Rank Tracking'],
+  },
+  {
+    icon: '💻',
+    title: 'Developer Tools',
+    color: 'from-purple-500 to-purple-600',
+    skills: ['GitHub Integration', 'Coding Agent', 'Claude Code Usage', 'CI/CD Monitoring'],
+  },
+  {
+    icon: '🎨',
+    title: 'Content Creation',
+    color: 'from-pink-500 to-pink-600',
+    skills: ['Content Strategy', 'Social Media', 'Video Production', 'SEO Writing'],
+  },
+  {
+    icon: '🏋️',
+    title: 'Life & Habits',
+    color: 'from-green-500 to-green-600',
+    skills: ['Habit Tracking', 'Workout Logging', 'Meditation', 'Sleep Schedule'],
+  },
+  {
+    icon: '🧘',
+    title: 'Mental Health',
+    color: 'from-teal-500 to-teal-600',
+    skills: ['Anxiety Relief', 'Guided Meditation', 'Mood Tracking', 'Mindfulness'],
+  },
+];
+
+export default function Skills({ locale, dict }: SkillsProps) {
   const sectionRef = useRef<HTMLElement>(null);
+  const isZh = locale === 'zh';
+  const categories = isZh ? categoriesZh : categoriesEn;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -68,10 +115,13 @@ export default function Skills() {
         {/* Section header */}
         <div className="text-center mb-8 sm:mb-16 reveal">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            精选技能推荐
+            {isZh ? '精选技能推荐' : 'Featured Skills'}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            按场景分类的 AI 技能，让你的助理覆盖工作与生活的方方面面。
+            {isZh 
+              ? '按场景分类的 AI 技能，让你的助理覆盖工作与生活的方方面面。'
+              : 'AI skills categorized by use case. Make your assistant cover all aspects of work and life.'
+            }
           </p>
         </div>
 
@@ -109,7 +159,7 @@ export default function Skills() {
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 px-8 py-4 bg-accent hover:bg-emerald-600 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-accent/25 hover:-translate-y-0.5"
           >
-            浏览全部技能
+            {isZh ? '浏览全部技能' : 'Browse All Skills'}
             <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
           </a>
         </div>

@@ -1,8 +1,14 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { Dictionary } from '@/lib/i18n';
 
-const days = [
+interface LearningPathProps {
+  locale: 'en' | 'zh';
+  dict: Dictionary;
+}
+
+const daysZh = [
   {
     day: 1,
     icon: '👋',
@@ -54,8 +60,62 @@ const days = [
   },
 ];
 
-export default function LearningPath() {
+const daysEn = [
+  {
+    day: 1,
+    icon: '👋',
+    title: 'Meet OpenClaw',
+    desc: 'Understand core concepts, architecture, and capabilities. Set the right expectations.',
+    link: 'https://my.feishu.cn/wiki/MlyEwRKIwikkBlkGew0ckLfonEu',
+  },
+  {
+    day: 2,
+    icon: '🚀',
+    title: 'Installation',
+    desc: 'Deploy your server in 10 minutes. From zero to running in the time it takes for a coffee.',
+    link: 'https://my.feishu.cn/wiki/JCd8wARjliivC6kl4eMcGTvlnQg',
+  },
+  {
+    day: 3,
+    icon: '🔗',
+    title: 'Connect Platforms',
+    desc: 'Integrate with Telegram, Discord, and more. Bring your AI assistant to your favorite chat apps.',
+    link: 'https://my.feishu.cn/wiki/DEaTwoZn0izajqkk98mcRge3nae',
+  },
+  {
+    day: 4,
+    icon: '🎭',
+    title: 'Customize Persona',
+    desc: 'Create your unique AI assistant. Define personality, language style, and response patterns.',
+    link: 'https://my.feishu.cn/wiki/YJWNwd6s1isVz3kTVrbctCyAnIe',
+  },
+  {
+    day: 5,
+    icon: '🧩',
+    title: 'Install Skills',
+    desc: 'Get capabilities from ClawHub. Teach your assistant to check weather, manage emails, write code.',
+    link: 'https://my.feishu.cn/wiki/QGvewvXyEiFKOpkSPxrcQONrn8g',
+  },
+  {
+    day: 6,
+    icon: '⏰',
+    title: 'Automation',
+    desc: 'Cron jobs, heartbeat checks, scheduled reminders. Let your AI work autonomously.',
+    link: 'https://my.feishu.cn/wiki/NGWmwdFkeioH5mkqem6cygRnnSe',
+  },
+  {
+    day: 7,
+    icon: '🏆',
+    title: 'Advanced',
+    desc: 'Multi-agent collaboration, browser control, device integration. Unlock full potential.',
+    link: 'https://my.feishu.cn/wiki/HVttw0Cfcik8VWkHLs1c34DznFf',
+  },
+];
+
+export default function LearningPath({ locale, dict }: LearningPathProps) {
   const sectionRef = useRef<HTMLElement>(null);
+  const isZh = locale === 'zh';
+  const days = isZh ? daysZh : daysEn;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -81,10 +141,13 @@ export default function LearningPath() {
         {/* Section header */}
         <div className="text-center mb-8 sm:mb-16 reveal">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            7天学习路径
+            {isZh ? '7天学习路径' : '7-Day Learning Path'}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            从入门到进阶，每天一个主题，循序渐进掌握 OpenClaw 的全部能力。
+            {isZh 
+              ? '从入门到进阶，每天一个主题，循序渐进掌握 OpenClaw 的全部能力。'
+              : 'From beginner to advanced, one topic per day. Progressively master all OpenClaw capabilities.'
+            }
           </p>
         </div>
 
@@ -108,7 +171,7 @@ export default function LearningPath() {
               <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1.5 sm:mb-2">{d.title}</h3>
               <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-3 sm:mb-4">{d.desc}</p>
               <span className="text-primary text-xs sm:text-sm font-medium group-hover:translate-x-1 inline-block transition-transform duration-300">
-                查看详情 →
+                {isZh ? '查看详情 →' : 'Learn more →'}
               </span>
             </a>
           ))}

@@ -1,10 +1,17 @@
 'use client';
 
 import { stats } from '@/data/resources';
+import { Dictionary } from '@/lib/i18n';
 
-export default function Hero() {
+interface HeroProps {
+  locale: 'en' | 'zh';
+  dict: Dictionary;
+}
+
+export default function Hero({ locale, dict }: HeroProps) {
+  const isZh = locale === 'zh';
+  
   return (
-    // Use svh to behave better in mobile in-app browsers; add top padding for fixed navbar
     <section className="relative min-h-[100svh] flex items-center justify-center hero-glow overflow-hidden pt-28 pb-10 sm:pt-0 sm:pb-0">
       {/* Floating orbs */}
       <div className="absolute top-20 left-10 w-72 h-72 rounded-full blur-3xl animate-pulse" style={{ background: 'rgba(37, 99, 235, 0.10)' }} />
@@ -19,23 +26,30 @@ export default function Hero() {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
           </span>
           <span className="text-sm font-medium" style={{ color: 'rgba(255,255,255,0.8)' }}>
-            开源免费 · 收录 {stats.totalResources}+ 篇教程资源
+            {isZh ? `开源免费 · 收录 ${stats.totalResources}+ 篇教程资源` : `Open Source · ${stats.totalResources}+ Tutorials Curated`}
           </span>
         </div>
 
         {/* Main title */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6 tracking-tight" style={{ color: '#fff' }}>
-          Open<span className="gradient-text">Claw</span> 101
+          {isZh ? (
+            <>Open<span className="gradient-text">Claw</span> 101</>
+          ) : (
+            <>{dict.hero.title} <span className="gradient-text">{dict.hero.titleHighlight}</span></>
+          )}
         </h1>
 
         {/* Subtitle */}
         <p className="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4 px-2" style={{ color: 'rgba(255,255,255,0.9)' }}>
-          从零开始，7天掌握你的 AI 私人助理
+          {isZh ? '从零开始，7天掌握你的 AI 私人助理' : 'Your AI assistant that actually does things'}
         </p>
 
-        {/* English tagline */}
+        {/* Secondary tagline */}
         <p className="text-xs sm:text-sm md:text-base mb-6 sm:mb-10 max-w-xl mx-auto px-3" style={{ color: 'rgba(255,255,255,0.5)' }}>
-          The open-source guide to building your AI assistant with OpenClaw
+          {isZh 
+            ? 'The open-source guide to building your AI assistant with OpenClaw'
+            : 'From setup to advanced automation — start your journey here'
+          }
         </p>
 
         {/* CTA buttons */}
@@ -45,7 +59,7 @@ export default function Hero() {
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-blue-600 hover:bg-blue-500 font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 hover:-translate-y-0.5"
             style={{ color: '#fff' }}
           >
-            🚀 开始学习
+            🚀 {dict.hero.cta}
             <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
           </a>
           <a
@@ -53,7 +67,7 @@ export default function Hero() {
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 border border-white/20 hover:border-white/40 font-semibold rounded-xl transition-all duration-300 hover:-translate-y-0.5"
             style={{ color: 'rgba(255,255,255,0.8)' }}
           >
-            📚 浏览资源
+            📚 {dict.hero.ctaSecondary}
           </a>
           <a
             href="https://github.com/mengjian-github/openclaw101"
@@ -70,23 +84,22 @@ export default function Hero() {
         </div>
 
         {/* Stats */}
-        {/* Mobile: 2x2 grid to avoid cramped text */}
         <div className="mt-8 sm:mt-16 mx-auto max-w-md grid grid-cols-2 gap-y-4 gap-x-6 sm:hidden">
           <div className="text-center">
             <div className="text-xl font-bold" style={{ color: '#fff' }}>{stats.totalResources}+</div>
-            <div className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>教程收录</div>
+            <div className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>{isZh ? '教程收录' : 'Tutorials'}</div>
           </div>
           <div className="text-center">
-            <div className="text-xl font-bold" style={{ color: '#fff' }}>7 天</div>
-            <div className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>学习路径</div>
+            <div className="text-xl font-bold" style={{ color: '#fff' }}>{isZh ? '7 天' : '7 Days'}</div>
+            <div className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>{isZh ? '学习路径' : 'Learning Path'}</div>
           </div>
           <div className="text-center">
-            <div className="text-xl font-bold" style={{ color: '#fff' }}>136k+</div>
+            <div className="text-xl font-bold" style={{ color: '#fff' }}>145k+</div>
             <div className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>GitHub Stars</div>
           </div>
           <div className="text-center">
             <div className="text-xl font-bold" style={{ color: '#fff' }}>100%</div>
-            <div className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>开源免费</div>
+            <div className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>{isZh ? '开源免费' : 'Open Source'}</div>
           </div>
         </div>
 
@@ -94,22 +107,22 @@ export default function Hero() {
         <div className="hidden sm:mt-16 sm:flex items-center justify-center gap-8 md:gap-12">
           <div className="text-center">
             <div className="text-2xl md:text-3xl font-bold" style={{ color: '#fff' }}>{stats.totalResources}+</div>
-            <div className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>教程收录</div>
+            <div className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>{isZh ? '教程收录' : 'Tutorials'}</div>
           </div>
           <div className="w-px h-8" style={{ background: 'rgba(255,255,255,0.1)' }} />
           <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold" style={{ color: '#fff' }}>7 天</div>
-            <div className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>学习路径</div>
+            <div className="text-2xl md:text-3xl font-bold" style={{ color: '#fff' }}>{isZh ? '7 天' : '7 Days'}</div>
+            <div className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>{isZh ? '学习路径' : 'Learning Path'}</div>
           </div>
           <div className="w-px h-8" style={{ background: 'rgba(255,255,255,0.1)' }} />
           <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold" style={{ color: '#fff' }}>136k+</div>
+            <div className="text-2xl md:text-3xl font-bold" style={{ color: '#fff' }}>145k+</div>
             <div className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>GitHub Stars</div>
           </div>
           <div className="w-px h-8" style={{ background: 'rgba(255,255,255,0.1)' }} />
           <div className="text-center">
             <div className="text-2xl md:text-3xl font-bold" style={{ color: '#fff' }}>100%</div>
-            <div className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>开源免费</div>
+            <div className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>{isZh ? '开源免费' : 'Open Source'}</div>
           </div>
         </div>
 

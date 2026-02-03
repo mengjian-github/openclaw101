@@ -4,36 +4,21 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://openclaw101.dev'),
-  title: 'OpenClaw 101 — 从零开始，7天掌握你的AI私人助理',
-  description:
-    'The definitive guide to building your AI assistant with OpenClaw. 从零开始，7天掌握你的AI私人助理。',
-  keywords: ['OpenClaw', 'AI助理', 'AI Assistant', 'Telegram Bot', '开源', 'self-hosted'],
-  alternates: {
-    canonical: 'https://openclaw101.dev',
+  title: {
+    default: 'OpenClaw 101 - Master Your AI Assistant in 7 Days',
+    template: '%s | OpenClaw 101',
   },
+  description: 'The definitive guide to building your AI assistant with OpenClaw. Tutorials, skills, and community resources.',
+  keywords: ['OpenClaw', 'AI助理', 'AI Assistant', 'Telegram Bot', '开源', 'self-hosted', 'personal AI', 'agent'],
   icons: {
     icon: '/favicon.svg',
   },
-  openGraph: {
-    title: 'OpenClaw 101 — 从零开始，7天掌握你的AI私人助理',
-    description: '从零开始，7天掌握你的AI私人助理',
-    type: 'website',
-    url: 'https://openclaw101.dev',
-    siteName: 'OpenClaw 101',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'OpenClaw 101 — 从零开始，7天掌握你的AI私人助理',
-      },
-    ],
+  robots: {
+    index: true,
+    follow: true,
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'OpenClaw 101 — 从零开始，7天掌握你的AI私人助理',
-    description: '从零开始，7天掌握你的AI私人助理',
-    images: ['/og-image.png'],
+  verification: {
+    google: 'G-86ESEQC7V8',
   },
 };
 
@@ -43,8 +28,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="zh-CN">
+    <html lang="en">
       <head>
+        {/* hreflang tags for i18n */}
+        <link rel="alternate" hrefLang="en" href="https://openclaw101.dev" />
+        <link rel="alternate" hrefLang="zh" href="https://openclaw101.dev/zh" />
+        <link rel="alternate" hrefLang="x-default" href="https://openclaw101.dev" />
+        
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-86ESEQC7V8"

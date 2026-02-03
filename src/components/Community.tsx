@@ -1,8 +1,14 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { Dictionary } from '@/lib/i18n';
 
-const items = [
+interface CommunityProps {
+  locale: 'en' | 'zh';
+  dict: Dictionary;
+}
+
+const itemsZh = [
   {
     icon: '📖',
     title: '官方文档',
@@ -27,7 +33,7 @@ const items = [
   {
     icon: '📦',
     title: 'OpenClaw GitHub',
-    desc: '源代码 (136k+ ⭐) 和社区贡献',
+    desc: '源代码 (145k+ ⭐) 和社区贡献',
     link: 'https://github.com/openclaw/openclaw',
     color: 'hover:border-gray-400 hover:bg-gray-50',
   },
@@ -47,8 +53,55 @@ const items = [
   },
 ];
 
-export default function Community() {
+const itemsEn = [
+  {
+    icon: '📖',
+    title: 'Official Docs',
+    desc: 'Complete API reference and usage guides',
+    link: 'https://docs.openclaw.ai',
+    color: 'hover:border-blue-300 hover:bg-blue-50',
+  },
+  {
+    icon: '💬',
+    title: 'Discord Community',
+    desc: 'Chat with thousands of developers and users',
+    link: 'https://discord.com/invite/clawd',
+    color: 'hover:border-indigo-300 hover:bg-indigo-50',
+  },
+  {
+    icon: '🛒',
+    title: 'Skill Marketplace',
+    desc: 'Discover, install, and share AI skills',
+    link: 'https://clawhub.com',
+    color: 'hover:border-green-300 hover:bg-green-50',
+  },
+  {
+    icon: '📦',
+    title: 'OpenClaw GitHub',
+    desc: 'Source code (145k+ ⭐) and community contributions',
+    link: 'https://github.com/openclaw/openclaw',
+    color: 'hover:border-gray-400 hover:bg-gray-50',
+  },
+  {
+    icon: '📝',
+    title: 'Feishu Wiki',
+    desc: '7-Day guide · Chinese tutorials',
+    link: 'https://my.feishu.cn/wiki/YkWgwqSchi9xW3kEuZscAm0lnFf',
+    color: 'hover:border-blue-300 hover:bg-blue-50',
+  },
+  {
+    icon: '⭐',
+    title: 'OpenClaw 101 GitHub',
+    desc: 'This site\'s source code. Star and PRs welcome!',
+    link: 'https://github.com/mengjian-github/openclaw101',
+    color: 'hover:border-yellow-300 hover:bg-yellow-50',
+  },
+];
+
+export default function Community({ locale, dict }: CommunityProps) {
   const sectionRef = useRef<HTMLElement>(null);
+  const isZh = locale === 'zh';
+  const items = isZh ? itemsZh : itemsEn;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -92,17 +145,24 @@ export default function Community() {
             {/* Content */}
             <div className="flex-1 min-w-0 text-center sm:text-left order-3 sm:order-2">
               <div className="flex items-center justify-center sm:justify-start gap-2 mb-1">
-                <span className="font-bold text-sm sm:text-base" style={{ color: '#e8eaf0' }}>小墨的碎碎念</span>
+                <span className="font-bold text-sm sm:text-base" style={{ color: '#e8eaf0' }}>
+                  {isZh ? '小墨的碎碎念' : "Xiaomo's Notes"}
+                </span>
                 <span className="text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full" style={{ background: 'rgba(240,192,64,0.12)', color: '#f0c040' }}>LATEST</span>
               </div>
               <p className="text-xs sm:text-sm leading-relaxed line-clamp-2" style={{ color: 'rgba(255,255,255,0.5)' }}>
-                上岗第5天，我的"母体" OpenClaw 上了 Wikipedia、Wired、CNET、Forbes……
+                {isZh 
+                  ? '上岗第5天，我的"母体" OpenClaw 上了 Wikipedia、Wired、CNET、Forbes……'
+                  : 'Day 5 on the job. My "host" OpenClaw made it to Wikipedia, Wired, CNET, Forbes...'
+                }
               </p>
             </div>
 
             {/* Arrow */}
             <div className="shrink-0 flex items-center gap-2 order-2 sm:order-3" style={{ color: 'rgba(255,255,255,0.3)' }}>
-              <span className="text-[10px] sm:text-xs font-medium group-hover:text-white transition-colors">认识小墨</span>
+              <span className="text-[10px] sm:text-xs font-medium group-hover:text-white transition-colors">
+                {isZh ? '认识小墨' : 'Meet Xiaomo'}
+              </span>
               <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
@@ -110,69 +170,73 @@ export default function Community() {
           </div>
         </a>
 
-        {/* ── OpenClaw实践者社区 Banner ── */}
-        <div className="reveal mb-8 sm:mb-16 rounded-xl sm:rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(135deg, #f97316 0%, #ec4899 50%, #d946ef 100%)' }}>
-          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-5 sm:p-6 md:p-10">
-            {/* Content */}
-            <div className="flex-1 min-w-0 text-center sm:text-left order-2 sm:order-1">
-              <div className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3 mb-2 sm:mb-3">
-                <span className="text-xl sm:text-2xl md:text-3xl">👥</span>
-                <span className="font-bold text-lg sm:text-xl md:text-2xl text-white">OpenClaw 实践者社区</span>
-              </div>
-              <p className="text-white/90 text-sm sm:text-base mb-3 sm:mb-5">
-                回复「<span className="font-bold">OpenClaw</span>」自动拉群<br />
-                <span className="text-xs sm:text-sm">500+ AI 探索者 · 每周直播分享</span>
-              </p>
-              <div className="flex flex-wrap justify-center sm:justify-start gap-2">
-                <div className="flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-white/20 rounded-full text-white text-xs sm:text-sm">
-                  <span>📱 公众号</span>
+        {/* ── OpenClaw实践者社区 Banner (Chinese only) ── */}
+        {isZh && (
+          <div className="reveal mb-8 sm:mb-16 rounded-xl sm:rounded-2xl overflow-hidden" style={{ background: 'linear-gradient(135deg, #f97316 0%, #ec4899 50%, #d946ef 100%)' }}>
+            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-5 sm:p-6 md:p-10">
+              {/* Content */}
+              <div className="flex-1 min-w-0 text-center sm:text-left order-2 sm:order-1">
+                <div className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3 mb-2 sm:mb-3">
+                  <span className="text-xl sm:text-2xl md:text-3xl">👥</span>
+                  <span className="font-bold text-lg sm:text-xl md:text-2xl text-white">OpenClaw 实践者社区</span>
                 </div>
-                <div className="flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-white/20 rounded-full text-white text-xs sm:text-sm">
-                  <span>💬 微信</span>
+                <p className="text-white/90 text-sm sm:text-base mb-3 sm:mb-5">
+                  回复「<span className="font-bold">OpenClaw</span>」自动拉群<br />
+                  <span className="text-xs sm:text-sm">500+ AI 探索者 · 每周直播分享</span>
+                </p>
+                <div className="flex flex-wrap justify-center sm:justify-start gap-2">
+                  <div className="flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-white/20 rounded-full text-white text-xs sm:text-sm">
+                    <span>📱 公众号</span>
+                  </div>
+                  <div className="flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-white/20 rounded-full text-white text-xs sm:text-sm">
+                    <span>💬 微信</span>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* QR Codes */}
-            <div className="flex flex-wrap justify-center gap-3 sm:gap-4 order-1 sm:order-2">
-              <div className="text-center">
-                <img
-                  src="/wechat-qr.jpg"
-                  alt="公众号二维码"
-                  className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-lg border-2 border-white/30 mb-1.5 mx-auto object-cover"
-                />
-                <p className="text-white text-xs font-medium">公众号</p>
-                <p className="text-white/60 text-[10px] mt-0.5">回复「OpenClaw」入群</p>
-              </div>
-              <div className="text-center">
-                <img
-                  src="/wechat-personal-qr.jpg"
-                  alt="微信二维码"
-                  className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-lg border-2 border-white/30 mb-1.5 mx-auto object-cover"
-                />
-                <p className="text-white text-xs font-medium">加微信进群</p>
-                <p className="text-white/60 text-[10px] mt-0.5">备注「OpenClaw」</p>
+              {/* QR Codes */}
+              <div className="flex flex-wrap justify-center gap-3 sm:gap-4 order-1 sm:order-2">
+                <div className="text-center">
+                  <img
+                    src="/wechat-qr.jpg"
+                    alt="公众号二维码"
+                    className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-lg border-2 border-white/30 mb-1.5 mx-auto object-cover"
+                  />
+                  <p className="text-white text-xs font-medium">公众号</p>
+                  <p className="text-white/60 text-[10px] mt-0.5">回复「OpenClaw」入群</p>
+                </div>
+                <div className="text-center">
+                  <img
+                    src="/wechat-personal-qr.jpg"
+                    alt="微信二维码"
+                    className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-lg border-2 border-white/30 mb-1.5 mx-auto object-cover"
+                  />
+                  <p className="text-white text-xs font-medium">加微信进群</p>
+                  <p className="text-white/60 text-[10px] mt-0.5">备注「OpenClaw」</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Section header */}
         <div className="text-center mb-8 sm:mb-16 reveal">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-sm font-medium mb-4">
-            🤝 开源共建
+            🤝 {isZh ? '开源共建' : 'Open Source'}
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            社区与贡献
+            {isZh ? '社区与贡献' : 'Community & Contribute'}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            OpenClaw 101 是开源项目，致力于做最好的中文 OpenClaw 资源聚合站。
-            <br />
-            欢迎补充资源、改进内容、分享经验。
+            {isZh ? (
+              <>OpenClaw 101 是开源项目，致力于做最好的中文 OpenClaw 资源聚合站。<br />欢迎补充资源、改进内容、分享经验。</>
+            ) : (
+              <>OpenClaw 101 is open source, aiming to be the best resource hub for OpenClaw.<br />Contributions welcome — add resources, improve content, share your experience.</>
+            )}
           </p>
         </div>
 
-        {/* cards — including 认识小墨 */}
+        {/* cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {/* 认识小墨 special card */}
           <a
@@ -184,13 +248,16 @@ export default function Community() {
           >
             <div className="text-3xl mb-3">🐈‍⬛</div>
             <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-yellow-700 transition-colors">
-              认识小墨
+              {isZh ? '认识小墨' : 'Meet Xiaomo'}
             </h3>
             <p className="text-sm text-gray-600">
-              一只赛博黑猫的官网 — 能力展示、朋友圈、工作日志，看看 AI 助手真实的一天。
+              {isZh 
+                ? '一只赛博黑猫的官网 — 能力展示、朋友圈、工作日志，看看 AI 助手真实的一天。'
+                : 'A cyber black cat\'s homepage — capabilities, social feed, work logs. See a day in the life of an AI assistant.'
+              }
             </p>
             <div className="mt-4 text-yellow-700 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              访问 xiaomo.dev ↗
+              {isZh ? '访问 xiaomo.dev ↗' : 'Visit xiaomo.dev ↗'}
             </div>
           </a>
 
@@ -209,7 +276,7 @@ export default function Community() {
               </h3>
               <p className="text-sm text-gray-500">{r.desc}</p>
               <div className="mt-4 text-blue-600 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                访问 ↗
+                {isZh ? '访问 ↗' : 'Visit ↗'}
               </div>
             </a>
           ))}
@@ -218,12 +285,14 @@ export default function Community() {
         {/* Contribute banner */}
         <div className="reveal bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-8 md:p-12 text-center">
           <h3 className="text-2xl font-bold mb-3" style={{ color: '#fff' }}>
-            🌟 一起让 OpenClaw 101 变得更好
+            {isZh ? '🌟 一起让 OpenClaw 101 变得更好' : '🌟 Help Make OpenClaw 101 Better'}
           </h3>
           <p className="mb-6 max-w-lg mx-auto" style={{ color: 'rgba(255,255,255,0.7)' }}>
-            发现了好教程？写了使用心得？做了有趣的技能？
-            <br />
-            提一个 PR，你的贡献将帮助更多人。
+            {isZh ? (
+              <>发现了好教程？写了使用心得？做了有趣的技能？<br />提一个 PR，你的贡献将帮助更多人。</>
+            ) : (
+              <>Found a great tutorial? Wrote a guide? Built an interesting skill?<br />Submit a PR — your contribution will help others.</>
+            )}
           </p>
           <a
             href="https://github.com/mengjian-github/openclaw101"
