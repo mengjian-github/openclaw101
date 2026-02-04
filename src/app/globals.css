@@ -25,11 +25,22 @@ html {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
+  /* Fallback: auto-show after 2s if JS fails */
+  animation: reveal-fallback 0s 2s forwards;
 }
 
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+  animation: none; /* Cancel fallback when JS works */
+}
+
+/* Fallback animation for when JS is disabled/fails */
+@keyframes reveal-fallback {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Gradient text */

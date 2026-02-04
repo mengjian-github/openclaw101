@@ -617,6 +617,81 @@ export const resources: Resource[] = [
     tags: ['The Guardian', '英国媒体', '分析'],
   },
 
+  // ============ New — Week of 2026-02-04 ============
+
+  // -- Cloud Deploy --
+  {
+    title: 'AWS 中国博客 — 基于 Mac 实例部署 OpenClaw',
+    desc: '亚马逊云科技 Mac 实例部署指南，深度苹果生态自动化的最佳选择',
+    url: 'https://aws.amazon.com/cn/blogs/china/openclaw-deployment-aws-mac/',
+    source: 'AWS',
+    lang: 'zh',
+    category: 'cloud-deploy',
+    featured: true,
+    tags: ['AWS', 'Mac', '苹果生态'],
+  },
+
+  // -- Getting Started --
+  {
+    title: '菜鸟教程 — OpenClaw (Clawdbot) 完整教程',
+    desc: '从 git clone 到 pnpm build，含 onboard 和 gateway:watch 开发模式',
+    url: 'https://www.runoob.com/ai-agent/openclaw-clawdbot-tutorial.html',
+    source: '菜鸟教程',
+    lang: 'zh',
+    category: 'getting-started',
+    featured: true,
+    tags: ['菜鸟教程', '源码编译', '开发模式'],
+  },
+  {
+    title: '痴者工良 — 手把手教你部署 OpenClaw',
+    desc: '博客园原创，openclaw configure 配置飞书全流程',
+    url: 'https://www.cnblogs.com/whuanle/p/19558535',
+    source: '博客园',
+    lang: 'zh',
+    category: 'getting-started',
+    tags: ['博客园', '飞书', '配置向导'],
+  },
+  {
+    title: 'DAMO 开发者矩阵 — Mac mini 接入国产大模型与飞书',
+    desc: '命令行安装 + DeepSeek 配置 + 飞书插件全流程',
+    url: 'https://damodev.csdn.net/697dff7b7c1d88441d90f0e4.html',
+    source: 'CSDN DAMO',
+    lang: 'zh',
+    category: 'getting-started',
+    tags: ['Mac mini', 'DeepSeek', '飞书插件'],
+  },
+  {
+    title: 'Adven Boost — OpenClaw: 10 Steps to Set Up Your Personal AI Agent',
+    desc: 'Structured 10-step playbook from installation to optimization',
+    url: 'https://advenboost.com/en/openclaw-setup-10-steps-guide/',
+    source: 'Adven Boost',
+    lang: 'en',
+    category: 'getting-started',
+    tags: ['10步', '结构化', 'ROI分析'],
+  },
+
+  // -- Deep Dive --
+  {
+    title: '知乎 — 一文读懂 OpenClaw 分析与教程',
+    desc: '完整目录结构解析：AGENTS.md / SOUL.md / MEMORY.md / Skills 全拆解',
+    url: 'https://zhuanlan.zhihu.com/p/2000850539936765122',
+    source: '知乎',
+    lang: 'zh',
+    category: 'deep-dive',
+    featured: true,
+    tags: ['知乎', '架构', '目录结构'],
+  },
+  {
+    title: 'Turing College — The AI Assistant That Actually Does Things',
+    desc: '深度解析 OpenClaw 三大核心能力：电脑控制、持久记忆、心跳机制',
+    url: 'https://www.turingcollege.com/blog/openclaw',
+    source: 'Turing College',
+    lang: 'en',
+    category: 'deep-dive',
+    featured: true,
+    tags: ['深度', '心跳机制', '记忆系统'],
+  },
+
   // ============ Our Own ============
   {
     title: 'OpenClaw 7天入门指南 — 飞书知识库',

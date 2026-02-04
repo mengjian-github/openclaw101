@@ -1,27 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Home -->
   <url>
     <loc>https://openclaw101.dev/</loc>
-    <lastmod>2026-02-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://openclaw101.dev/zh"/>
+    <lastmod>2026-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://openclaw101.dev/zh</loc>
-    <lastmod>2026-02-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://openclaw101.dev/zh"/>
+    <lastmod>2026-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Resources -->
   <url>
     <loc>https://openclaw101.dev/resources</loc>
-    <lastmod>2026-02-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/resources"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://openclaw101.dev/zh/resources"/>
+    <lastmod>2026-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://openclaw101.dev/zh/resources</loc>
-    <lastmod>2026-02-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/resources"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://openclaw101.dev/zh/resources"/>
+    <lastmod>2026-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- 7-Day Tutorial - English -->
+  <url>
+    <loc>https://openclaw101.dev/day/1</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/day/1"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://openclaw101.dev/zh/day/1"/>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://openclaw101.dev/day/2</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/day/2"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://openclaw101.dev/zh/day/2"/>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://openclaw101.dev/day/3</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/day/3"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://openclaw101.dev/zh/day/3"/>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://openclaw101.dev/day/4</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/day/4"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://openclaw101.dev/zh/day/4"/>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://openclaw101.dev/day/5</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/day/5"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://openclaw101.dev/zh/day/5"/>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://openclaw101.dev/day/6</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/day/6"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://openclaw101.dev/zh/day/6"/>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://openclaw101.dev/day/7</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/day/7"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://openclaw101.dev/zh/day/7"/>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 7-Day Tutorial - Chinese -->
+  <url>
+    <loc>https://openclaw101.dev/zh/day/1</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/day/1"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://openclaw101.dev/zh/day/1"/>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://openclaw101.dev/zh/day/2</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/day/2"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://openclaw101.dev/zh/day/2"/>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://openclaw101.dev/zh/day/3</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/day/3"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://openclaw101.dev/zh/day/3"/>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://openclaw101.dev/zh/day/4</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/day/4"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://openclaw101.dev/zh/day/4"/>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://openclaw101.dev/zh/day/5</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/day/5"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://openclaw101.dev/zh/day/5"/>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://openclaw101.dev/zh/day/6</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/day/6"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://openclaw101.dev/zh/day/6"/>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://openclaw101.dev/zh/day/7</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/day/7"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://openclaw101.dev/zh/day/7"/>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>
