@@ -6,7 +6,7 @@
 
 ```bash
 # 1. 进入项目目录
-cd /repisitory/openclaw101
+cd ~/openclaw101/
 
 # 2. 运行部署脚本
 chmod +x build-docker-run.sh
