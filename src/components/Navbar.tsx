@@ -41,8 +41,23 @@ export default function Navbar({ locale, dict }: NavbarProps) {
     >
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
-        <a href={prefix || '/'} className="font-bold text-base sm:text-lg whitespace-nowrap" style={{ color: '#fff' }}>
-          🐾 <span className="gradient-text">openclaw.mom</span>
+        <a href={prefix || '/'} className="inline-flex items-center gap-2 sm:gap-3">
+          <span
+            className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl border shadow-lg"
+            style={{
+              background: 'linear-gradient(135deg, rgba(251,146,60,0.28), rgba(244,63,94,0.2))',
+              borderColor: 'rgba(251,146,60,0.55)',
+              color: '#ffd7a1',
+            }}
+          >
+            🦞
+          </span>
+          <span className="leading-tight">
+            <span className="block font-black text-sm sm:text-base tracking-wide" style={{ color: '#fff' }}>
+              龙虾妈妈
+            </span>
+            <span className="block text-[10px] sm:text-xs gradient-text">openclaw.mom</span>
+          </span>
         </a>
 
         {/* Desktop links */}
