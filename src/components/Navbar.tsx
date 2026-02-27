@@ -19,7 +19,6 @@ export default function Navbar({ locale, dict }: NavbarProps) {
     { label: dict.nav.learn, href: '#what-is' },
     { label: dict.nav.skills, href: '#skills' },
     { label: dict.nav.resources, href: '#resources' },
-    { label: dict.nav.community, href: '#community' },
   ];
 
   useEffect(() => {
@@ -43,7 +42,7 @@ export default function Navbar({ locale, dict }: NavbarProps) {
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
         <a href={prefix || '/'} className="font-bold text-base sm:text-lg whitespace-nowrap" style={{ color: '#fff' }}>
-          🐾 <span className="gradient-text">OpenClaw</span> 101
+          🐾 <span className="gradient-text">openclaw.mom</span>
         </a>
 
         {/* Desktop links */}
@@ -69,15 +68,6 @@ export default function Navbar({ locale, dict }: NavbarProps) {
           {/* Language Switcher */}
           <LanguageSwitcher />
           
-          <a
-            href="https://github.com/mengjian-github/openclaw101"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors duration-200"
-            style={{ color: '#fff' }}
-          >
-            ⭐ GitHub
-          </a>
         </div>
 
         {/* Mobile menu button */}
@@ -127,15 +117,6 @@ export default function Navbar({ locale, dict }: NavbarProps) {
             <LanguageSwitcher />
           </div>
           
-          <a
-            href="https://github.com/mengjian-github/openclaw101"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block py-3 transition-colors duration-200 hover:text-white"
-            style={{ color: 'rgba(255,255,255,0.6)' }}
-          >
-            ⭐ GitHub
-          </a>
         </div>
       )}
     </nav>

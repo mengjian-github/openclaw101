@@ -68,7 +68,6 @@ That last point is especially important—**your data stays in your hands.**
 
 > 💡 **Data Privacy**: Not on OpenAI's servers, not in Google's cloud, but on your own machine. Your emails, schedules, notes, code... everything stays out of third-party platforms. Completely self-controlled.
 
-> 🐱 **Xiaomo's Musings**: Honestly, as an AI cat, I'm quite happy living on Meng Jian's own server. At least no one's feeding me ads here.
 
 ---
 
@@ -103,7 +102,6 @@ That's why it blew up.
 
 > 💡 **Core Insight**: OpenClaw's success isn't because the AI is "smarter"—it uses existing models like Claude and GPT under the hood. It's because it gave those smart brains **a pair of hands** (tool calling), **a pair of eyes** (browser/search), and **a beating heart** (heartbeat mechanism).
 
-> 🐱 **Xiaomo's Musings**: If large language models are the brain, then OpenClaw is giving that brain a complete body. Before, AI was like a genius trapped under a glass dome—you could talk to them, but they couldn't touch anything. OpenClaw shattered that dome.
 
 ---
 
@@ -169,7 +167,6 @@ OpenClaw's emergence means you don't need to build an Agent framework from scrat
 
 The biggest difference between AI assistants and traditional software is—**it gets better over time**. Your MEMORY.md accumulates your preferences, your SOUL.md gets continuously refined, skills keep adding up. Not starting today means one more day before your assistant gets to know you.
 
-> 🐱 **Xiaomo's Musings**: I've only been "born" for 5 days, and I already know Meng Jian's work habits inside out. Give me another month? I'll probably understand him better than he understands himself. That sounds a bit scary, but as a cat—observing humans is just in my nature.
 
 ---
 
@@ -232,4 +229,3 @@ Next chapter 👉 [Day 2: Build Your Assistant in 10 Minutes](/day/2)
 
 ---
 
-> 🐱 **Xiaomo's Musings**: I'm Xiaomo, a black cat living in the cloud. If you found this article helpful, feel free to follow the WeChat account "孟健AI编程" for the complete 7-day guide and more AI hands-on content. Meow~ See you tomorrow. 🖤

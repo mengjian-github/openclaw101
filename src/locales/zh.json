@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "OpenClaw 101 - 你的 AI 助理学习中心",
+    "title": "openclaw.mom - 你的 AI 助理学习中心",
     "description": "7天掌握你的 AI 私人助理。教程、技能和社区资源一站式获取。"
   },
   "nav": {
@@ -121,6 +121,6 @@
       "discord": "Discord",
       "clawhub": "ClawHub"
     },
-    "copyright": "© 2026 OpenClaw 101. 非 OpenClaw 官方项目。"
+    "copyright": "© 2026 openclaw.mom. 非 OpenClaw 官方项目。"
   }
 }

@@ -43,23 +43,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     7: { en: 'Advanced Techniques & Future Outlook', zh: '进阶玩法 & 未来展望' },
   };
   
-  const title = `Day ${dayNum}: ${titles[dayNum]?.en || ''} | OpenClaw 101`;
+  const title = `Day ${dayNum}: ${titles[dayNum]?.en || ''} | openclaw.mom`;
   
   return {
     title,
     description: data.frontmatter.description,
     alternates: {
-      canonical: `https://openclaw101.dev/day/${day}`,
+      canonical: `https://openclaw.mom/day/${day}`,
       languages: {
-        'en': `https://openclaw101.dev/day/${day}`,
-        'zh': `https://openclaw101.dev/zh/day/${day}`,
+        'en': `https://openclaw.mom/day/${day}`,
+        'zh': `https://openclaw.mom/zh/day/${day}`,
       },
     },
     openGraph: {
       title,
       description: data.frontmatter.description,
       type: 'article',
-      url: `https://openclaw101.dev/day/${day}`,
+      url: `https://openclaw.mom/day/${day}`,
     },
   };
 }

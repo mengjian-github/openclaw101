@@ -2562,20 +2562,20 @@ export const resources: Resource[] = [
 ];
 
 export function getResourcesByCategory(cat: ResourceCategory): Resource[] {
-  return resources.filter((r) => r.category === cat);
+  return resources.filter((r) => r.category === cat && !r.url.includes('github.com'));
 }
 
 export function getFeaturedResources(): Resource[] {
-  return resources.filter((r) => r.featured);
+  return resources.filter((r) => r.featured && !r.url.includes('github.com'));
 }
 
 export function getResourcesByLang(lang: 'zh' | 'en'): Resource[] {
-  return resources.filter((r) => r.lang === lang);
+  return resources.filter((r) => r.lang === lang && !r.url.includes('github.com'));
 }
 
 export const stats = {
-  totalResources: resources.length,
+  totalResources: resources.filter((r) => !r.url.includes('github.com')).length,
   totalCategories: Object.keys(categoryMeta).length,
-  zhResources: resources.filter((r) => r.lang === 'zh').length,
-  enResources: resources.filter((r) => r.lang === 'en').length,
+  zhResources: resources.filter((r) => r.lang === 'zh' && !r.url.includes('github.com')).length,
+  enResources: resources.filter((r) => r.lang === 'en' && !r.url.includes('github.com')).length,
 };

@@ -31,25 +31,11 @@ const itemsZh = [
     color: 'hover:border-green-300 hover:bg-green-50',
   },
   {
-    icon: '📦',
-    title: 'OpenClaw GitHub',
-    desc: '源代码 (145k+ ⭐) 和社区贡献',
-    link: 'https://github.com/openclaw/openclaw',
-    color: 'hover:border-gray-400 hover:bg-gray-50',
-  },
-  {
     icon: '📝',
     title: '飞书知识库',
     desc: '7 天入门指南 · 中文图文教程',
     link: 'https://my.feishu.cn/wiki/YkWgwqSchi9xW3kEuZscAm0lnFf',
     color: 'hover:border-blue-300 hover:bg-blue-50',
-  },
-  {
-    icon: '⭐',
-    title: 'OpenClaw 101 GitHub',
-    desc: '本站源码，欢迎 Star 和 PR',
-    link: 'https://github.com/mengjian-github/openclaw101',
-    color: 'hover:border-yellow-300 hover:bg-yellow-50',
   },
 ];
 
@@ -76,25 +62,11 @@ const itemsEn = [
     color: 'hover:border-green-300 hover:bg-green-50',
   },
   {
-    icon: '📦',
-    title: 'OpenClaw GitHub',
-    desc: 'Source code (145k+ ⭐) and community contributions',
-    link: 'https://github.com/openclaw/openclaw',
-    color: 'hover:border-gray-400 hover:bg-gray-50',
-  },
-  {
     icon: '📝',
     title: 'Feishu Wiki',
     desc: '7-Day guide · Chinese tutorials',
     link: 'https://my.feishu.cn/wiki/YkWgwqSchi9xW3kEuZscAm0lnFf',
     color: 'hover:border-blue-300 hover:bg-blue-50',
-  },
-  {
-    icon: '⭐',
-    title: 'OpenClaw 101 GitHub',
-    desc: 'This site\'s source code. Star and PRs welcome!',
-    link: 'https://github.com/mengjian-github/openclaw101',
-    color: 'hover:border-yellow-300 hover:bg-yellow-50',
   },
 ];
 
@@ -265,9 +237,9 @@ export default function Community({ locale, dict }: CommunityProps) {
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             {isZh ? (
-              <>OpenClaw 101 是开源项目，致力于做最好的中文 OpenClaw 资源聚合站。<br />欢迎补充资源、改进内容、分享经验。</>
+              <>openclaw.mom 是开源项目，致力于做最好的中文 OpenClaw 资源聚合站。<br />欢迎补充资源、改进内容、分享经验。</>
             ) : (
-              <>OpenClaw 101 is open source, aiming to be the best resource hub for OpenClaw.<br />Contributions welcome — add resources, improve content, share your experience.</>
+              <>openclaw.mom is open source, aiming to be the best resource hub for OpenClaw.<br />Contributions welcome — add resources, improve content, share your experience.</>
             )}
           </p>
         </div>
@@ -321,7 +293,7 @@ export default function Community({ locale, dict }: CommunityProps) {
         {/* Contribute banner */}
         <div className="reveal bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-8 md:p-12 text-center">
           <h3 className="text-2xl font-bold mb-3" style={{ color: '#fff' }}>
-            {isZh ? '🌟 一起让 OpenClaw 101 变得更好' : '🌟 Help Make OpenClaw 101 Better'}
+            {isZh ? '🌟 一起让 openclaw.mom 变得更好' : '🌟 Help Make openclaw.mom Better'}
           </h3>
           <p className="mb-6 max-w-lg mx-auto" style={{ color: 'rgba(255,255,255,0.7)' }}>
             {isZh ? (
@@ -330,17 +302,6 @@ export default function Community({ locale, dict }: CommunityProps) {
               <>Found a great tutorial? Wrote a guide? Built an interesting skill?<br />Submit a PR — your contribution will help others.</>
             )}
           </p>
-          <a
-            href="https://github.com/mengjian-github/openclaw101"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-gray-900 font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
-          >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-            </svg>
-            Star & Fork on GitHub
-          </a>
         </div>
       </div>
     </section>

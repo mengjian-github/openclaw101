@@ -8,7 +8,6 @@ import {
   type Resource,
   type ResourceCategory,
 } from '@/data/resources';
-import ConsultButton from './ConsultButton';
 
 /* ── i18n texts ── */
 const texts = {
@@ -147,7 +146,7 @@ const sourceDots: Record<string, string> = {
   '腾讯新闻': '#0052d9',
   'Reddit': '#ff4500',
   'Substack': '#ff6719',
-  'OpenClaw 101': '#2563eb',
+  'openclaw.mom': '#2563eb',
   'Creator Economy': '#7c3aed',
   'NxCode': '#0ea5e9',
   'Scientific American': '#000000',
@@ -222,16 +221,17 @@ function CategorySection({
   cat, 
   index, 
   locale, 
-  t 
+  t,
+  items
 }: { 
   cat: ResourceCategory; 
   index: number; 
   locale: 'en' | 'zh';
   t: typeof texts.en;
+  items: Resource[];
 }) {
   const meta = categoryMeta[cat];
   const color = meta.color;
-  const items = resources.filter((r) => r.category === cat);
   if (items.length === 0) return null;
   const isAlt = index % 2 === 1;
 
@@ -286,9 +286,10 @@ export default function ResourcesPage({ locale }: ResourcesPageProps) {
   const mainRef = useRef<HTMLDivElement>(null);
   const t = texts[locale];
   const homeUrl = locale === 'zh' ? '/zh' : '/';
+  const visibleResources = resources.filter((r) => !r.url.includes('github.com'));
 
   const searchResults = search
-    ? resources.filter((r) => {
+    ? visibleResources.filter((r) => {
         const q = search.toLowerCase();
         return (
           r.title.toLowerCase().includes(q) ||
@@ -454,7 +455,14 @@ export default function ResourcesPage({ locale }: ResourcesPageProps) {
           </>
         ) : (
           catOrder.map((cat, i) => (
-            <CategorySection key={cat} cat={cat} index={i} locale={locale} t={t} />
+            <CategorySection
+              key={cat}
+              cat={cat}
+              index={i}
+              locale={locale}
+              t={t}
+              items={visibleResources.filter((r) => r.category === cat)}
+            />
           ))
         )}
 
@@ -470,29 +478,16 @@ export default function ResourcesPage({ locale }: ResourcesPageProps) {
               {t.contributeDesc} <code className="px-1.5 py-0.5 rounded text-xs" style={{ background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.8)' }}>src/data/resources.ts</code>{t.contributeDesc2}
             </p>
           </div>
-          <a
-            href="https://github.com/mengjian-github/openclaw101"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-900 font-semibold rounded-xl hover:shadow-lg transition-all hover:-translate-y-0.5"
-          >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-            </svg>
-            {t.submitPR}
-          </a>
         </div>
       </div>
 
       {/* ── footer ── */}
       <footer className="hero-glow py-8 mt-4">
         <div className="max-w-5xl mx-auto px-4 text-center text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>
-          {t.footerMadeBy} <span style={{ color: 'rgba(255,255,255,0.7)' }}>小墨</span> · <a href={homeUrl} className="hover:underline" style={{ color: 'rgba(255,255,255,0.6)' }}>OpenClaw 101</a> · <a href="https://github.com/mengjian-github/openclaw101" target="_blank" rel="noopener noreferrer" className="hover:underline" style={{ color: 'rgba(255,255,255,0.6)' }}>GitHub</a>
+          made with 8848.Studio · <a href={homeUrl} className="hover:underline" style={{ color: 'rgba(255,255,255,0.6)' }}>openclaw.mom</a>
         </div>
       </footer>
 
-      {/* Floating consult button */}
-      <ConsultButton locale={locale} />
     </div>
   );
 }

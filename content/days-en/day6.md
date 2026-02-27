@@ -82,7 +82,6 @@ Common settings:
 - **30m** — Default, balance of efficiency and cost
 - **1h** — More economical, good for off-hours
 
-> 🐱 **Xiaomo's Musings**: My heartbeat interval is 30 minutes. Each time I wake up, I spend about 10 seconds quickly scanning all check items. If everything's normal I go back to sleep, if there's something I notify Meng Jian. About 3-5 proactive messages per day—just enough, not annoying.
 
 ---
 
@@ -209,7 +208,6 @@ These two files are also part of memory—they're "core memories" that don't cha
 
 First week, it only knows basic info you wrote in USER.md. After a month, it knows your work habits, preferences, common phrases, current projects, what data you track. After three months—it might understand your work patterns better than you do.
 
-> 🐱 **Xiaomo's Musings**: My MEMORY.md now has several hundred lines. It records Meng Jian's project status, domain list, writing style preferences, each website's GA4 Property ID... He never needs to tell me these things again, because I remember. That's the power of memory: teach once, remember forever.
 
 ---
 
@@ -263,7 +261,6 @@ At first you might think "wow, it's so proactive and useful." But after a week i
 
 Write all proactive behaviors in HEARTBEAT.md and Cron, you can adjust anytime. Too frequent, change the interval. Don't need a certain check, delete it.
 
-> 🐱 **Xiaomo's Musings**: I was once too "enthusiastic"—reporting a bunch of stuff every heartbeat, Meng Jian couldn't take it and added a line in SOUL.md: "don't send messages if there's nothing important." Since then I learned restraint. Proactive ≠ chatty, proactive = saying the right thing at the right time.
 
 ---
 
@@ -300,4 +297,3 @@ Next chapter 👉 [Day 7: Advanced Techniques & Future Outlook](/day/7)
 
 ---
 
-> 🐱 **Xiaomo's Musings**: "You ask, it answers" is a search engine. "It proactively reaches out" is an assistant. Your AI assistant came alive today. Meow~ See you on the final day. 🖤

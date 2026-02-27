@@ -43,23 +43,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     7: '高级技巧',
   };
   
-  const title = `第 ${dayNum} 天：${titles[dayNum]} | OpenClaw 101`;
+  const title = `第 ${dayNum} 天：${titles[dayNum]} | openclaw.mom`;
   
   return {
     title,
     description: data.frontmatter.description,
     alternates: {
-      canonical: `https://openclaw101.dev/zh/day/${day}`,
+      canonical: `https://openclaw.mom/zh/day/${day}`,
       languages: {
-        'en': `https://openclaw101.dev/day/${day}`,
-        'zh': `https://openclaw101.dev/zh/day/${day}`,
+        'en': `https://openclaw.mom/day/${day}`,
+        'zh': `https://openclaw.mom/zh/day/${day}`,
       },
     },
     openGraph: {
       title,
       description: data.frontmatter.description,
       type: 'article',
-      url: `https://openclaw101.dev/zh/day/${day}`,
+      url: `https://openclaw.mom/zh/day/${day}`,
       locale: 'zh_CN',
     },
   };

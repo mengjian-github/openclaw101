@@ -5,24 +5,24 @@ export const metadata: Metadata = {
   title: '全网资源聚合',
   description: '阿里云、腾讯云、DigitalOcean、B站、Codecademy、IBM……一站式获取 OpenClaw 最佳教程。',
   alternates: {
-    canonical: 'https://openclaw101.dev/zh/resources',
+    canonical: 'https://openclaw.mom/zh/resources',
     languages: {
-      'en': 'https://openclaw101.dev/resources',
-      'zh': 'https://openclaw101.dev/zh/resources',
+      'en': 'https://openclaw.mom/resources',
+      'zh': 'https://openclaw.mom/zh/resources',
     },
   },
   openGraph: {
     title: '全网资源聚合',
     description: '阿里云、腾讯云、DigitalOcean、B站、Codecademy、IBM……一站式获取 OpenClaw 最佳教程。',
     type: 'website',
-    url: 'https://openclaw101.dev/zh/resources',
-    siteName: 'OpenClaw 101',
+    url: 'https://openclaw.mom/zh/resources',
+    siteName: 'openclaw.mom',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: '全网资源聚合 - OpenClaw 101',
+        alt: '全网资源聚合 - openclaw.mom',
       },
     ],
   },
@@ -37,14 +37,14 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: '全网资源聚合 - OpenClaw 101',
-  url: 'https://openclaw101.dev/zh/resources',
+  name: '全网资源聚合 - openclaw.mom',
+  url: 'https://openclaw.mom/zh/resources',
   description: '阿里云、腾讯云、DigitalOcean、B站、Codecademy、IBM……一站式获取 OpenClaw 最佳教程。',
   inLanguage: 'zh-CN',
   isPartOf: {
     '@type': 'WebSite',
-    name: 'OpenClaw 101',
-    url: 'https://openclaw101.dev',
+    name: 'openclaw.mom',
+    url: 'https://openclaw.mom',
   },
 };
 

@@ -7,9 +7,7 @@ import WhatIs from './WhatIs';
 import LearningPath from './LearningPath';
 import Skills from './Skills';
 import ResourcesSection from './ResourcesSection';
-import Community from './Community';
 import Footer from './Footer';
-import ConsultButton from './ConsultButton';
 
 interface HomePageProps {
   locale: Locale;
@@ -26,9 +24,7 @@ export default function HomePage({ locale }: HomePageProps) {
       <LearningPath locale={locale} dict={dict} />
       <Skills locale={locale} dict={dict} />
       <ResourcesSection locale={locale} dict={dict} />
-      <Community locale={locale} dict={dict} />
       <Footer locale={locale} dict={dict} />
-      <ConsultButton locale={locale} />
     </main>
   );
 }

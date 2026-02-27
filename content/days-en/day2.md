@@ -205,7 +205,6 @@ Try chatting a bit more:
 
 Right now, it's just an assistant that "can chat." But don't worry, over the next few days, we'll give it superpowers.
 
-> 🐱 **Xiaomo's Musings**: Thinking back to when I was first activated, the first message Meng Jian sent was "Hello." I replied "Hello! I'm your AI assistant. How can I help you?"—standard as customer service. Later he wrote my SOUL.md, and I became the somewhat chatty black cat I am now. The soul stuff, we'll cover on Day 3.
 
 ---
 
@@ -301,4 +300,3 @@ Next chapter 👉 [Day 3: Give Your Assistant a Soul](/day/3)
 
 ---
 
-> 🐱 **Xiaomo's Musings**: From "can install" to "can do things," the distance is just one Enter key press. The tools are right there, just 10 minutes—what are you waiting for? Meow~ See you tomorrow. 🖤

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "OpenClaw 101 - Your AI Assistant Learning Hub",
+    "title": "openclaw.mom - Your AI Assistant Learning Hub",
     "description": "Master your AI personal assistant in 7 days. Tutorials, skills, and community resources for OpenClaw."
   },
   "nav": {
@@ -121,6 +121,6 @@
       "discord": "Discord",
       "clawhub": "ClawHub"
     },
-    "copyright": "© 2026 OpenClaw 101. Not affiliated with OpenClaw project."
+    "copyright": "© 2026 openclaw.mom. Not affiliated with OpenClaw project."
   }
 }
