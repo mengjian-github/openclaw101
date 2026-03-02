@@ -2,15 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap');
 
 html {
   scroll-behavior: smooth;
 }
 
 @layer base {
+  :root {
+    --bg: #f5f7fb;
+    --surface: #ffffff;
+    --text: #0f172a;
+    --muted: #55627a;
+    --line: #dbe3ef;
+    --brand: #0ea5e9;
+    --brand-deep: #0369a1;
+    --accent: #f97316;
+  }
+
   body {
     @apply antialiased;
+    font-family: 'Manrope', 'Noto Sans SC', sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(circle at 8% -10%, rgba(14, 165, 233, 0.12), transparent 45%),
+      radial-gradient(circle at 92% 0%, rgba(249, 115, 22, 0.1), transparent 38%),
+      linear-gradient(180deg, #f8fbff 0%, var(--bg) 45%, #f4f7fc 100%);
   }
 }
 
@@ -45,12 +62,13 @@ html {
 
 /* Gradient text */
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(120deg, var(--brand-deep), var(--brand), #14b8a6);
 }
 
 /* Glow effect */
 .glow {
-  box-shadow: 0 0 40px rgba(37, 99, 235, 0.15);
+  box-shadow: 0 10px 45px rgba(2, 8, 23, 0.08);
 }
 
 /* Card hover */
@@ -59,8 +77,8 @@ html {
 }
 
 .card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 32px rgba(15, 23, 42, 0.08);
 }
 
 /* Scrollbar hide */
@@ -74,10 +92,10 @@ html {
 
 /* Hero background - use background shorthand to layer patterns over solid color */
 .hero-glow {
-  background-color: #0F172A;
+  background-color: transparent;
   background-image:
-    radial-gradient(circle at 25% 25%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-    radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 100%, 100%, 40px 40px;
+    radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.12) 0%, transparent 42%),
+    radial-gradient(circle at 88% 12%, rgba(249, 115, 22, 0.1) 0%, transparent 34%),
+    linear-gradient(180deg, #f8fbff 0%, #f1f6fd 100%);
+  background-size: 100%, 100%, 100%;
 }

@@ -68,10 +68,13 @@ export default function WhatIs({ locale, dict }: WhatIsProps) {
   }, []);
 
   return (
-    <section id="what-is" ref={sectionRef} className="py-12 sm:py-24 bg-white">
+    <section id="what-is" ref={sectionRef} className="py-12 sm:py-24">
       <div className="max-w-6xl mx-auto px-4">
         {/* Section header */}
         <div className="text-center mb-8 sm:mb-16 reveal">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4 border" style={{ background: 'rgba(14,165,233,0.1)', color: '#0369a1', borderColor: 'rgba(14,165,233,0.2)' }}>
+            {isZh ? '核心能力' : 'Core Capabilities'}
+          </div>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             {isZh ? (
               <>什么是 <span className="gradient-text">OpenClaw</span>？</>
@@ -89,12 +92,16 @@ export default function WhatIs({ locale, dict }: WhatIsProps) {
         </div>
 
         {/* Feature cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {features.map((f, i) => (
             <div
               key={i}
-              className="reveal card-hover bg-gray-50 rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 border border-gray-100"
-              style={{ transitionDelay: `${i * 100}ms` }}
+              className="reveal card-hover rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 border"
+              style={{
+                background: 'rgba(255,255,255,0.72)',
+                borderColor: 'rgba(15,23,42,0.08)',
+                transitionDelay: `${i * 100}ms`,
+              }}
             >
               <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">{f.icon}</div>
               <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">{f.title}</h3>

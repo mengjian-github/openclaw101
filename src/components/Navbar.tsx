@@ -31,15 +31,22 @@ export default function Navbar({ locale, dict }: NavbarProps) {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'backdrop-blur-md border-b border-white/10 py-3'
+          ? 'py-3'
           : 'py-4 sm:py-5'
       }`}
       style={{
-        backgroundColor: scrolled ? 'rgba(15, 23, 42, 0.9)' : 'transparent',
+        backgroundColor: 'transparent',
         paddingTop: scrolled ? 'calc(env(safe-area-inset-top) + 0.75rem)' : 'calc(env(safe-area-inset-top) + 1rem)',
       }}
     >
-      <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
+      <div
+        className="max-w-6xl mx-auto px-4 py-2 sm:py-2.5 rounded-2xl border flex items-center justify-between shadow-sm"
+        style={{
+          backgroundColor: scrolled ? 'rgba(255,255,255,0.92)' : 'rgba(255,255,255,0.84)',
+          borderColor: 'rgba(15,23,42,0.08)',
+          backdropFilter: 'blur(12px)',
+        }}
+      >
         {/* Logo */}
         <a href={prefix || '/'} className="inline-flex items-center gap-2 sm:gap-3">
           <span
@@ -53,7 +60,7 @@ export default function Navbar({ locale, dict }: NavbarProps) {
             🦞
           </span>
           <span className="leading-tight">
-            <span className="block font-black text-sm sm:text-base tracking-wide" style={{ color: '#fff' }}>
+            <span className="block font-black text-sm sm:text-base tracking-wide" style={{ color: '#0f172a' }}>
               龙虾妈妈
             </span>
             <span className="block text-[10px] sm:text-xs gradient-text">openclaw.mom</span>
@@ -66,8 +73,8 @@ export default function Navbar({ locale, dict }: NavbarProps) {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm transition-colors duration-200 hover:text-white"
-              style={{ color: 'rgba(255,255,255,0.6)' }}
+              className="text-sm transition-colors duration-200 hover:text-sky-700"
+              style={{ color: '#475569' }}
             >
               {l.label}
             </a>
@@ -75,7 +82,7 @@ export default function Navbar({ locale, dict }: NavbarProps) {
           <a
             href={`${prefix}/resources`}
             className="text-sm transition-colors duration-200 font-medium"
-            style={{ color: '#10B981' }}
+            style={{ color: '#0369a1' }}
           >
             {locale === 'zh' ? '全部资源' : 'All Resources'}
           </a>
@@ -87,8 +94,8 @@ export default function Navbar({ locale, dict }: NavbarProps) {
 
         {/* Mobile menu button */}
         <button
-          className="md:hidden hover:text-white transition-colors"
-          style={{ color: 'rgba(255,255,255,0.6)' }}
+          className="md:hidden hover:text-slate-900 transition-colors"
+          style={{ color: '#475569' }}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
         >
@@ -106,14 +113,14 @@ export default function Navbar({ locale, dict }: NavbarProps) {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden backdrop-blur-md border-t border-white/10 px-4 py-4" style={{ backgroundColor: 'rgba(15, 23, 42, 0.95)' }}>
+        <div className="md:hidden rounded-2xl mt-2 mx-4 border px-4 py-4" style={{ backgroundColor: 'rgba(255,255,255,0.95)', borderColor: 'rgba(15,23,42,0.08)' }}>
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setMobileOpen(false)}
-              className="block py-3 transition-colors duration-200 hover:text-white"
-              style={{ color: 'rgba(255,255,255,0.6)' }}
+              className="block py-3 transition-colors duration-200 hover:text-slate-900"
+              style={{ color: '#475569' }}
             >
               {l.label}
             </a>
@@ -121,14 +128,14 @@ export default function Navbar({ locale, dict }: NavbarProps) {
           <a
             href={`${prefix}/resources`}
             onClick={() => setMobileOpen(false)}
-            className="block py-3 transition-colors duration-200 hover:text-white font-medium"
-            style={{ color: '#10B981' }}
+            className="block py-3 transition-colors duration-200 hover:text-slate-900 font-medium"
+            style={{ color: '#0369a1' }}
           >
             {locale === 'zh' ? '全部资源 →' : 'All Resources →'}
           </a>
           
           {/* Mobile Language Switcher */}
-          <div className="py-3 border-t border-white/10 mt-2">
+          <div className="py-3 border-t mt-2" style={{ borderColor: 'rgba(15,23,42,0.08)' }}>
             <LanguageSwitcher />
           </div>
           

@@ -327,13 +327,13 @@ export default function Skills({ locale, dict }: SkillsProps) {
   }, []);
 
   return (
-    <section id="skills" ref={sectionRef} className="py-12 sm:py-24 bg-white">
+    <section id="skills" ref={sectionRef} className="py-12 sm:py-24">
       <div className="max-w-7xl mx-auto px-4">
         {/* Section header */}
         <div className="text-center mb-8 sm:mb-12 reveal">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 border" style={{ background: 'rgba(14,165,233,0.1)', borderColor: 'rgba(14,165,233,0.2)' }}>
             <span className="text-2xl">🚀</span>
-            <span className="text-sm font-semibold text-primary">
+            <span className="text-sm font-semibold" style={{ color: '#0369a1' }}>
               {isZh ? '1715+ 社区技能' : '1715+ Community Skills'}
             </span>
           </div>
@@ -353,15 +353,15 @@ export default function Skills({ locale, dict }: SkillsProps) {
           {categories.map((cat, i) => (
             <div
               key={i}
-              className="reveal card-hover bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-100 hover:border-primary/20 transition-all duration-300"
-              style={{ transitionDelay: `${i * 50}ms` }}
+              className="reveal card-hover rounded-xl p-4 sm:p-5 border transition-all duration-300"
+              style={{ transitionDelay: `${i * 50}ms`, background: 'rgba(255,255,255,0.75)', borderColor: 'rgba(15,23,42,0.08)' }}
             >
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
                   <span className="text-xl">{cat.icon}</span>
                   <h3 className="text-sm sm:text-base font-bold text-gray-900">{cat.title}</h3>
                 </div>
-                <span className="text-xs font-medium text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">
+                <span className="text-xs font-medium px-2 py-0.5 rounded-full" style={{ color: '#475569', background: 'rgba(148,163,184,0.16)' }}>
                   {cat.count}
                 </span>
               </div>
@@ -369,7 +369,8 @@ export default function Skills({ locale, dict }: SkillsProps) {
                 {cat.skills.map((skill, j) => (
                   <div
                     key={j}
-                    className="flex items-center justify-between px-2.5 py-1.5 bg-white text-xs rounded-lg border border-gray-100"
+                    className="flex items-center justify-between px-2.5 py-1.5 text-xs rounded-lg border"
+                    style={{ background: 'rgba(255,255,255,0.86)', borderColor: 'rgba(15,23,42,0.08)' }}
                   >
                     <span className="font-mono text-gray-700 truncate">
                       {skill.name}
@@ -385,7 +386,7 @@ export default function Skills({ locale, dict }: SkillsProps) {
         </div>
 
         {/* Stats bar */}
-        <div className="reveal bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-8">
+        <div className="reveal rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-8 border" style={{ background: 'rgba(255,255,255,0.72)', borderColor: 'rgba(15,23,42,0.08)' }}>
           <div className="grid grid-cols-2 gap-3 sm:gap-4 text-center">
             <div className="bg-white/60 rounded-lg p-3 sm:p-4">
               <div className="text-xl sm:text-3xl font-bold text-primary">1715+</div>
@@ -407,7 +408,7 @@ export default function Skills({ locale, dict }: SkillsProps) {
         </div>
 
         {/* Install instruction */}
-        <div className="reveal bg-gray-900 rounded-xl p-4 sm:p-6 mb-8">
+        <div className="reveal rounded-xl p-4 sm:p-6 mb-8 border" style={{ background: '#0f172a', borderColor: 'rgba(15,23,42,0.2)' }}>
           <div className="flex flex-col gap-3 sm:gap-4">
             <div>
               <h4 className="text-white font-semibold mb-1">

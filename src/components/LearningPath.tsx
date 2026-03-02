@@ -136,10 +136,13 @@ export default function LearningPath({ locale, dict }: LearningPathProps) {
   }, []);
 
   return (
-    <section id="getting-started" ref={sectionRef} className="py-12 sm:py-24 bg-gray-50">
+    <section id="getting-started" ref={sectionRef} className="py-12 sm:py-24">
       <div className="max-w-6xl mx-auto px-4">
         {/* Section header */}
         <div className="text-center mb-8 sm:mb-16 reveal">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4 border" style={{ background: 'rgba(249,115,22,0.1)', color: '#c2410c', borderColor: 'rgba(249,115,22,0.2)' }}>
+            {isZh ? '快速上手' : 'Quick Start'}
+          </div>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             {isZh ? '7天学习路径' : '7-Day Learning Path'}
           </h2>
@@ -157,18 +160,18 @@ export default function LearningPath({ locale, dict }: LearningPathProps) {
             <a
               key={d.day}
               href={d.localLink}
-              className="reveal card-hover group block bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-gray-100 relative overflow-hidden"
-              style={{ transitionDelay: `${i * 80}ms` }}
+              className="reveal card-hover group block rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border relative overflow-hidden"
+              style={{ transitionDelay: `${i * 80}ms`, background: 'rgba(255,255,255,0.75)', borderColor: 'rgba(15,23,42,0.08)' }}
             >
               {/* Day badge */}
-              <div className="absolute top-3 right-3 sm:top-4 sm:right-4 text-[10px] sm:text-xs font-bold text-primary/40 bg-primary/5 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full">
+              <div className="absolute top-3 right-3 sm:top-4 sm:right-4 text-[10px] sm:text-xs font-bold px-1.5 py-0.5 sm:px-2 sm:py-1 rounded-full" style={{ color: '#0369a1', background: 'rgba(14,165,233,0.12)' }}>
                 DAY {d.day}
               </div>
 
               <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">{d.icon}</div>
               <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1.5 sm:mb-2">{d.title}</h3>
               <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-3 sm:mb-4">{d.desc}</p>
-              <span className="text-primary text-xs sm:text-sm font-medium group-hover:translate-x-1 inline-block transition-transform duration-300">
+              <span className="text-xs sm:text-sm font-semibold group-hover:translate-x-1 inline-block transition-transform duration-300" style={{ color: '#0369a1' }}>
                 {isZh ? '查看详情 →' : 'Learn more →'}
               </span>
             </a>

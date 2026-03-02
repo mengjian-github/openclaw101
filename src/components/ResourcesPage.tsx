@@ -317,14 +317,14 @@ export default function ResourcesPage({ locale }: ResourcesPageProps) {
   }, [search]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen" style={{ background: '#f3f6fb' }}>
       {/* ── hero header ── */}
       <header className="hero-glow relative overflow-hidden">
         <div className="absolute top-10 right-10 w-64 h-64 rounded-full blur-3xl" style={{ background: 'rgba(37, 99, 235, 0.12)' }} />
         <div className="absolute bottom-0 left-20 w-48 h-48 rounded-full blur-3xl" style={{ background: 'rgba(16, 185, 129, 0.1)' }} />
 
         <div className="relative max-w-5xl mx-auto px-4 pt-20 pb-14">
-          <a href={homeUrl} className="inline-flex items-center gap-1.5 text-sm mb-8 hover:text-white transition-colors" style={{ color: 'rgba(255,255,255,0.5)' }}>
+          <a href={homeUrl} className="inline-flex items-center gap-1.5 text-sm mb-8 hover:text-slate-900 transition-colors" style={{ color: '#64748b' }}>
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
             {t.backToHome}
           </a>
@@ -332,10 +332,10 @@ export default function ResourcesPage({ locale }: ResourcesPageProps) {
           <div className="flex items-start gap-8">
             {/* Left */}
             <div className="flex-1 min-w-0">
-              <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4" style={{ color: '#fff' }}>
+              <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4" style={{ color: '#0f172a' }}>
                 {t.heroTitle}
               </h1>
-              <p className="text-base md:text-lg max-w-xl leading-relaxed whitespace-pre-line" style={{ color: 'rgba(255,255,255,0.65)' }}>
+              <p className="text-base md:text-lg max-w-xl leading-relaxed whitespace-pre-line" style={{ color: '#475569' }}>
                 {t.heroSubtitle}
               </p>
 
@@ -346,16 +346,16 @@ export default function ResourcesPage({ locale }: ResourcesPageProps) {
                   { n: stats.enResources, l: t.statsEnglish },
                   { n: stats.totalCategories, l: t.statsCategories },
                 ].map((s) => (
-                  <div key={s.l} className="px-4 py-2 rounded-full backdrop-blur-sm" style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                    <span className="text-sm font-bold" style={{ color: '#fff' }}>{s.n}</span>
-                    <span className="text-xs ml-1.5" style={{ color: 'rgba(255,255,255,0.5)' }}>{s.l}</span>
+                  <div key={s.l} className="px-4 py-2 rounded-full" style={{ background: 'rgba(255,255,255,0.76)', border: '1px solid rgba(15,23,42,0.08)' }}>
+                    <span className="text-sm font-bold" style={{ color: '#0f172a' }}>{s.n}</span>
+                    <span className="text-xs ml-1.5" style={{ color: '#64748b' }}>{s.l}</span>
                   </div>
                 ))}
               </div>
 
               <div className="mt-8 max-w-md">
                 <div className="relative">
-                  <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5" style={{ color: 'rgba(255,255,255,0.3)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5" style={{ color: '#94a3b8' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
                   <input
@@ -363,8 +363,8 @@ export default function ResourcesPage({ locale }: ResourcesPageProps) {
                     placeholder={t.searchPlaceholder}
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="w-full pl-12 pr-4 py-3 rounded-xl text-sm text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-blue-400/40 transition-all"
-                    style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}
+                    className="w-full pl-12 pr-4 py-3 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-400/40 transition-all"
+                    style={{ background: 'rgba(255,255,255,0.82)', border: '1px solid rgba(15,23,42,0.08)' }}
                   />
                 </div>
               </div>
@@ -372,32 +372,32 @@ export default function ResourcesPage({ locale }: ResourcesPageProps) {
 
             {/* Right: floating cards */}
             <div className="hidden lg:block relative w-80 h-72 shrink-0">
-              <div className="absolute top-2 right-0 w-56 rounded-xl p-4 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500" style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)', backdropFilter: 'blur(12px)' }}>
+              <div className="absolute top-2 right-0 w-56 rounded-xl p-4 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500" style={{ background: 'rgba(255,255,255,0.82)', border: '1px solid rgba(15,23,42,0.1)', backdropFilter: 'blur(10px)' }}>
                 <div className="flex items-center gap-2.5 mb-2">
                   <div className="w-7 h-7 rounded-lg flex items-center justify-center text-sm" style={{ background: 'rgba(255, 106, 0, 0.2)' }}>☁️</div>
-                  <span className="text-sm font-semibold" style={{ color: '#fff' }}>{locale === 'zh' ? '阿里云' : 'Alibaba Cloud'}</span>
+                  <span className="text-sm font-semibold" style={{ color: '#0f172a' }}>{locale === 'zh' ? '阿里云' : 'Alibaba Cloud'}</span>
                 </div>
-                <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                <p className="text-xs leading-relaxed" style={{ color: '#64748b' }}>
                   {locale === 'zh' ? '一键部署 OpenClaw，构建钉钉 AI 助理' : 'One-click deploy OpenClaw, build DingTalk AI assistant'}
                 </p>
               </div>
 
-              <div className="absolute top-20 left-0 w-52 rounded-xl p-4 shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-500" style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)', backdropFilter: 'blur(12px)' }}>
+              <div className="absolute top-20 left-0 w-52 rounded-xl p-4 shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-500" style={{ background: 'rgba(255,255,255,0.82)', border: '1px solid rgba(15,23,42,0.1)', backdropFilter: 'blur(10px)' }}>
                 <div className="flex items-center gap-2.5 mb-2">
                   <div className="w-7 h-7 rounded-lg flex items-center justify-center text-sm" style={{ background: 'rgba(0, 130, 255, 0.2)' }}>🔷</div>
-                  <span className="text-sm font-semibold" style={{ color: '#fff' }}>{locale === 'zh' ? '腾讯云' : 'Tencent Cloud'}</span>
+                  <span className="text-sm font-semibold" style={{ color: '#0f172a' }}>{locale === 'zh' ? '腾讯云' : 'Tencent Cloud'}</span>
                 </div>
-                <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                <p className="text-xs leading-relaxed" style={{ color: '#64748b' }}>
                   {locale === 'zh' ? 'Lighthouse 部署 + 飞书接入教程' : 'Lighthouse deploy + Feishu integration'}
                 </p>
               </div>
 
-              <div className="absolute bottom-4 right-4 w-48 rounded-xl p-4 shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500" style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)', backdropFilter: 'blur(12px)' }}>
+              <div className="absolute bottom-4 right-4 w-48 rounded-xl p-4 shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500" style={{ background: 'rgba(255,255,255,0.82)', border: '1px solid rgba(15,23,42,0.1)', backdropFilter: 'blur(10px)' }}>
                 <div className="flex items-center gap-2.5 mb-2">
                   <div className="w-7 h-7 rounded-lg flex items-center justify-center text-sm" style={{ background: 'rgba(0, 105, 255, 0.2)' }}>🌊</div>
-                  <span className="text-sm font-semibold" style={{ color: '#fff' }}>DigitalOcean</span>
+                  <span className="text-sm font-semibold" style={{ color: '#0f172a' }}>DigitalOcean</span>
                 </div>
-                <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>One-Click Deploy Guide</p>
+                <p className="text-xs leading-relaxed" style={{ color: '#64748b' }}>One-Click Deploy Guide</p>
               </div>
 
               <div className="absolute top-0 left-8 px-2.5 py-1 rounded-full text-[10px] font-medium animate-bounce" style={{ background: 'rgba(16, 185, 129, 0.2)', color: '#6ee7b7', border: '1px solid rgba(16, 185, 129, 0.3)', animationDuration: '3s' }}>B站</div>
@@ -483,8 +483,8 @@ export default function ResourcesPage({ locale }: ResourcesPageProps) {
 
       {/* ── footer ── */}
       <footer className="hero-glow py-8 mt-4">
-        <div className="max-w-5xl mx-auto px-4 text-center text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>
-          made with 8848.Studio · <a href={homeUrl} className="hover:underline" style={{ color: 'rgba(255,255,255,0.6)' }}>openclaw.mom</a>
+        <div className="max-w-5xl mx-auto px-4 text-center text-sm" style={{ color: '#64748b' }}>
+          made with 8848.Studio · <a href={homeUrl} className="hover:underline" style={{ color: '#0f172a' }}>openclaw.mom</a>
         </div>
       </footer>
 

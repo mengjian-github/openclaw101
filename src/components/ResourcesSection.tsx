@@ -27,8 +27,8 @@ function ResourceCard({ r, i, isZh }: { r: Resource; i: number; isZh: boolean })
       href={r.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="reveal card-hover group block bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-gray-100 hover:border-gray-200 relative"
-      style={{ transitionDelay: `${i * 60}ms` }}
+      className="reveal card-hover group block rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border relative"
+      style={{ transitionDelay: `${i * 60}ms`, background: 'rgba(255,255,255,0.78)', borderColor: 'rgba(15,23,42,0.08)' }}
     >
       {/* Lang badge */}
       <div className="absolute top-3 right-3 sm:top-4 sm:right-4">
@@ -42,14 +42,14 @@ function ResourceCard({ r, i, isZh }: { r: Resource; i: number; isZh: boolean })
         {meta.icon} {isZh ? meta.label : meta.labelEn}
       </span>
 
-      <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-1.5 sm:mb-2 group-hover:text-blue-600 transition-colors pr-8 sm:pr-10 line-clamp-2">
+      <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-1.5 sm:mb-2 group-hover:text-sky-700 transition-colors pr-8 sm:pr-10 line-clamp-2">
         {r.title}
       </h3>
       <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-2 sm:mb-3 line-clamp-2">{r.desc}</p>
 
       <div className="flex items-center justify-between">
         <span className="text-[10px] sm:text-xs text-gray-400">{r.source}</span>
-        <span className="text-blue-600 text-xs sm:text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <span className="text-sky-700 text-xs sm:text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           {isZh ? '访问 ↗' : 'Visit ↗'}
         </span>
       </div>
@@ -82,11 +82,11 @@ export default function ResourcesSection({ locale, dict }: ResourcesSectionProps
   }, []);
 
   return (
-    <section id="resources" ref={sectionRef} className="py-12 sm:py-24 bg-gray-50">
+    <section id="resources" ref={sectionRef} className="py-12 sm:py-24">
       <div className="max-w-6xl mx-auto px-4">
         {/* Section header */}
         <div className="text-center mb-6 reveal">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium mb-4 border" style={{ background: 'rgba(14,165,233,0.1)', color: '#0369a1', borderColor: 'rgba(14,165,233,0.2)' }}>
             📚 {isZh ? '精选收录' : 'Curated Resources'}
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -102,7 +102,7 @@ export default function ResourcesSection({ locale, dict }: ResourcesSectionProps
 
         {/* Security warning */}
         <div className="reveal mb-8 mx-auto max-w-3xl">
-          <div className="flex items-start gap-3 px-4 py-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-sm">
+          <div className="flex items-start gap-3 px-4 py-3 rounded-xl text-sm border" style={{ background: 'rgba(255,247,237,0.9)', borderColor: 'rgba(251,146,60,0.28)', color: '#9a3412' }}>
             <span className="text-lg mt-0.5">⚠️</span>
             <div>
               <span className="font-semibold">{isZh ? '安全提醒：' : 'Security Notice: '}</span>
@@ -142,7 +142,7 @@ export default function ResourcesSection({ locale, dict }: ResourcesSectionProps
         <div className="reveal flex flex-wrap items-center justify-center gap-4 mb-12 text-sm text-gray-400">
           {isZh ? '收录来源：' : 'Sources: '}
           {['Alibaba Cloud', 'Tencent Cloud', 'DigitalOcean', 'Hostinger', 'IBM', 'Codecademy', 'Bilibili', 'CSDN', 'Reddit'].map((s) => (
-            <span key={s} className="px-3 py-1 bg-white rounded-full border border-gray-100 text-gray-500 text-xs">
+            <span key={s} className="px-3 py-1 rounded-full border text-gray-500 text-xs" style={{ background: 'rgba(255,255,255,0.8)', borderColor: 'rgba(15,23,42,0.08)' }}>
               {s}
             </span>
           ))}
@@ -159,7 +159,8 @@ export default function ResourcesSection({ locale, dict }: ResourcesSectionProps
         <div className="text-center reveal">
           <a
             href={`${prefix}/resources`}
-            className="group inline-flex items-center gap-2 px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+            style={{ background: 'linear-gradient(120deg, #0369a1, #0ea5e9)' }}
           >
             {isZh ? `查看全部 ${stats.totalResources}+ 篇资源` : `View All ${stats.totalResources}+ Resources`}
             <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
