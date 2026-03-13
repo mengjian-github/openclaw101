@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     images: ['https://openclaw.mom/og-image.png'],
   },
   verification: {
-    google: 'G-86ESEQC7V8',
+    google: 'google4f8d30bcb0cf610f',
   },
   alternates: {
     canonical: 'https://openclaw.mom',
@@ -198,14 +198,14 @@ export default function RootLayout({
         
         {/* Google tag (gtag.js) */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-86ESEQC7V8"
+          src="https://www.googletagmanager.com/gtag/js?id=G-ZE588NQGD8"
           strategy="afterInteractive"
         />
         <Script id="ga4" strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-86ESEQC7V8');`}
+gtag('config', 'G-ZE588NQGD8');`}
         </Script>
 
         {/* Privacy-friendly analytics by Plausible */}
