@@ -77,7 +77,7 @@ export default function Hero({ locale, dict }: HeroProps) {
             <div className="text-xs" style={{ color: '#64748b' }}>{isZh ? '学习路径' : 'Learning Path'}</div>
           </div>
           <div className="text-center">
-            <div className="text-xl font-bold" style={{ color: '#0f172a' }}>145k+</div>
+            <div className="text-xl font-bold" style={{ color: '#0f172a' }}>307k+</div>
             <div className="text-xs" style={{ color: '#64748b' }}>{isZh ? '社区热度' : 'Community'}</div>
           </div>
           <div className="text-center">
@@ -99,7 +99,7 @@ export default function Hero({ locale, dict }: HeroProps) {
           </div>
           <div className="w-px h-8" style={{ background: 'rgba(15,23,42,0.1)' }} />
           <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold" style={{ color: '#0f172a' }}>145k+</div>
+            <div className="text-2xl md:text-3xl font-bold" style={{ color: '#0f172a' }}>307k+</div>
             <div className="text-xs" style={{ color: '#64748b' }}>{isZh ? '社区热度' : 'Community'}</div>
           </div>
           <div className="w-px h-8" style={{ background: 'rgba(15,23,42,0.1)' }} />

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import './globals.css';
+import KnowledgeAssistant from '@/components/KnowledgeAssistant';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://openclaw.mom'),
@@ -218,7 +219,10 @@ plausible.init=plausible.init||function(i){plausible.o=i||{}};
 plausible.init();`}
         </Script>
       </head>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        {children}
+        <KnowledgeAssistant />
+      </body>
     </html>
   );
 }
