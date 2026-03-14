@@ -3968,6 +3968,16 @@ export const resources: Resource[] = [
     category: 'getting-started',
     tags: ['ClawHub', 'skills', 'WhatsApp', 'Mac'],
   },
+  {
+    title: 'OpenClaw 香港入門指南 — AI 私人助理粵港澳大灣區版',
+    desc: '為香港及大灣區商戶打造的 OpenClaw 技能包，支援繁體中文、粵語及本地業務場景',
+    url: 'https://openclawhk.io',
+    source: 'openclawhk.io',
+    lang: 'zh',
+    category: 'getting-started',
+    featured: false,
+    tags: ['香港', '繁體中文', '粵語', '技能包', '電商', '大灣區'],
+  },
 ];
 
 export function getResourcesByCategory(cat: ResourceCategory): Resource[] {
