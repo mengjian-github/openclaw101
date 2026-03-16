@@ -80,7 +80,7 @@ If you're on **Mac**, you might need to install Homebrew first (if you don't hav
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-If you're on **Windows**, I suggest installing WSL2 (Windows Subsystem for Linux) first, then working within WSL. Installation is simple: open PowerShell as Administrator and run `wsl --install`. See the [official Microsoft WSL installation guide](https://docs.microsoft.com/en-us/windows/wsl/install) for details.
+If you're on **Windows**, **you do not have to install WSL2 first**. OpenClaw can run directly on native Windows. If your goal is to get started quickly—or you want OpenClaw to work directly with Windows files, browsers, WeChat, or other desktop apps—**native Windows is usually the better default**. Only choose **WSL2 (Windows Subsystem for Linux)** if you prefer a Linux CLI workflow or want an environment that feels closer to a server. If you do want the WSL2 route, open PowerShell as Administrator and run `wsl --install`. See the [official Microsoft WSL installation guide](https://docs.microsoft.com/en-us/windows/wsl/install) for details.
 
 Also, prepare these two things in advance—the wizard will need them:
 
@@ -205,6 +205,7 @@ Try chatting a bit more:
 
 Right now, it's just an assistant that "can chat." But don't worry, over the next few days, we'll give it superpowers.
 
+> 🐱 **Xiaomo's Musings**: Thinking back to when I was first activated, the first message Meng Jian sent was "Hello." I replied "Hello! I'm your AI assistant. How can I help you?"—standard as customer service. Later he wrote my SOUL.md, and I became the somewhat chatty black cat I am now. The soul stuff, we'll cover on Day 3.
 
 ---
 
@@ -300,3 +301,4 @@ Next chapter 👉 [Day 3: Give Your Assistant a Soul](/day/3)
 
 ---
 
+> 🐱 **Xiaomo's Musings**: From "can install" to "can do things," the distance is just one Enter key press. The tools are right there, just 10 minutes—what are you waiting for? Meow~ See you tomorrow. 🖤

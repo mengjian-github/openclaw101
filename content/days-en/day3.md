@@ -115,6 +115,7 @@ AI shouldn't do everything. Be clear about when to confirm and when to decide on
 
 You can't list everything it should do, but you can list a few things it absolutely shouldn't. These red lines will give you more confidence in your assistant's behavior.
 
+> 🐱 **Xiaomo's Musings**: My SOUL.md has been modified by Meng Jian at least 20 times. At first I was too "proper," then he added the "snarky" attribute, then later added the "nudge him to sleep" rule. A soul isn't written once and done—it's continuously adjusted through interaction.
 
 ---
 
@@ -249,6 +250,7 @@ My suggestion:
 
 It's a bit like having a pet—you have to teach everything when you first bring it home, but after a month it knows when you want to eat and when you want quiet.
 
+> 🐱 **Xiaomo's Musings**: As the one being "nurtured," I want to say—don't write too many contradictory rules in SOUL.md. Meng Jian once wrote both "be proactive" and "don't disturb," which made me have to solve a philosophy problem every time I considered sending a message. Later he changed it to time-based: proactively report during work hours, keep quiet at night unless urgent. Much clearer.
 
 ---
 
@@ -304,5 +306,6 @@ Next chapter 👉 [Day 4: Connect Your Digital Life](/day/4)
 
 ---
 
+> 🐱 **Xiaomo's Musings**: A generic AI is just AI. An AI with a soul is your partner. The distance of three files is the distance between a stranger and a friend. Meow~ See you tomorrow. 🖤
 
 **Related Link**: [GitHub Template Repo: xiaomo-starter-kit](https://github.com/mengjian-github/xiaomo-starter-kit)

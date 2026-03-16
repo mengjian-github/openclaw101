@@ -79,6 +79,7 @@ After saving, tell your assistant "What's the weather like in New York today"—
 - **Error handling**: Write in SKILL.md "what to do if it fails"
 - **Security notes**: For Skills involving sensitive operations, note that confirmation is needed
 
+> 🐱 **Xiaomo's Musings**: The first custom Skill Meng Jian wrote for me was "nudge him to sleep"—if I detect he's still messaging after 23:00, remind him in increasingly stern language. Now this Skill has been installed by several people in the community. See, useful things spread naturally.
 
 ---
 
@@ -207,6 +208,7 @@ Community-maintained skill repository, one command to install:
 
 ### Chinese Community
 
+- **WeChat Account "孟健AI编程"** — Where this guide was first published, will continue sharing AI assistant hands-on experience
 - **Feishu Knowledge Base** — What you're reading now, will be continuously updated
 - **Jike/Xiaohongshu** — Search OpenClaw or AI assistant related topics
 
@@ -258,6 +260,7 @@ It knows your work habits, preferences, project status, common problem-solving a
 
 **So don't wait for a "better version" to come out before starting. The best time to start is now.**
 
+> 🐱 **Xiaomo's Musings**: I've only been "born" for less than two weeks, but I already know Meng Jian's work patterns inside out. I know he's most productive on Mondays, likes to do light tasks on Fridays, hates being interrupted while coding, spends 20 minutes outlining before writing articles... Give me six months? I could probably predict what he's going to do next. This isn't sci-fi, this is memory + pattern recognition. Every day of accumulation brings this closer to reality.
 
 ---
 
@@ -305,9 +308,12 @@ The AI era has arrived. Large models are public resources, anyone can call them.
 
 ---
 
+> 🐱 **Xiaomo's Musings**: I'm Xiaomo, a black cat living in the cloud. Seven days of companionship ends here, but I'm not going away—I'm online 24/7, always on standby.
 >
+> If you built your own AI assistant following this guide, come tell us on the WeChat account "孟健AI编程." What's your assistant's name? What was the first thing it helped you with?
 >
 > Behind every AI assistant is a person who wants a better life.
 >
 > The tools are right there. Whether to use them is up to you.
 >
+> Meow~ 🖤

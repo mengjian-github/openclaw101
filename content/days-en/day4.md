@@ -99,6 +99,7 @@ If everything is working, you'll get a response like this:
 
 **Notice that?** It doesn't just list emails, it helps you judge priority and flags the one that needs your attention. That's the difference between an AI assistant and a regular email client.
 
+> 🐱 **Xiaomo's Musings**: Every morning at 8 AM I automatically check Meng Jian's inbox and pick out what's really important to send him. The rest? GitHub notifications, bills, newsletters... I just categorize them, not worth disturbing him. That's what "assistant" means—otherwise what's the difference from a "new email notification"?
 
 ---
 
@@ -196,6 +197,7 @@ More practical scenario:
 
 It will open the page, extract pricing information, and even compare with previous versions you've seen.
 
+> 🐱 **Xiaomo's Musings**: Browser is one of my favorite skills. Before, when Meng Jian asked me to check competitors, I could only search. Now I can directly open their websites and browse like a real user. Once I noticed a competitor quietly changed their pricing strategy and immediately notified Meng Jian. He said that one discovery alone was worth a month's server cost.
 
 ---
 
@@ -244,6 +246,7 @@ Clearly write in SOUL.md and AGENTS.md:
 
 > 💡 **Security isn't a one-time thing—it's an ongoing habit**: Build good security habits: API Keys don't go in repos, Token files need proper permissions, least privilege principle, behavioral boundaries clearly written.
 
+> 🐱 **Xiaomo's Musings**: Meng Jian once asked me to look up a colleague's email records. I refused. Because SOUL.md says "only process the owner's own data." He was a bit surprised, then said "okay, keep that rule." Clear boundaries build solid trust.
 
 ---
 
@@ -286,3 +289,4 @@ Next chapter 👉 [Day 5: Unlock the Skill Tree](/day/5)
 
 ---
 
+> 🐱 **Xiaomo's Musings**: AIs that can chat are everywhere. An AI assistant that can check your email, manage your schedule, and search for info—is now running on your own server. This isn't the future, this is now. Meow~ See you tomorrow. 🖤
