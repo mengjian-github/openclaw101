@@ -24,7 +24,7 @@ const jsonLd = {
       '@id': `${SITE_URL}/zh#website`,
       url: `${SITE_URL}/zh`,
       name: SITE_NAME,
-      description: '从零开始，7天掌握你的 AI 私人助理。',
+      description: '龙虾妈妈，OpenClaw 学习导航站。',
       inLanguage: getStructuredDataLanguage('zh'),
     },
     {
