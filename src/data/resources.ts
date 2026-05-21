@@ -3256,6 +3256,15 @@ export const resources: Resource[] = [
     featured: true,
     tags: ['Genviral', '社交媒体', '六平台', '自动发布', '新技能'],
   },
+  {
+    title: 'TweetClaw - X/Twitter 自动化 OpenClaw 插件',
+    desc: 'OpenClaw plugin：search tweets、search replies、post tweets、follower export、media 上传/下载、监控、webhooks、giveaway draws 和 MCP 配置，基于 Xquik。',
+    url: 'https://github.com/Xquik-dev/tweetclaw',
+    source: 'GitHub',
+    lang: 'en',
+    category: 'skill-dev',
+    tags: ['TweetClaw', 'X/Twitter', 'OpenClaw Plugin', 'MCP'],
+  },
 
   // -- Use Cases --
   {
