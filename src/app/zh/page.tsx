@@ -8,9 +8,9 @@ import {
 } from '@/lib/seo';
 
 export const metadata: Metadata = buildPageMetadata({
-  title: '7天掌握你的AI私人助理',
+  title: '10 分钟搭建你的第一个 AI 助手',
   description:
-    '从零开始，7天掌握你的 OpenClaw AI 私人助理。包含安装、配置、技能、自动化与精选资源的一站式教程。',
+    'OpenClaw 10 分钟首次助手上手教程：支持原生 Windows 或服务器运行，Telegram Bot 接入，一行命令安装，再进入 7 天学习路径。',
   locale: 'zh',
   enPath: '/',
   zhPath: '/zh',

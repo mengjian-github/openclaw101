@@ -8,9 +8,9 @@ import {
 } from '@/lib/seo';
 
 export const metadata: Metadata = buildPageMetadata({
-  title: 'Master Your AI Assistant in 7 Days',
+  title: 'Build Your First AI Assistant in 10 Minutes',
   description:
-    'The definitive guide to building your AI assistant with OpenClaw. Step-by-step tutorials, curated resources, and practical workflows for your personal AI agent.',
+    'Start OpenClaw with a 10-minute first assistant setup: native Windows or server runtime, Telegram bot onboarding, one install command, and a 7-day AI assistant path.',
   locale: 'en',
   enPath: '/',
   zhPath: '/zh',

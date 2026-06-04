@@ -16,6 +16,7 @@ export default function Navbar({ locale, dict }: NavbarProps) {
   const prefix = locale === 'en' ? '' : `/${locale}`;
 
   const links = [
+    { label: locale === 'zh' ? '10 分钟上手' : 'Start', href: `${prefix}/start` },
     { label: dict.nav.learn, href: '#what-is' },
     { label: dict.nav.skills, href: '#skills' },
     { label: dict.nav.resources, href: '#resources' },

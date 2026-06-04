@@ -26,48 +26,57 @@ export default function Hero({ locale, dict }: HeroProps) {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
           </span>
           <span className="text-sm font-medium" style={{ color: 'rgba(255,255,255,0.8)' }}>
-            {isZh ? `开源免费 · 收录 ${stats.totalResources}+ 篇教程资源` : `Open Source · ${stats.totalResources}+ Tutorials Curated`}
+            {isZh ? '10 分钟首次助手上手 · 原生 Windows 可用' : '10-minute first assistant setup · Native Windows supported'}
           </span>
         </div>
 
         {/* Main title */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6 tracking-tight" style={{ color: '#fff' }}>
           {isZh ? (
-            <>Open<span className="gradient-text">Claw</span> 101</>
+            <>10 分钟搭建你的第一个 <span className="gradient-text">OpenClaw</span> AI 助手</>
           ) : (
-            <>{dict.hero.title} <span className="gradient-text">{dict.hero.titleHighlight}</span></>
+            <>Build your first <span className="gradient-text">OpenClaw</span> AI assistant in 10 minutes</>
           )}
         </h1>
 
         {/* Subtitle */}
         <p className="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4 px-2" style={{ color: 'rgba(255,255,255,0.9)' }}>
-          {isZh ? '从零开始，7天掌握你的 AI 私人助理' : 'Your AI assistant that actually does things'}
+          {isZh ? '先完成第一条助手消息，再慢慢掌握 7 天路径。' : 'Get to the first assistant message first, then follow the full 7-day path.'}
         </p>
 
         {/* Secondary tagline */}
-        <p className="text-xs sm:text-sm md:text-base mb-6 sm:mb-10 max-w-xl mx-auto px-3" style={{ color: 'rgba(255,255,255,0.5)' }}>
-          {isZh 
-            ? 'The open-source guide to building your AI assistant with OpenClaw'
-            : 'From setup to advanced automation — start your journey here'
+        <p className="text-xs sm:text-sm md:text-base mb-6 sm:mb-10 max-w-2xl mx-auto px-3" style={{ color: 'rgba(255,255,255,0.5)' }}>
+          {isZh
+            ? '准备运行环境、模型访问和 Telegram Bot Token；执行一行命令，跟随 QuickStart 向导完成配置。'
+            : 'Prepare a runtime, model access, and a Telegram bot token; run one command and finish the QuickStart wizard.'
           }
         </p>
+
+        <div className="mb-6 sm:mb-8 mx-auto max-w-2xl rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-4 text-left">
+          <p className="text-sm font-semibold text-emerald-100">
+            {isZh ? '先给答案：Windows 不一定要装 WSL2；OpenClaw 可直接跑在原生 Windows。' : 'Answer first: Windows users do not have to install WSL2; OpenClaw can run on native Windows.'}
+          </p>
+          <p className="mt-2 text-xs leading-5 text-emerald-50/70">
+            {isZh ? '如果只是想尽快跑起来，直接用当前电脑即可；如果想 24 小时在线，再选小云服务器。' : 'Use your current computer for the fastest trial; choose a small cloud server only when you want 24/7 availability.'}
+          </p>
+        </div>
 
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4">
           <a
-            href="#getting-started"
+            href={isZh ? '/zh/start' : '/start'}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-blue-600 hover:bg-blue-500 font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 hover:-translate-y-0.5"
             style={{ color: '#fff' }}
           >
-            🚀 {dict.hero.cta}
+            🚀 {isZh ? '从 10 分钟上手开始' : 'Start with the 10-minute setup'}
             <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
           </a>
           <a
-            href="#resources"
+            href={isZh ? '/zh/day/2' : '/day/2'}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 border border-white/20 hover:border-white/40 font-semibold rounded-xl transition-all duration-300 hover:-translate-y-0.5"
             style={{ color: 'rgba(255,255,255,0.8)' }}
           >
-            📚 {dict.hero.ctaSecondary}
+            📚 {isZh ? '阅读完整第 2 天教程' : 'Read the full Day 2 guide'}
           </a>
           <a
             href="https://github.com/mengjian-github/openclaw101"

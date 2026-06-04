@@ -5,7 +5,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://openclaw101.dev/zh"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://openclaw101.dev/"/>
-    <lastmod>2026-04-05T18:01:17.896Z</lastmod>
+    <lastmod>2026-06-04T17:45:29.670Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -14,7 +14,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://openclaw101.dev/zh"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://openclaw101.dev/"/>
-    <lastmod>2026-04-05T18:01:17.896Z</lastmod>
+    <lastmod>2026-06-04T17:45:29.670Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -35,6 +35,24 @@
     <lastmod>2026-04-11T18:03:09.989Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://openclaw101.dev/start</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/start"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://openclaw101.dev/zh/start"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://openclaw101.dev/start"/>
+    <lastmod>2026-06-04T17:44:07.608Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://openclaw101.dev/zh/start</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://openclaw101.dev/start"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://openclaw101.dev/zh/start"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://openclaw101.dev/start"/>
+    <lastmod>2026-06-04T17:44:07.608Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://openclaw101.dev/day/1</loc>

@@ -66,6 +66,15 @@ function buildSitemapXml() {
     'src/lib/seo.ts',
   ]);
 
+  const startModified = getLatestModified([
+    'src/app/start/page.tsx',
+    'src/app/zh/start/page.tsx',
+    'src/components/StartSetupPage.tsx',
+    'content/days-en/day2.md',
+    'content/days/day2.md',
+    'src/lib/seo.ts',
+  ]);
+
   const urls = [
     createSitemapUrlEntry({
       loc: '/',
@@ -98,6 +107,22 @@ function buildSitemapXml() {
       lastmod: resourcesModified,
       changefreq: 'weekly',
       priority: 0.8,
+    }),
+    createSitemapUrlEntry({
+      loc: '/start',
+      en: '/start',
+      zh: '/zh/start',
+      lastmod: startModified,
+      changefreq: 'weekly',
+      priority: 1.0,
+    }),
+    createSitemapUrlEntry({
+      loc: '/zh/start',
+      en: '/start',
+      zh: '/zh/start',
+      lastmod: startModified,
+      changefreq: 'weekly',
+      priority: 1.0,
     }),
   ];
 
