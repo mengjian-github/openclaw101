@@ -69,6 +69,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="google-adsense-account" content="ca-pub-1081201777589554" />
+        <meta
+          name="ahrefs-site-verification"
+          content="fe83b6f67d746fead071d19f28161c6e8c39cc6daa572d4f886a36b52fe204c1"
+        />
         <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1081201777589554"
           strategy="afterInteractive"
