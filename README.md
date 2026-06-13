@@ -8,7 +8,7 @@
 
 ## ✨ 什么是 OpenClaw 101？
 
-OpenClaw 101 是一个**开源的 OpenClaw 资源聚合站**，旨在帮助中文用户快速上手 [OpenClaw](https://github.com/openclaw/openclaw) —— 全球最热门的开源 AI 私人助理平台 (136k+ ⭐)。
+OpenClaw 101 是一个**开源的 OpenClaw 资源聚合站**，旨在帮助中文用户快速上手 [OpenClaw](https://github.com/openclaw/openclaw) —— 全球最热门的开源 AI 私人助理平台 (378k+ ⭐)。
 
 ### 🎯 核心功能
 

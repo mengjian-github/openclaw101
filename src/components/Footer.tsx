@@ -21,7 +21,7 @@ export default function Footer({ locale, dict }: FooterProps) {
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
               <li><a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? 'OpenClaw 官网' : 'OpenClaw Website'}</a></li>
               <li><a href="https://docs.openclaw.ai" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? '官方文档' : 'Documentation'}</a></li>
-              <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">OpenClaw GitHub (354k+ ⭐)</a></li>
+              <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">OpenClaw GitHub (378k+ ⭐)</a></li>
               <li><a href="https://clawhub.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? 'ClawHub 技能市场' : 'ClawHub Skills'}</a></li>
             </ul>
           </div>
