@@ -95,7 +95,7 @@ export const resources: Resource[] = [
   },
   {
     title: 'GitHub — openclaw/openclaw',
-    desc: '源代码、Issue 跟踪和社区贡献指南 (354k+ ⭐)',
+    desc: '源代码、Issue 跟踪和社区贡献指南 (378k+ ⭐)',
     url: 'https://github.com/openclaw/openclaw',
     source: 'GitHub',
     lang: 'en',
