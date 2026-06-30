@@ -15,7 +15,8 @@ export default function ConsultButton({ locale }: ConsultButtonProps) {
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 group"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 group sm:bottom-6 sm:right-6"
+        style={{ bottom: '1.5rem', right: '1.5rem' }}
         aria-label={isZh ? '商务合作' : 'Business Collaboration'}
       >
         <span className="text-xl">💬</span>

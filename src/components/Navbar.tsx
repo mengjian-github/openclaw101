@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import LanguageSwitcher from './LanguageSwitcher';
 import { Dictionary } from '@/lib/i18n';
+import { trackEvent } from '@/lib/analytics';
 
 interface NavbarProps {
   locale: 'en' | 'zh';
@@ -74,6 +75,7 @@ export default function Navbar({ locale, dict }: NavbarProps) {
             href="https://github.com/mengjian-github/openclaw101"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent('github_click', { locale, source: 'desktop_nav' })}
             className="text-sm px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors duration-200"
             style={{ color: '#fff' }}
           >
@@ -132,6 +134,7 @@ export default function Navbar({ locale, dict }: NavbarProps) {
             href="https://github.com/mengjian-github/openclaw101"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent('github_click', { locale, source: 'mobile_nav' })}
             className="block py-3 transition-colors duration-200 hover:text-white"
             style={{ color: 'rgba(255,255,255,0.6)' }}
           >

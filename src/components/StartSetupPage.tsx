@@ -1,4 +1,8 @@
+'use client';
+
+import { useState } from 'react';
 import { Locale } from '@/lib/i18n';
+import { trackEvent } from '@/lib/analytics';
 
 interface StartSetupPageProps {
   locale: Locale;
@@ -19,11 +23,15 @@ const copy = {
       'A computer or small cloud server, one AI model login or API key, and a Telegram bot token. If you use Windows, OpenClaw can run on native Windows; WSL2 is optional, not required.',
     stepsTitle: 'The 10-minute route',
     steps: [
-      ['1', 'Choose where the assistant lives', 'Use your current computer for a quick trial, or a small Ubuntu cloud server for 24/7 availability.'],
-      ['2', 'Prepare model and Telegram access', 'Use a Claude subscription OAuth flow when available, or prepare an API key. Create a bot with @BotFather and keep the token private.'],
-      ['3', 'Run one install command', 'The install script pulls dependencies and enters the interactive QuickStart wizard automatically.'],
-      ['4', 'Send the first message', 'After Telegram admin setup, message your bot and verify that your assistant answers from your own runtime.'],
+      ['runtime', '1', 'Choose where the assistant lives', 'Use native Windows for a quick trial, or a small Ubuntu cloud server for 24/7 availability. WSL2 is optional.'],
+      ['access', '2', 'Prepare model and Telegram access', 'Use a Claude subscription OAuth flow when available, or prepare an API key. Create a bot with @BotFather and keep the token private.'],
+      ['install', '3', 'Run one install command', 'The install script pulls dependencies and enters the interactive QuickStart wizard automatically.'],
+      ['first-message', '4', 'Send the first message', 'After Telegram admin setup, message your bot and verify that your assistant answers from your own runtime.'],
     ],
+    checklistTitle: 'First-run checklist',
+    checklist: ['Runtime chosen', 'Model access ready', 'Telegram bot token stored privately', 'Install command copied', 'First reply verified'],
+    troubleTitle: 'If the first reply fails',
+    trouble: ['Check the bot token and admin allowlist', 'Confirm the model login/API key is still valid', 'Restart OpenClaw and read the terminal error before reinstalling'],
     commandLabel: 'Install command',
     command: 'curl -fsSL https://openclaw.ai/install.sh | bash',
     trust: ['Native Windows supported', 'QuickStart wizard', 'Telegram first channel', 'No platform lock-in'],
@@ -45,11 +53,15 @@ const copy = {
       '一台电脑或小云服务器、一个 AI 模型登录/API Key、一个 Telegram Bot Token。Windows 用户可以直接用原生 Windows，WSL2 是可选项，不是必装项。',
     stepsTitle: '10 分钟路线',
     steps: [
-      ['1', '选择助手住在哪里', '快速体验可用当前电脑；想 24 小时在线，选一台小 Ubuntu 云服务器。'],
-      ['2', '准备模型和 Telegram', '有 Claude 订阅优先走 OAuth 登录；没有订阅再准备 API Key。用 @BotFather 创建 Bot，并保管好 token。'],
-      ['3', '执行一行安装命令', '安装脚本会处理依赖，并自动进入 QuickStart 交互式配置向导。'],
-      ['4', '发送第一条消息', '配置 Telegram 管理员后，给你的 Bot 发消息，确认助手从你的运行环境回复。'],
+      ['runtime', '1', '选择助手住在哪里', '快速体验可用原生 Windows；想 24 小时在线，选一台小 Ubuntu 云服务器。WSL2 是可选项。'],
+      ['access', '2', '准备模型和 Telegram', '有 Claude 订阅优先走 OAuth 登录；没有订阅再准备 API Key。用 @BotFather 创建 Bot，并保管好 token。'],
+      ['install', '3', '执行一行安装命令', '安装脚本会处理依赖，并自动进入 QuickStart 交互式配置向导。'],
+      ['first-message', '4', '发送第一条消息', '配置 Telegram 管理员后，给你的 Bot 发消息，确认助手从你的运行环境回复。'],
     ],
+    checklistTitle: '首次运行检查清单',
+    checklist: ['已选择运行环境', '模型访问已准备', 'Telegram Bot Token 已私密保存', '安装命令已复制', '第一条回复已验证'],
+    troubleTitle: '如果第一条回复失败',
+    trouble: ['检查 Bot Token 和管理员 allowlist', '确认模型登录/API Key 仍然有效', '先重启 OpenClaw 并阅读终端错误，不要盲目重装'],
     commandLabel: '安装命令',
     command: 'curl -fsSL https://openclaw.ai/install.sh | bash',
     trust: ['支持原生 Windows', 'QuickStart 向导', 'Telegram 首选通道', '不绑定平台'],
@@ -61,6 +73,18 @@ const copy = {
 
 export default function StartSetupPage({ locale }: StartSetupPageProps) {
   const t = copy[locale];
+  const [copied, setCopied] = useState(false);
+
+  const copyInstallCommand = async () => {
+    try {
+      await navigator.clipboard.writeText(t.command);
+      trackEvent('copy_install_command', { locale, source: 'start_page' });
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(false);
+    }
+  };
 
   return (
     <main className="min-h-screen bg-gray-950 text-white">
@@ -85,12 +109,14 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a
               href={t.guideHref}
+              onClick={() => trackEvent('start_cta_click', { locale, target: t.guideHref })}
               className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-4 font-bold text-white transition hover:bg-blue-500"
             >
               {t.primaryCta} →
             </a>
             <a
               href={t.pathHref}
+              onClick={() => trackEvent('start_cta_click', { locale, target: t.pathHref })}
               className="inline-flex items-center justify-center rounded-xl border border-white/15 px-6 py-4 font-bold text-white/80 transition hover:border-white/35 hover:text-white"
             >
               {t.secondaryCta}
@@ -111,8 +137,8 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
           <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 sm:p-8">
             <h2 className="text-2xl font-black">{t.stepsTitle}</h2>
             <div className="mt-6 space-y-4">
-              {t.steps.map(([number, title, desc]) => (
-                <div key={number} className="rounded-2xl border border-white/10 bg-gray-900/70 p-5">
+              {t.steps.map(([id, number, title, desc]) => (
+                <div key={id} id={id} className="scroll-mt-24 rounded-2xl border border-white/10 bg-gray-900/70 p-5">
                   <div className="flex gap-4">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-500 font-black">
                       {number}
@@ -135,10 +161,38 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
             <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
               <div className="text-sm font-semibold text-white/50">{t.commandLabel}</div>
               <pre className="mt-3 overflow-x-auto rounded-2xl bg-black/60 p-4 text-sm text-emerald-200"><code>{t.command}</code></pre>
+              <button
+                type="button"
+                onClick={copyInstallCommand}
+                className="mt-3 w-full rounded-xl border border-emerald-300/25 bg-emerald-300/10 px-4 py-3 text-sm font-bold text-emerald-100 transition hover:bg-emerald-300/15"
+              >
+                {copied ? '✓ Copied' : locale === 'zh' ? '复制安装命令' : 'Copy install command'}
+              </button>
+            </div>
+            <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
+              <h2 className="text-lg font-black">{t.checklistTitle}</h2>
+              <ul className="mt-3 space-y-2 text-sm text-white/68">
+                {t.checklist.map((item) => (
+                  <li key={item} className="flex gap-2"><span className="text-emerald-300">□</span>{item}</li>
+                ))}
+              </ul>
+              <button
+                type="button"
+                onClick={() => trackEvent('start_setup_completed', { locale, source: 'checklist_button' })}
+                className="mt-4 w-full rounded-xl bg-blue-600 px-4 py-3 text-sm font-bold text-white transition hover:bg-blue-500"
+              >
+                {locale === 'zh' ? '我已经收到第一条回复' : 'I got the first reply'}
+              </button>
             </div>
             <div className="rounded-3xl border border-amber-300/20 bg-amber-300/10 p-6">
               <h2 className="text-lg font-black text-amber-100">{t.safetyTitle}</h2>
               <p className="mt-3 text-sm leading-6 text-amber-50/75">{t.safety}</p>
+            </div>
+            <div className="rounded-3xl border border-rose-300/20 bg-rose-300/10 p-6">
+              <h2 className="text-lg font-black text-rose-100">{t.troubleTitle}</h2>
+              <ul className="mt-3 space-y-2 text-sm leading-6 text-rose-50/75">
+                {t.trouble.map((item) => <li key={item}>• {item}</li>)}
+              </ul>
             </div>
           </aside>
         </div>

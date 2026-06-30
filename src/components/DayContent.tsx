@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import CopyCodeBlock from './CopyCodeBlock';
 
 interface DayContentProps {
   day: number;
@@ -156,11 +157,7 @@ export default function DayContent({ day, content, frontmatter, prevDay, nextDay
                   </code>
                 );
               },
-              pre: ({ children }) => (
-                <pre className="bg-slate-900 border border-slate-700 rounded-xl p-5 overflow-x-auto my-6 text-sm shadow-lg">
-                  {children}
-                </pre>
-              ),
+              pre: ({ children }) => <CopyCodeBlock eventContext={`day_${day}`}>{children}</CopyCodeBlock>,
               
               // Blockquotes (callouts)
               blockquote: ({ children }) => (
@@ -211,7 +208,7 @@ export default function DayContent({ day, content, frontmatter, prevDay, nextDay
                   );
                 }
                 return (
-                  <img src={src} alt={alt} className="my-6 rounded-lg max-w-full" />
+                  <img src={src} alt={alt} loading="lazy" className="my-6 rounded-lg max-w-full" />
                 );
               },
             }}

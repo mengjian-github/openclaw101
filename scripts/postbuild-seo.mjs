@@ -75,6 +75,13 @@ function buildSitemapXml() {
     'src/lib/seo.ts',
   ]);
 
+  const tutorialModified = getLatestModified([
+    'src/app/openclaw-tutorial/page.tsx',
+    'src/app/start/page.tsx',
+    'src/components/StartSetupPage.tsx',
+    'src/lib/seo.ts',
+  ]);
+
   const urls = [
     createSitemapUrlEntry({
       loc: '/',
@@ -121,6 +128,14 @@ function buildSitemapXml() {
       en: '/start',
       zh: '/zh/start',
       lastmod: startModified,
+      changefreq: 'weekly',
+      priority: 1.0,
+    }),
+    createSitemapUrlEntry({
+      loc: '/openclaw-tutorial',
+      en: '/openclaw-tutorial',
+      zh: '/zh/start',
+      lastmod: tutorialModified,
       changefreq: 'weekly',
       priority: 1.0,
     }),
@@ -243,7 +258,8 @@ function patchZhHtmlLang() {
 }
 
 writeFileCopies('sitemap.xml', buildSitemapXml());
+writeFileCopies('sitemap-index.xml', buildSitemapXml());
 writeFileCopies('robots.txt', buildRobotsTxt());
 patchZhHtmlLang();
 
-console.log('SEO postbuild complete: generated robots.txt, sitemap.xml, and patched zh html lang.');
+console.log('SEO postbuild complete: generated robots.txt, sitemap.xml, sitemap-index.xml, and patched zh html lang.');
