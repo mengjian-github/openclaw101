@@ -331,6 +331,12 @@ export default function ResourcesPage({ locale }: ResourcesPageProps) {
           <div className="flex items-start gap-8">
             {/* Left */}
             <div className="flex-1 min-w-0">
+              <a
+                href={locale === 'zh' ? '/zh/start' : '/openclaw-tutorial'}
+                className="mb-4 inline-flex rounded-full border border-emerald-300/25 bg-emerald-300/10 px-4 py-2 text-sm font-semibold text-emerald-100 transition hover:bg-emerald-300/15"
+              >
+                {locale === 'zh' ? 'OpenClaw 初学者教程 →' : 'OpenClaw tutorial for beginners →'}
+              </a>
               <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4" style={{ color: '#fff' }}>
                 {t.heroTitle}
               </h1>

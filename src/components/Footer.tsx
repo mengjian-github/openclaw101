@@ -30,6 +30,7 @@ export default function Footer({ locale, dict }: FooterProps) {
               {isZh ? '学习' : 'Learn'}
             </h4>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
+              <li><a href={isZh ? '/zh/start' : '/openclaw-tutorial'} className="hover:text-white transition-colors font-medium">{isZh ? 'OpenClaw 初学者教程' : 'OpenClaw tutorial for beginners'}</a></li>
               <li><a href="#getting-started" className="hover:text-white transition-colors">{isZh ? '7天学习路径' : '7-Day Path'}</a></li>
               <li><a href={`${prefix}/resources`} className="hover:text-white transition-colors">{isZh ? '全部资源' : 'All Resources'}</a></li>
               <li><a href="https://my.feishu.cn/wiki/YkWgwqSchi9xW3kEuZscAm0lnFf" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? '飞书知识库' : 'Feishu Wiki'}</a></li>
@@ -85,6 +86,12 @@ export default function Footer({ locale, dict }: FooterProps) {
               <a href="https://github.com/mengjian-github/openclaw101" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                 GitHub
               </a>
+              <span className="hidden sm:inline">·</span>
+              <span className="sm:hidden">|</span>
+              <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
+              <span className="hidden sm:inline">·</span>
+              <span className="sm:hidden">|</span>
+              <a href="/terms" className="hover:text-white transition-colors">Terms</a>
             </div>
           </div>
         </div>

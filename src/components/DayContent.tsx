@@ -57,7 +57,12 @@ export default function DayContent({ day, content, frontmatter, prevDay, nextDay
             <span>←</span>
             <span>{t.backToHome}</span>
           </Link>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
+            {day === 2 && locale === 'en' ? (
+              <Link href="/openclaw-tutorial" className="hidden rounded-full border border-emerald-400/25 px-3 py-1 text-sm font-semibold text-emerald-200 transition hover:bg-emerald-400/10 sm:inline-flex">
+                OpenClaw tutorial
+              </Link>
+            ) : null}
             <span className="text-sm text-gray-500">{t.readingTime} {readingTime} {t.minutes}</span>
           </div>
         </div>

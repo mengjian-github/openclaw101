@@ -5,7 +5,7 @@ import { SITE_NAME, SITE_URL, buildPageMetadata, getStructuredDataLanguage } fro
 export const metadata: Metadata = buildPageMetadata({
   title: 'OpenClaw Tutorial for Beginners',
   description:
-    'A complete OpenClaw tutorial for beginners: choose Windows or server setup, install OpenClaw, connect Telegram, send the first message, and follow the 7-day learning path.',
+    'OpenClaw tutorial for beginners: choose Windows or server, install OpenClaw, connect Telegram, verify the first reply, and keep learning.',
   locale: 'en',
   enPath: '/openclaw-tutorial',
   zhPath: '/zh/start',
@@ -59,6 +59,64 @@ const faq = [
     answer:
       'Continue to Day 3 through Day 7 to customize the assistant soul, connect tools, install skills, and build proactive workflows.',
   },
+  {
+    question: 'Is the Telegram bot required?',
+    answer:
+      'Telegram is the fastest first channel because BotFather makes setup predictable. After the first run, you can explore Feishu, DingTalk, email, browser automation, and other integrations.',
+  },
+  {
+    question: 'Can I run OpenClaw on a cheap cloud server?',
+    answer:
+      'Yes. A small Ubuntu server is enough for a personal assistant that stays online. Start local first if you only want to test the workflow.',
+  },
+  {
+    question: 'How do I know the setup really worked?',
+    answer:
+      'The first proof is a real reply from your Telegram bot, sent by the OpenClaw runtime you control. Do not count installation as complete until that reply works.',
+  },
+];
+
+const beginnerSections = [
+  {
+    title: 'What OpenClaw is',
+    body:
+      'OpenClaw is a self-hosted AI assistant framework. Instead of only chatting in a web app, you run an assistant that can connect to tools, remember context, use skills, and work through channels such as Telegram.',
+  },
+  {
+    title: 'Prerequisites before you install',
+    body:
+      'Prepare one runtime machine, one model login or API key, and one Telegram bot token. Keep tokens private and do not paste them into public chats, screenshots, or GitHub issues.',
+  },
+  {
+    title: 'Windows or server: which should beginners choose?',
+    body:
+      'Choose native Windows when you want the fastest local test. Choose a small Ubuntu server when you want the assistant online all day. WSL2 is optional, not a blocker for the first run.',
+  },
+  {
+    title: 'Safe copy-paste setup route',
+    body:
+      'Copy the install command from the checklist page, run it in your own terminal, follow the QuickStart prompts, then add the Telegram bot token and model access only inside your local or server environment.',
+  },
+  {
+    title: 'Verify the first reply',
+    body:
+      'After configuration, message your Telegram bot. A successful first reply proves the runtime, bot token, model access, and admin allowlist are all wired correctly.',
+  },
+  {
+    title: 'Troubleshooting the first run',
+    body:
+      'If the bot does not reply, check the token, admin allowlist, model login, terminal logs, and whether the OpenClaw process is still running before reinstalling.',
+  },
+  {
+    title: 'Examples and use cases',
+    body:
+      'Once the first reply works, use OpenClaw for personal reminders, writing workflows, browser-backed research, file operations, daily summaries, and proactive automation.',
+  },
+  {
+    title: 'Next steps after the tutorial',
+    body:
+      'Continue the 7-day path: define your assistant soul, connect your digital life, install useful skills, and turn repeated workflows into durable automations.',
+  },
 ];
 
 const jsonLd = {
@@ -95,6 +153,18 @@ const jsonLd = {
         name: item.question,
         acceptedAnswer: { '@type': 'Answer', text: item.answer },
       })),
+    },
+    {
+      '@type': ['Article', 'TechArticle'],
+      '@id': `${SITE_URL}/openclaw-tutorial#article`,
+      headline: 'OpenClaw Tutorial for Beginners',
+      description: 'Install OpenClaw, connect Telegram, verify the first assistant reply, and continue through the 7-day learning path.',
+      datePublished: '2026-06-30',
+      dateModified: '2026-07-01',
+      inLanguage: getStructuredDataLanguage('en'),
+      author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+      publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+      mainEntityOfPage: `${SITE_URL}/openclaw-tutorial`,
     },
   ],
 };
@@ -168,6 +238,25 @@ export default function OpenClawTutorialPage() {
               </p>
             </div>
           </aside>
+        </div>
+      </section>
+
+      <section className="px-4 pb-20">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-8 max-w-3xl">
+            <h2 className="text-3xl font-black">Beginner guide: from zero to first reply</h2>
+            <p className="mt-3 leading-7 text-white/62">
+              This section expands the short checklist into a complete OpenClaw tutorial for beginners, with setup choices, safety notes, troubleshooting, and next steps.
+            </p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {beginnerSections.map((section) => (
+              <article key={section.title} className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
+                <h2 className="text-xl font-black text-white">{section.title}</h2>
+                <p className="mt-3 leading-7 text-white/66">{section.body}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 

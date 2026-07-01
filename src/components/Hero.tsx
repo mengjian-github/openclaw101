@@ -12,7 +12,7 @@ export default function Hero({ locale, dict }: HeroProps) {
   const isZh = locale === 'zh';
   
   return (
-    <section className="relative min-h-[100svh] flex items-center justify-center hero-glow overflow-hidden pt-28 pb-10 sm:pt-0 sm:pb-0">
+    <section className="relative flex min-h-[720px] items-center justify-center overflow-hidden hero-glow pt-20 pb-8 sm:min-h-[100svh] sm:pt-0 sm:pb-0">
       {/* Floating orbs */}
       <div className="absolute top-20 left-10 w-72 h-72 rounded-full blur-3xl animate-pulse" style={{ background: 'rgba(37, 99, 235, 0.10)' }} />
       <div className="absolute bottom-20 right-10 w-96 h-96 rounded-full blur-3xl animate-pulse" style={{ background: 'rgba(16, 185, 129, 0.08)', animationDelay: '2s' }} />
@@ -20,7 +20,7 @@ export default function Hero({ locale, dict }: HeroProps) {
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8">
+        <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-5 sm:mb-8">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -31,7 +31,7 @@ export default function Hero({ locale, dict }: HeroProps) {
         </div>
 
         {/* Main title */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 sm:mb-6 tracking-tight" style={{ color: '#fff' }}>
+        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-3 sm:mb-6 tracking-tight" style={{ color: '#fff' }}>
           {isZh ? (
             <>10 分钟搭建你的第一个 <span className="gradient-text">OpenClaw</span> AI 助手</>
           ) : (
@@ -40,19 +40,19 @@ export default function Hero({ locale, dict }: HeroProps) {
         </h1>
 
         {/* Subtitle */}
-        <p className="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4 px-2" style={{ color: 'rgba(255,255,255,0.9)' }}>
+        <p className="text-sm sm:text-lg md:text-xl font-semibold mb-2 sm:mb-4 px-2" style={{ color: 'rgba(255,255,255,0.9)' }}>
           {isZh ? '先完成第一条助手消息，再慢慢掌握 7 天路径。' : 'Get to the first assistant message first, then follow the full 7-day path.'}
         </p>
 
         {/* Secondary tagline */}
-        <p className="text-xs sm:text-sm md:text-base mb-6 sm:mb-10 max-w-2xl mx-auto px-3" style={{ color: 'rgba(255,255,255,0.5)' }}>
+        <p className="text-xs sm:text-sm md:text-base mb-4 sm:mb-10 max-w-2xl mx-auto px-3" style={{ color: 'rgba(255,255,255,0.5)' }}>
           {isZh
             ? '准备运行环境、模型访问和 Telegram Bot Token；执行一行命令，跟随 QuickStart 向导完成配置。'
             : 'Prepare a runtime, model access, and a Telegram bot token; run one command and finish the QuickStart wizard.'
           }
         </p>
 
-        <div className="mb-6 sm:mb-8 mx-auto max-w-2xl rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-4 text-left">
+        <div className="mb-4 sm:mb-8 mx-auto max-w-2xl rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-3 sm:p-4 text-left">
           <p className="text-sm font-semibold text-emerald-100">
             {isZh ? '先给答案：Windows 不一定要装 WSL2；OpenClaw 可直接跑在原生 Windows。' : 'Answer first: Windows users do not have to install WSL2; OpenClaw can run on native Windows.'}
           </p>
@@ -61,28 +61,41 @@ export default function Hero({ locale, dict }: HeroProps) {
           </p>
         </div>
 
+        <div className="mx-auto mb-4 grid max-w-2xl grid-cols-2 gap-2 sm:hidden">
+          {[
+            isZh ? 'OpenClaw 初学者教程' : 'OpenClaw tutorial for beginners',
+            isZh ? '原生 Windows 可用' : 'Native Windows supported',
+            isZh ? 'Telegram 首条回复' : 'Telegram first reply',
+            '354k+ GitHub stars',
+          ].map((chip) => (
+            <span key={chip} className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-2 text-[11px] font-semibold text-white/72">
+              ✓ {chip}
+            </span>
+          ))}
+        </div>
+
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4">
           <a
-            href={isZh ? '/zh/start' : '/start'}
+            href={isZh ? '/zh/start' : '/openclaw-tutorial'}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-blue-600 hover:bg-blue-500 font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 hover:-translate-y-0.5"
             style={{ color: '#fff' }}
           >
-            🚀 {isZh ? '从 10 分钟上手开始' : 'Start with the 10-minute setup'}
+            🚀 {isZh ? '从 OpenClaw 教程开始' : 'OpenClaw tutorial for beginners'}
             <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
           </a>
           <a
-            href={isZh ? '/zh/day/2' : '/day/2'}
+            href={isZh ? '/zh/start' : '/start'}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 border border-white/20 hover:border-white/40 font-semibold rounded-xl transition-all duration-300 hover:-translate-y-0.5"
             style={{ color: 'rgba(255,255,255,0.8)' }}
           >
-            📚 {isZh ? '阅读完整第 2 天教程' : 'Read the full Day 2 guide'}
+            ⚡ {isZh ? '10 分钟上手清单' : '10-minute setup checklist'}
           </a>
           <a
             href="https://github.com/mengjian-github/openclaw101"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 border border-white/20 hover:border-white/40 font-semibold rounded-xl transition-all duration-300 hover:-translate-y-0.5"
+            className="hidden w-full items-center justify-center gap-2 px-6 py-3 font-semibold transition-all duration-300 hover:-translate-y-0.5 sm:inline-flex sm:w-auto sm:px-8 sm:py-4 border border-white/20 hover:border-white/40 rounded-xl"
             style={{ color: 'rgba(255,255,255,0.8)' }}
           >
             <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">

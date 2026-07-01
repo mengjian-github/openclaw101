@@ -74,16 +74,31 @@ const copy = {
 export default function StartSetupPage({ locale }: StartSetupPageProps) {
   const t = copy[locale];
   const [copied, setCopied] = useState(false);
+  const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
   const copyInstallCommand = async () => {
     try {
       await navigator.clipboard.writeText(t.command);
-      trackEvent('copy_install_command', { locale, source: 'start_page' });
+      trackEvent('install_command_copy', { locale, page: '/start', source: 'start_page' });
+      trackEvent('copy_install_command', { locale, page: '/start', source: 'start_page' });
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
       setCopied(false);
     }
+  };
+
+  const toggleChecklistItem = (item: string) => {
+    setCheckedItems((current) => {
+      const nextChecked = !current.includes(item);
+      trackEvent('checklist_item_toggle', {
+        locale,
+        page: '/start',
+        item,
+        checked: nextChecked,
+      });
+      return nextChecked ? [...current, item] : current.filter((value) => value !== item);
+    });
   };
 
   return (
@@ -100,6 +115,11 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
           <div className="inline-flex items-center rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 text-sm font-semibold text-emerald-200">
             {t.badge}
           </div>
+          {locale === 'en' ? (
+            <a href="/openclaw-tutorial" className="ml-0 mt-3 inline-flex rounded-full border border-blue-400/20 bg-blue-400/10 px-4 py-2 text-sm font-semibold text-blue-200 transition hover:bg-blue-400/15 sm:ml-3 sm:mt-0">
+              OpenClaw tutorial for beginners →
+            </a>
+          ) : null}
           <h1 className="mt-8 max-w-4xl text-4xl font-black tracking-tight sm:text-6xl">
             {t.title}
           </h1>
@@ -109,14 +129,17 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a
               href={t.guideHref}
-              onClick={() => trackEvent('start_cta_click', { locale, target: t.guideHref })}
+              onClick={() => {
+                trackEvent('start_cta_click', { locale, page: '/start', target: t.guideHref });
+                trackEvent('day2_guide_click', { locale, page: '/start', target: t.guideHref });
+              }}
               className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-4 font-bold text-white transition hover:bg-blue-500"
             >
               {t.primaryCta} →
             </a>
             <a
               href={t.pathHref}
-              onClick={() => trackEvent('start_cta_click', { locale, target: t.pathHref })}
+              onClick={() => trackEvent('start_cta_click', { locale, page: '/start', target: t.pathHref })}
               className="inline-flex items-center justify-center rounded-xl border border-white/15 px-6 py-4 font-bold text-white/80 transition hover:border-white/35 hover:text-white"
             >
               {t.secondaryCta}
@@ -138,7 +161,13 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
             <h2 className="text-2xl font-black">{t.stepsTitle}</h2>
             <div className="mt-6 space-y-4">
               {t.steps.map(([id, number, title, desc]) => (
-                <div key={id} id={id} className="scroll-mt-24 rounded-2xl border border-white/10 bg-gray-900/70 p-5">
+                <a
+                  key={id}
+                  id={id}
+                  href={`#${id}`}
+                  onClick={() => trackEvent('route_step_click', { locale, page: '/start', step_id: id, step_number: number })}
+                  className="block scroll-mt-24 rounded-2xl border border-white/10 bg-gray-900/70 p-5 transition hover:border-blue-300/35 hover:bg-gray-900"
+                >
                   <div className="flex gap-4">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-500 font-black">
                       {number}
@@ -148,7 +177,7 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
                       <p className="mt-2 text-sm leading-6 text-white/62">{desc}</p>
                     </div>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
@@ -173,12 +202,24 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
               <h2 className="text-lg font-black">{t.checklistTitle}</h2>
               <ul className="mt-3 space-y-2 text-sm text-white/68">
                 {t.checklist.map((item) => (
-                  <li key={item} className="flex gap-2"><span className="text-emerald-300">□</span>{item}</li>
+                  <li key={item}>
+                    <button
+                      type="button"
+                      onClick={() => toggleChecklistItem(item)}
+                      className="flex w-full items-center gap-2 rounded-lg px-2 py-1 text-left transition hover:bg-white/[0.04]"
+                    >
+                      <span className="text-emerald-300">{checkedItems.includes(item) ? '☑' : '□'}</span>
+                      <span>{item}</span>
+                    </button>
+                  </li>
                 ))}
               </ul>
               <button
                 type="button"
-                onClick={() => trackEvent('start_setup_completed', { locale, source: 'checklist_button' })}
+                onClick={() => {
+                  trackEvent('first_reply_verified_click', { locale, page: '/start', source: 'checklist_button' });
+                  trackEvent('start_setup_completed', { locale, page: '/start', source: 'checklist_button' });
+                }}
                 className="mt-4 w-full rounded-xl bg-blue-600 px-4 py-3 text-sm font-bold text-white transition hover:bg-blue-500"
               >
                 {locale === 'zh' ? '我已经收到第一条回复' : 'I got the first reply'}

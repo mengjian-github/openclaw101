@@ -10,7 +10,7 @@ import {
 export const metadata: Metadata = buildPageMetadata({
   title: 'OpenClaw Resource Hub',
   description:
-    'Browse 35+ curated OpenClaw tutorials, deployment guides, videos, and integration resources from Alibaba Cloud, Tencent Cloud, DigitalOcean, Bilibili, IBM, Codecademy, and more.',
+    'Curated OpenClaw tutorials, setup guides, videos, cloud deployment resources, and beginner references for the 7-day learning path.',
   locale: 'en',
   enPath: '/resources',
   zhPath: '/zh/resources',

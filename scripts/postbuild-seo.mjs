@@ -82,6 +82,12 @@ function buildSitemapXml() {
     'src/lib/seo.ts',
   ]);
 
+  const legalModified = getLatestModified([
+    'src/app/privacy/page.tsx',
+    'src/app/terms/page.tsx',
+    'src/lib/seo.ts',
+  ]);
+
   const urls = [
     createSitemapUrlEntry({
       loc: '/',
@@ -138,6 +144,22 @@ function buildSitemapXml() {
       lastmod: tutorialModified,
       changefreq: 'weekly',
       priority: 1.0,
+    }),
+    createSitemapUrlEntry({
+      loc: '/privacy',
+      en: '/privacy',
+      zh: '/privacy',
+      lastmod: legalModified,
+      changefreq: 'yearly',
+      priority: 0.3,
+    }),
+    createSitemapUrlEntry({
+      loc: '/terms',
+      en: '/terms',
+      zh: '/terms',
+      lastmod: legalModified,
+      changefreq: 'yearly',
+      priority: 0.3,
     }),
   ];
 

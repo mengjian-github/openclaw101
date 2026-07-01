@@ -1,9 +1,14 @@
 export type AnalyticsEventName =
   | 'copy_code'
   | 'copy_install_command'
+  | 'install_command_copy'
   | 'github_click'
   | 'start_cta_click'
   | 'openclaw_tutorial_cta_click'
+  | 'route_step_click'
+  | 'checklist_item_toggle'
+  | 'first_reply_verified_click'
+  | 'day2_guide_click'
   | 'start_setup_completed';
 
 interface AnalyticsEventProperties {
