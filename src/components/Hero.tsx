@@ -2,6 +2,7 @@
 
 import { stats } from '@/data/resources';
 import { Dictionary } from '@/lib/i18n';
+import { trackEvent } from '@/lib/analytics';
 
 interface HeroProps {
   locale: 'en' | 'zh';
@@ -26,7 +27,7 @@ export default function Hero({ locale, dict }: HeroProps) {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
           </span>
           <span className="text-sm font-medium" style={{ color: 'rgba(255,255,255,0.8)' }}>
-            {isZh ? '10 分钟首次助手上手 · 原生 Windows 可用' : '10-minute first assistant setup · Native Windows supported'}
+            {isZh ? 'OpenClaw 教程 · 10 分钟首次助手上手 · 原生 Windows 可用' : 'OpenClaw tutorial · 10-minute first assistant setup · Native Windows supported'}
           </span>
         </div>
 
@@ -78,6 +79,19 @@ export default function Hero({ locale, dict }: HeroProps) {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4">
           <a
             href={isZh ? '/zh/start' : '/openclaw-tutorial'}
+            onClick={() => {
+              trackEvent('hero_cta_click', {
+                locale,
+                page: isZh ? '/zh' : '/',
+                target: isZh ? '/zh/start' : '/openclaw-tutorial',
+                intent: 'primary_tutorial',
+              });
+              trackEvent('start_cta_click', {
+                locale,
+                page: isZh ? '/zh' : '/',
+                target: isZh ? '/zh/start' : '/openclaw-tutorial',
+              });
+            }}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-blue-600 hover:bg-blue-500 font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 hover:-translate-y-0.5"
             style={{ color: '#fff' }}
           >
@@ -86,6 +100,19 @@ export default function Hero({ locale, dict }: HeroProps) {
           </a>
           <a
             href={isZh ? '/zh/start' : '/start'}
+            onClick={() => {
+              trackEvent('hero_cta_click', {
+                locale,
+                page: isZh ? '/zh' : '/',
+                target: isZh ? '/zh/start' : '/start',
+                intent: 'setup_checklist',
+              });
+              trackEvent('start_cta_click', {
+                locale,
+                page: isZh ? '/zh' : '/',
+                target: isZh ? '/zh/start' : '/start',
+              });
+            }}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 border border-white/20 hover:border-white/40 font-semibold rounded-xl transition-all duration-300 hover:-translate-y-0.5"
             style={{ color: 'rgba(255,255,255,0.8)' }}
           >

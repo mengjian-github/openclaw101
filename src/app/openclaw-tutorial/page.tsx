@@ -189,7 +189,7 @@ export default function OpenClawTutorialPage() {
             OpenClaw Tutorial for Beginners: Install, Connect Telegram, Send the First Message
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-white/72 sm:text-xl">
-            This is the intent-matched landing page for people searching for an OpenClaw tutorial. It gives the full first-run route first, then links into the detailed 7-day course.
+            This OpenClaw tutorial is built for beginners who want the fastest reliable first run: choose a runtime, connect Telegram, install OpenClaw, and verify the first assistant reply before continuing into the 7-day course.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <Link href="/start" className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-4 font-bold text-white transition hover:bg-blue-500">

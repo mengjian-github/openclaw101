@@ -81,6 +81,7 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
       await navigator.clipboard.writeText(t.command);
       trackEvent('install_command_copy', { locale, page: '/start', source: 'start_page' });
       trackEvent('copy_install_command', { locale, page: '/start', source: 'start_page' });
+      trackEvent('first_run_install_copy', { locale, page: '/start', source: 'start_page' });
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -91,13 +92,22 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
   const toggleChecklistItem = (item: string) => {
     setCheckedItems((current) => {
       const nextChecked = !current.includes(item);
+      const nextItems = nextChecked ? [...current, item] : current.filter((value) => value !== item);
       trackEvent('checklist_item_toggle', {
         locale,
         page: '/start',
         item,
         checked: nextChecked,
       });
-      return nextChecked ? [...current, item] : current.filter((value) => value !== item);
+      trackEvent('first_run_checklist_progress', {
+        locale,
+        page: '/start',
+        item,
+        checked: nextChecked,
+        checked_count: nextItems.length,
+        total_count: t.checklist.length,
+      });
+      return nextItems;
     });
   };
 
@@ -161,12 +171,10 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
             <h2 className="text-2xl font-black">{t.stepsTitle}</h2>
             <div className="mt-6 space-y-4">
               {t.steps.map(([id, number, title, desc]) => (
-                <a
+                <article
                   key={id}
                   id={id}
-                  href={`#${id}`}
-                  onClick={() => trackEvent('route_step_click', { locale, page: '/start', step_id: id, step_number: number })}
-                  className="block scroll-mt-24 rounded-2xl border border-white/10 bg-gray-900/70 p-5 transition hover:border-blue-300/35 hover:bg-gray-900"
+                  className="scroll-mt-24 rounded-2xl border border-white/10 bg-gray-900/70 p-5"
                 >
                   <div className="flex gap-4">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-500 font-black">
@@ -175,9 +183,16 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
                     <div>
                       <h3 className="font-bold text-white">{title}</h3>
                       <p className="mt-2 text-sm leading-6 text-white/62">{desc}</p>
+                      <a
+                        href={`#${id}`}
+                        onClick={() => trackEvent('route_step_click', { locale, page: '/start', step_id: id, step_number: number })}
+                        className="mt-3 inline-flex rounded-full border border-white/10 px-3 py-1.5 text-xs font-bold text-blue-200 transition hover:border-blue-300/40 hover:bg-blue-400/10"
+                      >
+                        {locale === 'zh' ? '定位到这一步' : 'Focus this step'}
+                      </a>
                     </div>
                   </div>
-                </a>
+                </article>
               ))}
             </div>
           </div>
@@ -218,6 +233,7 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
                 type="button"
                 onClick={() => {
                   trackEvent('first_reply_verified_click', { locale, page: '/start', source: 'checklist_button' });
+                  trackEvent('first_run_verified', { locale, page: '/start', source: 'checklist_button' });
                   trackEvent('start_setup_completed', { locale, page: '/start', source: 'checklist_button' });
                 }}
                 className="mt-4 w-full rounded-xl bg-blue-600 px-4 py-3 text-sm font-bold text-white transition hover:bg-blue-500"
