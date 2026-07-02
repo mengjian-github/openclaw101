@@ -122,6 +122,7 @@ export default function Hero({ locale, dict }: HeroProps) {
             href="https://github.com/mengjian-github/openclaw101"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent('github_click', { locale, source: 'hero' })}
             className="hidden w-full items-center justify-center gap-2 px-6 py-3 font-semibold transition-all duration-300 hover:-translate-y-0.5 sm:inline-flex sm:w-auto sm:px-8 sm:py-4 border border-white/20 hover:border-white/40 rounded-xl"
             style={{ color: 'rgba(255,255,255,0.8)' }}
           >

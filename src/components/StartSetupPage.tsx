@@ -75,6 +75,9 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
   const t = copy[locale];
   const [copied, setCopied] = useState(false);
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
+  const [verificationHint, setVerificationHint] = useState(false);
+  const completedCount = checkedItems.length;
+  const canVerifyFirstReply = completedCount === t.checklist.length;
 
   const copyInstallCommand = async () => {
     try {
@@ -183,13 +186,9 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
                     <div>
                       <h3 className="font-bold text-white">{title}</h3>
                       <p className="mt-2 text-sm leading-6 text-white/62">{desc}</p>
-                      <a
-                        href={`#${id}`}
-                        onClick={() => trackEvent('route_step_click', { locale, page: '/start', step_id: id, step_number: number })}
-                        className="mt-3 inline-flex rounded-full border border-white/10 px-3 py-1.5 text-xs font-bold text-blue-200 transition hover:border-blue-300/40 hover:bg-blue-400/10"
-                      >
-                        {locale === 'zh' ? '定位到这一步' : 'Focus this step'}
-                      </a>
+                      <div className="mt-3 inline-flex rounded-full border border-white/10 px-3 py-1.5 text-xs font-bold text-blue-200">
+                        {locale === 'zh' ? `第 ${number} 步` : `Step ${number}`}
+                      </div>
                     </div>
                   </div>
                 </article>
@@ -214,7 +213,12 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
               </button>
             </div>
             <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
-              <h2 className="text-lg font-black">{t.checklistTitle}</h2>
+              <div className="flex items-center justify-between gap-3">
+                <h2 className="text-lg font-black">{t.checklistTitle}</h2>
+                <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs font-bold text-white/55">
+                  {completedCount}/{t.checklist.length}
+                </span>
+              </div>
               <ul className="mt-3 space-y-2 text-sm text-white/68">
                 {t.checklist.map((item) => (
                   <li key={item}>
@@ -232,14 +236,33 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
               <button
                 type="button"
                 onClick={() => {
+                  if (!canVerifyFirstReply) {
+                    setVerificationHint(true);
+                    trackEvent('first_run_verified_attempt_blocked', {
+                      locale,
+                      page: '/start',
+                      source: 'checklist_button',
+                      checked_count: completedCount,
+                      total_count: t.checklist.length,
+                    });
+                    return;
+                  }
+                  setVerificationHint(false);
                   trackEvent('first_reply_verified_click', { locale, page: '/start', source: 'checklist_button' });
                   trackEvent('first_run_verified', { locale, page: '/start', source: 'checklist_button' });
                   trackEvent('start_setup_completed', { locale, page: '/start', source: 'checklist_button' });
                 }}
-                className="mt-4 w-full rounded-xl bg-blue-600 px-4 py-3 text-sm font-bold text-white transition hover:bg-blue-500"
+                className={`mt-4 w-full rounded-xl px-4 py-3 text-sm font-bold text-white transition ${canVerifyFirstReply ? 'bg-blue-600 hover:bg-blue-500' : 'border border-blue-300/20 bg-blue-500/20 hover:bg-blue-500/30'}`}
               >
                 {locale === 'zh' ? '我已经收到第一条回复' : 'I got the first reply'}
               </button>
+              {!canVerifyFirstReply && verificationHint ? (
+                <p className="mt-2 text-xs leading-5 text-blue-100/70">
+                  {locale === 'zh'
+                    ? '先勾完上面的 5 项，再标记第一条回复已验证，避免把未完成安装误记为完成。'
+                    : 'Check all 5 items first, then mark the first reply as verified so incomplete installs are not counted as completed.'}
+                </p>
+              ) : null}
             </div>
             <div className="rounded-3xl border border-amber-300/20 bg-amber-300/10 p-6">
               <h2 className="text-lg font-black text-amber-100">{t.safetyTitle}</h2>

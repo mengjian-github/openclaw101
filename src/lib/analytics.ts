@@ -11,6 +11,7 @@ export type AnalyticsEventName =
   | 'route_step_click'
   | 'checklist_item_toggle'
   | 'first_run_checklist_progress'
+  | 'first_run_verified_attempt_blocked'
   | 'first_reply_verified_click'
   | 'first_run_verified'
   | 'day2_guide_click'
