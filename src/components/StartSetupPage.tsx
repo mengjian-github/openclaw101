@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Locale } from '@/lib/i18n';
 import { trackEvent } from '@/lib/analytics';
 
@@ -30,6 +30,12 @@ const copy = {
     ],
     checklistTitle: 'First-run checklist',
     checklist: ['Runtime chosen', 'Model access ready', 'Telegram bot token stored privately', 'Install command copied', 'First reply verified'],
+    proofTitle: 'What counts as a verified first run?',
+    proof: [
+      ['install', 'Install copied', 'You copied the command and ran it in your own terminal.'],
+      ['first-message', 'Telegram replied', 'Your bot answered from the machine or server you control.'],
+      ['trouble', 'Errors have a next step', 'If the reply fails, check token, allowlist, model access, and terminal logs before reinstalling.'],
+    ],
     troubleTitle: 'If the first reply fails',
     trouble: ['Check the bot token and admin allowlist', 'Confirm the model login/API key is still valid', 'Restart OpenClaw and read the terminal error before reinstalling'],
     commandLabel: 'Install command',
@@ -60,6 +66,12 @@ const copy = {
     ],
     checklistTitle: '首次运行检查清单',
     checklist: ['已选择运行环境', '模型访问已准备', 'Telegram Bot Token 已私密保存', '安装命令已复制', '第一条回复已验证'],
+    proofTitle: '什么才算首次运行已验证？',
+    proof: [
+      ['install', '已复制并执行安装命令', '安装命令已在你自己的终端里运行，不是在网页里点过就算完成。'],
+      ['first-message', 'Telegram 已真实回复', '你的 Bot 从本机或服务器上的 OpenClaw 进程发回了第一条消息。'],
+      ['trouble', '失败也有下一步', '如果没有回复，先查 token、allowlist、模型访问和终端日志，再决定是否重装。'],
+    ],
     troubleTitle: '如果第一条回复失败',
     trouble: ['检查 Bot Token 和管理员 allowlist', '确认模型登录/API Key 仍然有效', '先重启 OpenClaw 并阅读终端错误，不要盲目重装'],
     commandLabel: '安装命令',
@@ -78,6 +90,18 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
   const [verificationHint, setVerificationHint] = useState(false);
   const completedCount = checkedItems.length;
   const canVerifyFirstReply = completedCount === t.checklist.length;
+
+  useEffect(() => {
+    if (completedCount !== t.checklist.length) {
+      return;
+    }
+
+    trackEvent('first_run_checklist_complete', {
+      locale,
+      page: '/start',
+      total_count: t.checklist.length,
+    });
+  }, [completedCount, locale, t.checklist.length]);
 
   const copyInstallCommand = async () => {
     try {
@@ -264,11 +288,34 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
                 </p>
               ) : null}
             </div>
+            <div className="rounded-3xl border border-blue-300/20 bg-blue-300/10 p-6">
+              <h2 className="text-lg font-black text-blue-100">{t.proofTitle}</h2>
+              <div className="mt-4 space-y-3">
+                {t.proof.map(([target, title, body]) => (
+                  <a
+                    key={target}
+                    href={`#${target}`}
+                    onClick={() =>
+                      trackEvent('first_run_help_click', {
+                        locale,
+                        page: '/start',
+                        target,
+                        source: 'verification_proof',
+                      })
+                    }
+                    className="block rounded-2xl border border-white/10 bg-gray-950/55 p-4 transition hover:border-blue-200/35 hover:bg-blue-300/10"
+                  >
+                    <div className="text-sm font-bold text-white">{title}</div>
+                    <p className="mt-1 text-xs leading-5 text-white/62">{body}</p>
+                  </a>
+                ))}
+              </div>
+            </div>
             <div className="rounded-3xl border border-amber-300/20 bg-amber-300/10 p-6">
               <h2 className="text-lg font-black text-amber-100">{t.safetyTitle}</h2>
               <p className="mt-3 text-sm leading-6 text-amber-50/75">{t.safety}</p>
             </div>
-            <div className="rounded-3xl border border-rose-300/20 bg-rose-300/10 p-6">
+            <div id="trouble" className="scroll-mt-24 rounded-3xl border border-rose-300/20 bg-rose-300/10 p-6">
               <h2 className="text-lg font-black text-rose-100">{t.troubleTitle}</h2>
               <ul className="mt-3 space-y-2 text-sm leading-6 text-rose-50/75">
                 {t.trouble.map((item) => <li key={item}>• {item}</li>)}

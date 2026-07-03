@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import TutorialTrackedLink from '@/components/TutorialTrackedLink';
 import { SITE_NAME, SITE_URL, buildPageMetadata, getStructuredDataLanguage } from '@/lib/seo';
 
 export const metadata: Metadata = buildPageMetadata({
-  title: 'OpenClaw Tutorial for Beginners',
+  title: 'OpenClaw Tutorial: Beginner Setup Guide',
   description:
-    'OpenClaw tutorial for beginners: choose Windows or server, install OpenClaw, connect Telegram, verify the first reply, and keep learning.',
+    'OpenClaw tutorial for beginners: choose Windows or server, install OpenClaw, connect Telegram, verify the first assistant reply, and keep learning.',
   locale: 'en',
   enPath: '/openclaw-tutorial',
   zhPath: '/zh/start',
@@ -36,6 +37,12 @@ const steps = [
     body: 'Message your bot, check that OpenClaw replies from your runtime, then continue through the 7-day guide to add skills, memory, and proactive workflows.',
     href: '/start#first-message',
   },
+];
+
+const proofPoints = [
+  'Native Windows is a valid first-run path; WSL2 is optional, not required.',
+  'The first success signal is a real Telegram reply from the OpenClaw runtime you control.',
+  'The /start checklist records install-copy, checklist progress, and first-run verification events.',
 ];
 
 const faq = [
@@ -133,8 +140,8 @@ const jsonLd = {
     {
       '@type': 'HowTo',
       '@id': `${SITE_URL}/openclaw-tutorial#howto`,
-      name: 'OpenClaw Tutorial for Beginners',
-      description: 'Install OpenClaw, connect Telegram, and send the first assistant message.',
+      name: 'OpenClaw Tutorial: Beginner Setup Guide',
+      description: 'Install OpenClaw, connect Telegram, and send the first assistant message with a verified first-run checklist.',
       inLanguage: getStructuredDataLanguage('en'),
       isPartOf: { '@type': 'WebSite', name: SITE_NAME, url: SITE_URL },
       step: steps.map((step, index) => ({
@@ -157,14 +164,23 @@ const jsonLd = {
     {
       '@type': ['Article', 'TechArticle'],
       '@id': `${SITE_URL}/openclaw-tutorial#article`,
-      headline: 'OpenClaw Tutorial for Beginners',
+      headline: 'OpenClaw Tutorial: Beginner Setup Guide',
       description: 'Install OpenClaw, connect Telegram, verify the first assistant reply, and continue through the 7-day learning path.',
       datePublished: '2026-06-30',
-      dateModified: '2026-07-01',
+      dateModified: '2026-07-03',
       inLanguage: getStructuredDataLanguage('en'),
       author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
       publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
       mainEntityOfPage: `${SITE_URL}/openclaw-tutorial`,
+    },
+    {
+      '@type': 'SoftwareApplication',
+      '@id': `${SITE_URL}/openclaw-tutorial#software`,
+      name: 'OpenClaw',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Windows, Linux, macOS',
+      isAccessibleForFree: true,
+      url: 'https://openclaw.ai',
     },
   ],
 };
@@ -183,21 +199,21 @@ export default function OpenClawTutorialPage() {
             ← OpenClaw 101
           </Link>
           <div className="inline-flex rounded-full border border-blue-400/25 bg-blue-400/10 px-4 py-2 text-sm font-semibold text-blue-200">
-            Complete beginner tutorial · checked 2026-06-30
+            Complete beginner tutorial · checked 2026-07-03
           </div>
           <h1 className="mt-8 max-w-4xl text-4xl font-black tracking-tight sm:text-6xl">
-            OpenClaw Tutorial for Beginners: Install, Connect Telegram, Send the First Message
+            OpenClaw Tutorial: Install, Connect Telegram, Verify the First Assistant Reply
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-white/72 sm:text-xl">
             This OpenClaw tutorial is built for beginners who want the fastest reliable first run: choose a runtime, connect Telegram, install OpenClaw, and verify the first assistant reply before continuing into the 7-day course.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link href="/start" className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-4 font-bold text-white transition hover:bg-blue-500">
+            <TutorialTrackedLink href="/start" source="hero_primary" intent="start_checklist" className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-4 font-bold text-white transition hover:bg-blue-500">
               Start the 10-minute checklist →
-            </Link>
-            <Link href="/#getting-started" className="inline-flex items-center justify-center rounded-xl border border-white/15 px-6 py-4 font-bold text-white/80 transition hover:border-white/35 hover:text-white">
+            </TutorialTrackedLink>
+            <TutorialTrackedLink href="/#getting-started" source="hero_secondary" intent="seven_day_path" className="inline-flex items-center justify-center rounded-xl border border-white/15 px-6 py-4 font-bold text-white/80 transition hover:border-white/35 hover:text-white">
               Follow the 7-day path
-            </Link>
+            </TutorialTrackedLink>
           </div>
         </div>
       </section>
@@ -215,9 +231,9 @@ export default function OpenClawTutorialPage() {
                   <div>
                     <h3 className="text-xl font-bold text-white">{step.title}</h3>
                     <p className="mt-2 leading-7 text-white/68">{step.body}</p>
-                    <Link href={step.href} className="mt-4 inline-flex text-sm font-bold text-blue-300 hover:text-blue-200">
+                    <TutorialTrackedLink href={step.href} eventName="tutorial_step_click" source={`step_${step.id}`} intent="open_checklist_section" className="mt-4 inline-flex text-sm font-bold text-blue-300 hover:text-blue-200">
                       Open checklist section →
-                    </Link>
+                    </TutorialTrackedLink>
                   </div>
                 </div>
               </article>
@@ -236,6 +252,14 @@ export default function OpenClawTutorialPage() {
               <p className="mt-3 text-sm leading-6 text-white/62">
                 This route is aligned with the current OpenClaw101 first-run contract: native Windows is supported, WSL2 is optional, and the first proof is a real Telegram reply.
               </p>
+            </div>
+            <div className="rounded-3xl border border-blue-400/20 bg-blue-400/10 p-6">
+              <h2 className="text-lg font-black text-blue-100">Why this OpenClaw tutorial is different</h2>
+              <ul className="mt-3 space-y-2 text-sm leading-6 text-blue-50/75">
+                {proofPoints.map((point) => (
+                  <li key={point}>• {point}</li>
+                ))}
+              </ul>
             </div>
           </aside>
         </div>
