@@ -126,6 +126,36 @@ const beginnerSections = [
   },
 ];
 
+const decisionTable = [
+  ['Fast local test', 'Native Windows', 'You only need a quick first reply and do not need 24/7 uptime yet.'],
+  ['Always-on assistant', 'Small Ubuntu server', 'You want Telegram to answer while your laptop is closed.'],
+  ['Team or advanced workflows', 'Server + monitored process', 'You plan to add scheduled tasks, browser automation, or shared workflows.'],
+];
+
+const nextStepCards = [
+  {
+    title: 'Need the shortest route?',
+    body: 'Use the /start checklist. It tracks install-copy, checklist progress, and first-reply verification as separate conversion signals.',
+    href: '/start',
+    label: 'Open /start checklist',
+    intent: 'start_checklist',
+  },
+  {
+    title: 'Prefer the full course?',
+    body: 'Follow Day 1–Day 7 when you want soul design, tool access, skills, memory, and automation after setup.',
+    href: '/#getting-started',
+    label: 'View the 7-day path',
+    intent: 'seven_day_path',
+  },
+  {
+    title: 'Exploring the ecosystem?',
+    body: 'Browse curated resources after your first reply works: official docs, GitHub, cloud guides, and community learning links.',
+    href: '/resources',
+    label: 'Browse resources',
+    intent: 'resources',
+  },
+];
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -167,7 +197,7 @@ const jsonLd = {
       headline: 'OpenClaw Tutorial: Beginner Setup Guide',
       description: 'Install OpenClaw, connect Telegram, verify the first assistant reply, and continue through the 7-day learning path.',
       datePublished: '2026-06-30',
-      dateModified: '2026-07-03',
+      dateModified: '2026-07-04',
       inLanguage: getStructuredDataLanguage('en'),
       author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
       publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
@@ -278,6 +308,51 @@ export default function OpenClawTutorialPage() {
               <article key={section.title} className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
                 <h2 className="text-xl font-black text-white">{section.title}</h2>
                 <p className="mt-3 leading-7 text-white/66">{section.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 pb-20">
+        <div className="mx-auto grid max-w-5xl gap-6 lg:grid-cols-[1fr_360px]">
+          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 sm:p-8">
+            <h2 className="text-2xl font-black">Which OpenClaw setup path should I choose?</h2>
+            <p className="mt-3 leading-7 text-white/62">
+              Beginners usually lose time by choosing a runtime before deciding what “success” means. Pick the smallest path that proves a real assistant reply, then upgrade only when you need uptime.
+            </p>
+            <div className="mt-6 overflow-hidden rounded-2xl border border-white/10">
+              {decisionTable.map(([goal, path, reason]) => (
+                <div key={goal} className="grid gap-3 border-b border-white/10 p-4 last:border-b-0 md:grid-cols-[170px_170px_1fr]">
+                  <div className="text-sm font-black text-white">{goal}</div>
+                  <div className="text-sm font-bold text-emerald-200">{path}</div>
+                  <div className="text-sm leading-6 text-white/62">{reason}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <aside className="rounded-3xl border border-blue-400/20 bg-blue-400/10 p-6">
+            <h2 className="text-xl font-black text-blue-100">Conversion signals now tracked</h2>
+            <ul className="mt-4 space-y-2 text-sm leading-6 text-blue-50/75">
+              <li>• Install command copied</li>
+              <li>• Checklist progress and first-reply verification</li>
+              <li>• Course, community, consulting, and product referral clicks</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section className="px-4 pb-20">
+        <div className="mx-auto max-w-5xl">
+          <h2 className="text-2xl font-black">Choose your next step</h2>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {nextStepCards.map((card) => (
+              <article key={card.title} className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
+                <h3 className="text-lg font-black text-white">{card.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-white/62">{card.body}</p>
+                <TutorialTrackedLink href={card.href} source="next_step_card" intent={card.intent} className="mt-5 inline-flex text-sm font-bold text-blue-300 hover:text-blue-200">
+                  {card.label} →
+                </TutorialTrackedLink>
               </article>
             ))}
           </div>

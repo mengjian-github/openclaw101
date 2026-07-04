@@ -1,4 +1,5 @@
 import { Dictionary } from '@/lib/i18n';
+import TrackedOutboundLink from './TrackedOutboundLink';
 
 interface FooterProps {
   locale: 'en' | 'zh';
@@ -20,7 +21,7 @@ export default function Footer({ locale, dict }: FooterProps) {
             </h4>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
               <li><a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? 'OpenClaw 官网' : 'OpenClaw Website'}</a></li>
-              <li><a href="https://docs.openclaw.ai" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? '官方文档' : 'Documentation'}</a></li>
+              <li><TrackedOutboundLink eventName="product_referral" source="footer_official_docs" analyticsTarget="https://docs.openclaw.ai" locale={locale} href="https://docs.openclaw.ai" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? '官方文档' : 'Documentation'}</TrackedOutboundLink></li>
               <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">OpenClaw GitHub (354k+ ⭐)</a></li>
               <li><a href="https://clawhub.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? 'ClawHub 技能市场' : 'ClawHub Skills'}</a></li>
             </ul>
@@ -37,10 +38,10 @@ export default function Footer({ locale, dict }: FooterProps) {
               <li><a href={`${prefix || '/'}#skills`} className="hover:text-white transition-colors">{isZh ? '技能推荐' : 'Featured Skills'}</a></li>
               {isZh && (
                 <li>
-                  <a href="https://xiaomo.dev/course/openclaw-ai-assistant/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors inline-flex items-center gap-1.5">
+                  <TrackedOutboundLink eventName="course_click" source="footer_course" analyticsTarget="https://xiaomo.dev/course/openclaw-ai-assistant/" locale={locale} href="https://xiaomo.dev/course/openclaw-ai-assistant/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors inline-flex items-center gap-1.5">
                     🎓 实战训练营
                     <span className="text-[10px] bg-cyan-500/20 text-cyan-400 px-1.5 py-0.5 rounded">¥199</span>
-                  </a>
+                  </TrackedOutboundLink>
                 </li>
               )}
             </ul>
@@ -50,11 +51,11 @@ export default function Footer({ locale, dict }: FooterProps) {
               {isZh ? '社区' : 'Community'}
             </h4>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
-              <li><a href="https://discord.com/invite/clawd" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Discord</a></li>
+              <li><TrackedOutboundLink eventName="community_click" source="footer_discord" analyticsTarget="https://discord.com/invite/clawd" locale={locale} href="https://discord.com/invite/clawd" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Discord</TrackedOutboundLink></li>
               <li><a href="https://www.reddit.com/r/ThinkingDeeplyAI/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Reddit</a></li>
               <li><a href="https://xiaomo.dev" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">🐈‍⬛ {isZh ? '认识小墨' : 'Meet Xiaomo'}</a></li>
               <li><a href="https://github.com/mengjian-github/openclaw101" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? '贡献资源 (PR)' : 'Contribute (PR)'}</a></li>
-              <li><a href="https://www.skill-cn.com?from=openclaw101" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? 'Skill Hub 中国' : 'Skill Hub CN'}</a></li>
+              <li><TrackedOutboundLink eventName="product_referral" source="footer_skill_hub_cn" analyticsTarget="https://www.skill-cn.com?from=openclaw101" locale={locale} href="https://www.skill-cn.com?from=openclaw101" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? 'Skill Hub 中国' : 'Skill Hub CN'}</TrackedOutboundLink></li>
             </ul>
           </div>
           <div>
@@ -74,7 +75,7 @@ export default function Footer({ locale, dict }: FooterProps) {
         <div className="border-t border-white/10 pt-6 sm:pt-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
             <div className="text-xs sm:text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
-              Made with 🐈‍⬛ by <a href="https://xiaomo.dev" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" style={{ color: 'rgba(255,255,255,0.8)' }}>{isZh ? '小墨' : 'Xiaomo'}</a> | OpenClaw 101
+              Made with 🐈‍⬛ by <TrackedOutboundLink eventName="consulting_click" source="footer_xiaomo_brand" analyticsTarget="https://xiaomo.dev" locale={locale} href="https://xiaomo.dev" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" style={{ color: 'rgba(255,255,255,0.8)' }}>{isZh ? '小墨' : 'Xiaomo'}</TrackedOutboundLink> | OpenClaw 101
             </div>
             <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 text-[10px] sm:text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>
               <a href="https://mengjian.site" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? '孟健AI编程出品' : 'By Mengjian'}</a>

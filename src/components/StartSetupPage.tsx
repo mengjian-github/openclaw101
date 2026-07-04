@@ -38,6 +38,14 @@ const copy = {
     ],
     troubleTitle: 'If the first reply fails',
     trouble: ['Check the bot token and admin allowlist', 'Confirm the model login/API key is still valid', 'Restart OpenClaw and read the terminal error before reinstalling'],
+    rescueTitle: 'Common first-run fixes',
+    rescueIntro: 'Most failed first replies come from one of four checks. Use this rail before reinstalling.',
+    rescue: [
+      ['token', 'Bot token mismatch', 'Regenerate only if the token was pasted into the wrong runtime. Otherwise update the local config and restart.'],
+      ['allowlist', 'Admin allowlist missing', 'Confirm your Telegram user ID is in the allowlist before testing from another account.'],
+      ['model', 'Model login expired', 'Run the provider auth/status command and refresh OAuth or API key only when it reports expired.'],
+      ['process', 'OpenClaw process stopped', 'Restart the process and check the latest terminal log before changing configuration.'],
+    ],
     commandLabel: 'Install command',
     command: 'curl -fsSL https://openclaw.ai/install.sh | bash',
     trust: ['Native Windows supported', 'QuickStart wizard', 'Telegram first channel', 'No platform lock-in'],
@@ -74,6 +82,14 @@ const copy = {
     ],
     troubleTitle: '如果第一条回复失败',
     trouble: ['检查 Bot Token 和管理员 allowlist', '确认模型登录/API Key 仍然有效', '先重启 OpenClaw 并阅读终端错误，不要盲目重装'],
+    rescueTitle: '首次运行常见修复',
+    rescueIntro: '第一条回复失败通常不是要重装，而是下面四类检查没过。先按这里排查。',
+    rescue: [
+      ['token', 'Bot Token 不匹配', '只有 token 粘到错误运行环境时才重新生成；多数情况是更新本地配置并重启。'],
+      ['allowlist', '管理员 allowlist 缺失', '确认你的 Telegram user ID 已加入 allowlist，再从同一个账号测试。'],
+      ['model', '模型登录过期', '先运行 provider auth/status 检查；只有明确过期时才刷新 OAuth 或 API Key。'],
+      ['process', 'OpenClaw 进程停止', '先重启进程并看最新终端日志，不要直接改配置或重装。'],
+    ],
     commandLabel: '安装命令',
     command: 'curl -fsSL https://openclaw.ai/install.sh | bash',
     trust: ['支持原生 Windows', 'QuickStart 向导', 'Telegram 首选通道', '不绑定平台'],
@@ -322,6 +338,28 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
               </ul>
             </div>
           </aside>
+        </div>
+      </section>
+
+      <section className="px-4 pb-24">
+        <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-white/[0.04] p-6 sm:p-8">
+          <div className="max-w-3xl">
+            <h2 className="text-2xl font-black">{t.rescueTitle}</h2>
+            <p className="mt-3 text-sm leading-6 text-white/62">{t.rescueIntro}</p>
+          </div>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            {t.rescue.map(([id, title, body]) => (
+              <a
+                key={id}
+                href={id === 'process' ? '#trouble' : `#${id === 'token' || id === 'allowlist' || id === 'model' ? 'access' : 'install'}`}
+                onClick={() => trackEvent('first_run_help_click', { locale, page: '/start', source: 'rescue_rail', target: id })}
+                className="rounded-2xl border border-white/10 bg-gray-900/70 p-5 transition hover:border-blue-300/35 hover:bg-blue-400/10"
+              >
+                <div className="text-sm font-black text-blue-200">{title}</div>
+                <p className="mt-2 text-sm leading-6 text-white/64">{body}</p>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
     </main>

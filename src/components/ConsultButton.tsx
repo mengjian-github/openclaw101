@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { trackEvent } from '@/lib/analytics';
 
 interface ConsultButtonProps {
   locale: 'en' | 'zh';
@@ -14,7 +15,10 @@ export default function ConsultButton({ locale }: ConsultButtonProps) {
     <>
       {/* Floating Button */}
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={() => {
+          trackEvent('consulting_click', { locale, source: 'floating_consult_button', target: 'wechat_modal' });
+          setIsOpen(true);
+        }}
         className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 group sm:bottom-6 sm:right-6"
         style={{ bottom: '1.5rem', right: '1.5rem' }}
         aria-label={isZh ? '商务合作' : 'Business Collaboration'}
@@ -67,6 +71,13 @@ export default function ConsultButton({ locale }: ConsultButtonProps) {
               <p className="text-sm text-gray-600 leading-6">
                 {isZh ? '扫码添加微信，备注「OpenClaw合作」即可' : 'Scan to add WeChat and note "OpenClaw Collaboration"'}
               </p>
+              <button
+                type="button"
+                onClick={() => trackEvent('consulting_click', { locale, source: 'consult_modal_qr_visible', target: 'wechat_qr' })}
+                className="mt-3 rounded-full bg-blue-600 px-4 py-2 text-xs font-bold text-white transition hover:bg-blue-700"
+              >
+                {isZh ? '我准备咨询/合作' : 'I am interested'}
+              </button>
             </div>
 
             {/* Trust badges */}

@@ -9,6 +9,7 @@ const publicDir = path.join(projectRoot, 'public');
 const outDir = path.join(projectRoot, 'out');
 
 const siteUrl = 'https://openclaw101.dev';
+const bingVerificationCode = '486ab0a1e54b04dba01f26151adc51839c681521';
 const aiBots = [
   'GPTBot',
   'ChatGPT-User',
@@ -215,6 +216,10 @@ function buildRobotsTxt() {
   return lines.join('\n');
 }
 
+function buildBingSiteAuthXml() {
+  return `<?xml version="1.0"?>\n<users>\n  <user>${bingVerificationCode}</user>\n</users>\n`;
+}
+
 function writeFileCopies(relativePath, content) {
   const destinations = [path.join(publicDir, relativePath)];
 
@@ -282,6 +287,7 @@ function patchZhHtmlLang() {
 writeFileCopies('sitemap.xml', buildSitemapXml());
 writeFileCopies('sitemap-index.xml', buildSitemapXml());
 writeFileCopies('robots.txt', buildRobotsTxt());
+writeFileCopies('BingSiteAuth.xml', buildBingSiteAuthXml());
 patchZhHtmlLang();
 
-console.log('SEO postbuild complete: generated robots.txt, sitemap.xml, sitemap-index.xml, and patched zh html lang.');
+console.log('SEO postbuild complete: generated robots.txt, sitemap.xml, sitemap-index.xml, BingSiteAuth.xml, and patched zh html lang.');
