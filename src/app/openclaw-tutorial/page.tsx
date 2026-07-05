@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import TutorialTrackedLink from '@/components/TutorialTrackedLink';
+import TrackedOutboundLink from '@/components/TrackedOutboundLink';
 import { SITE_NAME, SITE_URL, buildPageMetadata, getStructuredDataLanguage } from '@/lib/seo';
 
 export const metadata: Metadata = buildPageMetadata({
@@ -156,6 +157,30 @@ const nextStepCards = [
   },
 ];
 
+const leadProxyCards = [
+  {
+    title: 'Guided course path',
+    body: 'For readers who want a complete first-assistant build with fewer dead ends.',
+    href: 'https://xiaomo.dev/course/openclaw-ai-assistant/?utm_source=openclaw101&utm_medium=openclaw_tutorial&utm_campaign=lead_proxy',
+    label: 'View course',
+    eventName: 'course_click' as const,
+  },
+  {
+    title: 'Community troubleshooting',
+    body: 'Best after the reader has a first-run screenshot, token state, or terminal log.',
+    href: 'https://discord.com/invite/clawd?utm_source=openclaw101&utm_medium=openclaw_tutorial&utm_campaign=lead_proxy',
+    label: 'Open community',
+    eventName: 'community_click' as const,
+  },
+  {
+    title: 'Skill and workflow catalog',
+    body: 'For readers who already got a first reply and now need reusable skills or workflows.',
+    href: 'https://www.skill-cn.com?utm_source=openclaw101&utm_medium=openclaw_tutorial&utm_campaign=product_referral',
+    label: 'Browse Skill Hub CN',
+    eventName: 'product_referral' as const,
+  },
+];
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -197,7 +222,7 @@ const jsonLd = {
       headline: 'OpenClaw Tutorial: Beginner Setup Guide',
       description: 'Install OpenClaw, connect Telegram, verify the first assistant reply, and continue through the 7-day learning path.',
       datePublished: '2026-06-30',
-      dateModified: '2026-07-04',
+      dateModified: '2026-07-05',
       inLanguage: getStructuredDataLanguage('en'),
       author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
       publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
@@ -353,6 +378,29 @@ export default function OpenClawTutorialPage() {
                 <TutorialTrackedLink href={card.href} source="next_step_card" intent={card.intent} className="mt-5 inline-flex text-sm font-bold text-blue-300 hover:text-blue-200">
                   {card.label} →
                 </TutorialTrackedLink>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 pb-20">
+        <div className="mx-auto max-w-5xl rounded-3xl border border-emerald-400/20 bg-emerald-400/10 p-6 sm:p-8">
+          <div className="max-w-3xl">
+            <div className="text-sm font-bold uppercase tracking-[0.18em] text-emerald-200/75">Lead proxy, no paid action</div>
+            <h2 className="mt-3 text-2xl font-black">If the OpenClaw tutorial worked, route the next intent</h2>
+            <p className="mt-3 text-sm leading-6 text-white/62">
+              These links do not trigger payment or public posting. They turn course interest, community help, and product-referral intent into measurable lead proxies for the next site review.
+            </p>
+          </div>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {leadProxyCards.map((card) => (
+              <article key={card.href} className="rounded-2xl border border-white/10 bg-gray-950/55 p-5">
+                <h3 className="text-lg font-black text-white">{card.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-white/62">{card.body}</p>
+                <TrackedOutboundLink eventName={card.eventName} source="openclaw_tutorial_lead_proxy" analyticsTarget={card.href} locale="en" href={card.href} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex text-sm font-bold text-emerald-200 hover:text-emerald-100">
+                  {card.label} →
+                </TrackedOutboundLink>
               </article>
             ))}
           </div>

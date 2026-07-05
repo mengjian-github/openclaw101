@@ -99,6 +99,55 @@ const copy = {
   },
 } as const;
 
+const leadOptions = {
+  en: [
+    {
+      title: 'Want a guided setup?',
+      body: 'Use the course path when you want a structured first assistant build instead of debugging alone.',
+      label: 'View the OpenClaw course',
+      href: 'https://xiaomo.dev/course/openclaw-ai-assistant/?utm_source=openclaw101&utm_medium=start_page&utm_campaign=first_run_rescue',
+      eventName: 'course_click',
+    },
+    {
+      title: 'Need community help?',
+      body: 'Join the community after you have a screenshot or log from your first-run attempt.',
+      label: 'Open community',
+      href: 'https://discord.com/invite/clawd?utm_source=openclaw101&utm_medium=start_page&utm_campaign=first_run_rescue',
+      eventName: 'community_click',
+    },
+    {
+      title: 'Compare nearby tools',
+      body: 'Browse Skill Hub CN when your next step is prompt packs, agent skills, or workflow templates.',
+      label: 'Browse Skill Hub CN',
+      href: 'https://www.skill-cn.com?utm_source=openclaw101&utm_medium=start_page&utm_campaign=product_referral',
+      eventName: 'product_referral',
+    },
+  ],
+  zh: [
+    {
+      title: '想有人带着跑通？',
+      body: '如果不想独自排错，用训练营路径完成第一个 AI 助手闭环。',
+      label: '查看 OpenClaw 实战训练营',
+      href: 'https://xiaomo.dev/course/openclaw-ai-assistant/?utm_source=openclaw101&utm_medium=zh_start_page&utm_campaign=first_run_rescue',
+      eventName: 'course_click',
+    },
+    {
+      title: '需要社区协助？',
+      body: '先准备首次运行截图或终端日志，再到社区提问，排错效率更高。',
+      label: '打开社区',
+      href: 'https://discord.com/invite/clawd?utm_source=openclaw101&utm_medium=zh_start_page&utm_campaign=first_run_rescue',
+      eventName: 'community_click',
+    },
+    {
+      title: '继续找技能/工作流？',
+      body: '去 Skill Hub 中国浏览 Prompt、Agent Skills 和工作流模板。',
+      label: '浏览 Skill Hub 中国',
+      href: 'https://www.skill-cn.com?utm_source=openclaw101&utm_medium=zh_start_page&utm_campaign=product_referral',
+      eventName: 'product_referral',
+    },
+  ],
+} as const;
+
 export default function StartSetupPage({ locale }: StartSetupPageProps) {
   const t = copy[locale];
   const [copied, setCopied] = useState(false);
@@ -357,6 +406,46 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
               >
                 <div className="text-sm font-black text-blue-200">{title}</div>
                 <p className="mt-2 text-sm leading-6 text-white/64">{body}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 pb-24">
+        <div className="mx-auto max-w-5xl rounded-3xl border border-blue-300/20 bg-blue-300/10 p-6 sm:p-8">
+          <div className="max-w-3xl">
+            <div className="text-sm font-bold uppercase tracking-[0.18em] text-blue-200/75">
+              {locale === 'zh' ? '低风险下一步' : 'Low-risk next step'}
+            </div>
+            <h2 className="mt-3 text-2xl font-black">
+              {locale === 'zh' ? '首次回复之后，选择一个可追踪动作' : 'After the first reply, choose one trackable action'}
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-white/62">
+              {locale === 'zh'
+                ? '这里不做付款或公开发布，只把课程、社区和产品引用点击记为 lead proxy，方便后续判断 OpenClaw101 的真实承接能力。'
+                : 'No payment or public posting here. These course, community, and product-referral clicks are lead proxies so the next review can judge whether OpenClaw101 has real business handoff.'}
+            </p>
+          </div>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {leadOptions[locale].map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent(item.eventName, {
+                  locale,
+                  page: locale === 'zh' ? '/zh/start' : '/start',
+                  source: 'start_lead_proxy_card',
+                  target: item.href,
+                  utm_medium: locale === 'zh' ? 'zh_start_page' : 'start_page',
+                })}
+                className="rounded-2xl border border-white/10 bg-gray-950/55 p-5 transition hover:border-blue-200/35 hover:bg-blue-300/10"
+              >
+                <div className="text-sm font-black text-blue-100">{item.title}</div>
+                <p className="mt-2 text-sm leading-6 text-white/62">{item.body}</p>
+                <div className="mt-4 text-sm font-bold text-blue-200">{item.label} →</div>
               </a>
             ))}
           </div>

@@ -24,7 +24,9 @@ export type AnalyticsEventName =
   | 'first_reply_verified_click'
   | 'first_run_verified'
   | 'day2_guide_click'
-  | 'start_setup_completed';
+  | 'start_setup_completed'
+  | 'resource_click'
+  | 'utm_copy_click';
 
 interface AnalyticsEventProperties {
   [key: string]: string | number | boolean | undefined;

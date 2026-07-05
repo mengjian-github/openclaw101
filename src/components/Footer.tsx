@@ -20,10 +20,10 @@ export default function Footer({ locale, dict }: FooterProps) {
               {isZh ? '官方' : 'Official'}
             </h4>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
-              <li><a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? 'OpenClaw 官网' : 'OpenClaw Website'}</a></li>
+              <li><TrackedOutboundLink eventName="product_referral" source="footer_openclaw_official" analyticsTarget="https://openclaw.ai" locale={locale} href="https://openclaw.ai" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? 'OpenClaw 官网' : 'OpenClaw Website'}</TrackedOutboundLink></li>
               <li><TrackedOutboundLink eventName="product_referral" source="footer_official_docs" analyticsTarget="https://docs.openclaw.ai" locale={locale} href="https://docs.openclaw.ai" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? '官方文档' : 'Documentation'}</TrackedOutboundLink></li>
-              <li><a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">OpenClaw GitHub (354k+ ⭐)</a></li>
-              <li><a href="https://clawhub.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? 'ClawHub 技能市场' : 'ClawHub Skills'}</a></li>
+              <li><TrackedOutboundLink eventName="product_referral" source="footer_openclaw_github" analyticsTarget="https://github.com/openclaw/openclaw" locale={locale} href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">OpenClaw GitHub (354k+ ⭐)</TrackedOutboundLink></li>
+              <li><TrackedOutboundLink eventName="product_referral" source="footer_clawhub" analyticsTarget="https://clawhub.com" locale={locale} href="https://clawhub.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? 'ClawHub 技能市场' : 'ClawHub Skills'}</TrackedOutboundLink></li>
             </ul>
           </div>
           <div>
@@ -34,7 +34,7 @@ export default function Footer({ locale, dict }: FooterProps) {
               <li><a href={isZh ? '/zh/start' : '/openclaw-tutorial'} className="hover:text-white transition-colors font-medium">{isZh ? 'OpenClaw 初学者教程' : 'OpenClaw tutorial for beginners'}</a></li>
               <li><a href={`${prefix || '/'}#getting-started`} className="hover:text-white transition-colors">{isZh ? '7天学习路径' : '7-Day Path'}</a></li>
               <li><a href={`${prefix}/resources`} className="hover:text-white transition-colors">{isZh ? '全部资源' : 'All Resources'}</a></li>
-              <li><a href="https://my.feishu.cn/wiki/YkWgwqSchi9xW3kEuZscAm0lnFf" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? '飞书知识库' : 'Feishu Wiki'}</a></li>
+              <li><TrackedOutboundLink eventName="resource_click" source="footer_feishu_wiki" analyticsTarget="https://my.feishu.cn/wiki/YkWgwqSchi9xW3kEuZscAm0lnFf" locale={locale} href="https://my.feishu.cn/wiki/YkWgwqSchi9xW3kEuZscAm0lnFf" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? '飞书知识库' : 'Feishu Wiki'}</TrackedOutboundLink></li>
               <li><a href={`${prefix || '/'}#skills`} className="hover:text-white transition-colors">{isZh ? '技能推荐' : 'Featured Skills'}</a></li>
               {isZh && (
                 <li>
@@ -52,9 +52,9 @@ export default function Footer({ locale, dict }: FooterProps) {
             </h4>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
               <li><TrackedOutboundLink eventName="community_click" source="footer_discord" analyticsTarget="https://discord.com/invite/clawd" locale={locale} href="https://discord.com/invite/clawd" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Discord</TrackedOutboundLink></li>
-              <li><a href="https://www.reddit.com/r/ThinkingDeeplyAI/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Reddit</a></li>
-              <li><a href="https://xiaomo.dev" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">🐈‍⬛ {isZh ? '认识小墨' : 'Meet Xiaomo'}</a></li>
-              <li><a href="https://github.com/mengjian-github/openclaw101" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? '贡献资源 (PR)' : 'Contribute (PR)'}</a></li>
+              <li><TrackedOutboundLink eventName="community_click" source="footer_reddit" analyticsTarget="https://www.reddit.com/r/ThinkingDeeplyAI/" locale={locale} href="https://www.reddit.com/r/ThinkingDeeplyAI/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Reddit</TrackedOutboundLink></li>
+              <li><TrackedOutboundLink eventName="consulting_click" source="footer_meet_xiaomo" analyticsTarget="https://xiaomo.dev" locale={locale} href="https://xiaomo.dev" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">🐈‍⬛ {isZh ? '认识小墨' : 'Meet Xiaomo'}</TrackedOutboundLink></li>
+              <li><TrackedOutboundLink eventName="resource_click" source="footer_contribute_pr" analyticsTarget="https://github.com/mengjian-github/openclaw101" locale={locale} href="https://github.com/mengjian-github/openclaw101" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? '贡献资源 (PR)' : 'Contribute (PR)'}</TrackedOutboundLink></li>
               <li><TrackedOutboundLink eventName="product_referral" source="footer_skill_hub_cn" analyticsTarget="https://www.skill-cn.com?from=openclaw101" locale={locale} href="https://www.skill-cn.com?from=openclaw101" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{isZh ? 'Skill Hub 中国' : 'Skill Hub CN'}</TrackedOutboundLink></li>
             </ul>
           </div>

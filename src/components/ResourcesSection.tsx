@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { getFeaturedResources, categoryMeta, stats, type Resource } from '@/data/resources';
 import { Dictionary } from '@/lib/i18n';
+import { trackEvent } from '@/lib/analytics';
 
 interface ResourcesSectionProps {
   locale: 'en' | 'zh';
@@ -27,6 +28,14 @@ function ResourceCard({ r, i, isZh }: { r: Resource; i: number; isZh: boolean })
       href={r.url}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackEvent('resource_click', {
+        locale: isZh ? 'zh' : 'en',
+        page: isZh ? '/zh' : '/',
+        source: 'featured_resource_card',
+        target: r.url,
+        resource_source: r.source,
+        resource_category: r.category,
+      })}
       className="reveal card-hover group block bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-gray-100 hover:border-gray-200 relative"
       style={{ transitionDelay: `${i * 60}ms` }}
     >
@@ -159,6 +168,12 @@ export default function ResourcesSection({ locale, dict }: ResourcesSectionProps
         <div className="text-center reveal">
           <a
             href={`${prefix}/resources`}
+            onClick={() => trackEvent('resource_click', {
+              locale,
+              page: isZh ? '/zh' : '/',
+              source: 'resources_section_view_all',
+              target: `${prefix}/resources`,
+            })}
             className="group inline-flex items-center gap-2 px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
           >
             {isZh ? `查看全部 ${stats.totalResources}+ 篇资源` : `View All ${stats.totalResources}+ Resources`}

@@ -56,6 +56,9 @@ function buildSitemapXml() {
     'src/app/page.tsx',
     'src/app/zh/page.tsx',
     'src/components/HomePage.tsx',
+    'src/components/Hero.tsx',
+    'src/components/ResourcesSection.tsx',
+    'src/components/Footer.tsx',
     'src/lib/seo.ts',
   ]);
 

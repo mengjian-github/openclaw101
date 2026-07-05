@@ -9,6 +9,7 @@ import {
   type ResourceCategory,
 } from '@/data/resources';
 import ConsultButton from './ConsultButton';
+import { trackEvent } from '@/lib/analytics';
 
 /* ── i18n texts ── */
 const texts = {
@@ -173,13 +174,21 @@ interface ResourcesPageProps {
 }
 
 /* ── card ── */
-function Card({ r, color, t }: { r: Resource; color: string; t: typeof texts.en }) {
+function Card({ r, color, t, locale }: { r: Resource; color: string; t: typeof texts.en; locale: 'en' | 'zh' }) {
   const dotColor = sourceDots[r.source] || '#9ca3af';
   return (
     <a
       href={r.url}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackEvent('resource_click', {
+        locale,
+        page: locale === 'zh' ? '/zh/resources' : '/resources',
+        source: 'resource_hub_card',
+        target: r.url,
+        resource_source: r.source,
+        resource_category: r.category,
+      })}
       className="group relative block rounded-xl p-5 border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 overflow-hidden"
       style={{
         background: r.featured ? 'linear-gradient(135deg, #fffbeb 0%, #ffffff 40%)' : '#fff',
@@ -273,7 +282,7 @@ function CategorySection({
       {/* cards grid */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {items.map((r) => (
-          <Card key={r.url} r={r} color={color} t={t} />
+          <Card key={r.url} r={r} color={color} t={t} locale={locale} />
         ))}
       </div>
     </section>
@@ -368,6 +377,12 @@ export default function ResourcesPage({ locale }: ResourcesPageProps) {
                     placeholder={t.searchPlaceholder}
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
+                    onFocus={() => trackEvent('resource_click', {
+                      locale,
+                      page: locale === 'zh' ? '/zh/resources' : '/resources',
+                      source: 'resource_search_focus',
+                      target: 'search',
+                    })}
                     className="w-full pl-12 pr-4 py-3 rounded-xl text-sm text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-blue-400/40 transition-all"
                     style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}
                   />
@@ -454,7 +469,7 @@ export default function ResourcesPage({ locale }: ResourcesPageProps) {
               </div>
             ) : (
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {searchResults.map((r) => <Card key={r.url} r={r} color="blue" t={t} />)}
+                {searchResults.map((r) => <Card key={r.url} r={r} color="blue" t={t} locale={locale} />)}
               </div>
             )}
           </>
