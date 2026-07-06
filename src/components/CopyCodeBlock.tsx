@@ -11,6 +11,7 @@ interface CopyCodeBlockProps {
 export default function CopyCodeBlock({ children, eventContext = 'day_content' }: CopyCodeBlockProps) {
   const preRef = useRef<HTMLPreElement>(null);
   const [copied, setCopied] = useState(false);
+  const [copyFailed, setCopyFailed] = useState(false);
 
   const handleCopy = async () => {
     const code = preRef.current?.textContent?.trim() || '';
@@ -26,9 +27,12 @@ export default function CopyCodeBlock({ children, eventContext = 'day_content' }
         length: code.length,
       });
       setCopied(true);
+      setCopyFailed(false);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
       setCopied(false);
+      setCopyFailed(true);
+      window.setTimeout(() => setCopyFailed(false), 3000);
     }
   };
 
@@ -47,11 +51,19 @@ export default function CopyCodeBlock({ children, eventContext = 'day_content' }
           event.stopPropagation();
           handleCopy();
         }}
-        className="absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded-md opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
+        className="absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded-md opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-emerald-300/60"
         aria-label="Copy code"
       >
         {copied ? '✓ Copied' : 'Copy'}
       </button>
+      <p className="sr-only" aria-live="polite">
+        {copied ? 'Code copied to clipboard.' : copyFailed ? 'Copy failed. Select the code and copy it manually.' : ''}
+      </p>
+      {copyFailed ? (
+        <p className="mt-2 text-xs text-amber-300">
+          Copy failed. Select the command text and press Ctrl+C.
+        </p>
+      ) : null}
     </div>
   );
 }

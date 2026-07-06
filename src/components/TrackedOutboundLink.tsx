@@ -1,7 +1,7 @@
 'use client';
 
 import { AnchorHTMLAttributes, ReactNode } from 'react';
-import { AnalyticsEventName, trackEvent } from '@/lib/analytics';
+import { AnalyticsEventName, trackConversionGoal, trackEvent } from '@/lib/analytics';
 
 interface TrackedOutboundLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   eventName: AnalyticsEventName;
@@ -32,6 +32,16 @@ export default function TrackedOutboundLink({
           target: analyticsTarget,
           locale,
         });
+
+        if (eventCategory === 'business_referral') {
+          const goalType = eventName === 'product_referral' ? 'product_referral' : eventName.replace('_click', '');
+          trackConversionGoal(goalType as 'course' | 'community' | 'consulting' | 'product_referral', {
+            source,
+            target: analyticsTarget,
+            locale,
+          });
+        }
+
         onClick?.(event);
       }}
     >

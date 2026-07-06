@@ -204,6 +204,19 @@ function buildSitemapXml() {
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`;
 }
 
+function buildSitemapIndexXml() {
+  const sitemapModified = getLatestModified([
+    'src/app/page.tsx',
+    'src/app/openclaw-tutorial/page.tsx',
+    'src/app/start/page.tsx',
+    'src/app/resources/page.tsx',
+    'src/components/StartSetupPage.tsx',
+    'scripts/postbuild-seo.mjs',
+  ]);
+
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <sitemap>\n    <loc>${siteUrl}/sitemap.xml</loc>\n    <lastmod>${formatLastModified(sitemapModified)}</lastmod>\n  </sitemap>\n</sitemapindex>\n`;
+}
+
 function buildRobotsTxt() {
   const lines = ['User-agent: *', 'Allow: /', ''];
 
@@ -288,7 +301,7 @@ function patchZhHtmlLang() {
 }
 
 writeFileCopies('sitemap.xml', buildSitemapXml());
-writeFileCopies('sitemap-index.xml', buildSitemapXml());
+writeFileCopies('sitemap-index.xml', buildSitemapIndexXml());
 writeFileCopies('robots.txt', buildRobotsTxt());
 writeFileCopies('BingSiteAuth.xml', buildBingSiteAuthXml());
 patchZhHtmlLang();

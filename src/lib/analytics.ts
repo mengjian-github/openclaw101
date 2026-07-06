@@ -23,6 +23,7 @@ export type AnalyticsEventName =
   | 'first_run_verified_attempt_blocked'
   | 'first_reply_verified_click'
   | 'first_run_verified'
+  | 'conversion_goal'
   | 'day2_guide_click'
   | 'start_setup_completed'
   | 'resource_click'
@@ -55,4 +56,16 @@ export function trackEvent(eventName: AnalyticsEventName, props: AnalyticsEventP
     window.clarity('event', eventName);
     window.clarity('set', 'last_first_run_event', eventName);
   }
+}
+
+export function trackConversionGoal(
+  goalType: 'course' | 'community' | 'consulting' | 'product_referral' | 'first_run_verified' | 'tutorial_progress',
+  props: AnalyticsEventProperties = {},
+) {
+  trackEvent('conversion_goal', {
+    ...props,
+    event_category: 'business_lead_proxy',
+    goal_type: goalType,
+    conversion_contract_version: 'openclaw101-lead-proxy-v1',
+  });
 }

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Locale } from '@/lib/i18n';
-import { trackEvent } from '@/lib/analytics';
+import { trackConversionGoal, trackEvent } from '@/lib/analytics';
 
 interface StartSetupPageProps {
   locale: Locale;
@@ -339,6 +339,7 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
                   setVerificationHint(false);
                   trackEvent('first_reply_verified_click', { locale, page: '/start', source: 'checklist_button' });
                   trackEvent('first_run_verified', { locale, page: '/start', source: 'checklist_button' });
+                  trackConversionGoal('first_run_verified', { locale, page: '/start', source: 'checklist_button' });
                   trackEvent('start_setup_completed', { locale, page: '/start', source: 'checklist_button' });
                 }}
                 className={`mt-4 w-full rounded-xl px-4 py-3 text-sm font-bold text-white transition ${canVerifyFirstReply ? 'bg-blue-600 hover:bg-blue-500' : 'border border-blue-300/20 bg-blue-500/20 hover:bg-blue-500/30'}`}

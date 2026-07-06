@@ -133,6 +133,35 @@ const decisionTable = [
   ['Team or advanced workflows', 'Server + monitored process', 'You plan to add scheduled tasks, browser automation, or shared workflows.'],
 ];
 
+const serpAnswerBlocks = [
+  {
+    title: 'Fastest OpenClaw tutorial route',
+    body: 'For most beginners, the fastest route is: prepare Telegram BotFather, choose native Windows or a small Ubuntu server, run the installer, finish QuickStart, then send one message to prove the assistant is alive.',
+  },
+  {
+    title: 'What to verify before moving on',
+    body: 'Do not count setup as done after the installer exits. The reliable proof is a Telegram reply from the runtime you control, plus a saved config that keeps tokens out of public chats and repositories.',
+  },
+  {
+    title: 'When to use the full 7-day guide',
+    body: 'Use the 7-day path after the first reply works. It adds soul design, tools, memory, skills, proactive jobs, and daily automation without making the first install harder than it needs to be.',
+  },
+];
+
+const videoComparisonRows = [
+  ['freeCodeCamp-style walkthroughs', 'Good for broad AI agent context', 'Use this page when you need the OpenClaw-specific first-run checklist and verification signals.'],
+  ['YouTube setup videos', 'Good for watching terminal flow', 'Use this page when you need copyable steps, troubleshooting branches, and schema-friendly FAQ answers.'],
+  ['Official docs', 'Best for reference depth', 'Use this page as the beginner bridge before you read every config option.'],
+];
+
+const conversionContractRows = [
+  ['course_click', 'Course intent', 'Reader wants a guided setup path after reading the tutorial.'],
+  ['community_click', 'Community help intent', 'Reader has a first-run problem and wants troubleshooting help.'],
+  ['product_referral', 'Workflow/catalog intent', 'Reader is ready to browse adjacent skills, prompts, or workflow templates.'],
+  ['first_run_verified', 'First-run success', 'Reader marked the first Telegram reply as verified on the checklist page.'],
+];
+
+
 const nextStepCards = [
   {
     title: 'Need the shortest route?',
@@ -222,7 +251,7 @@ const jsonLd = {
       headline: 'OpenClaw Tutorial: Beginner Setup Guide',
       description: 'Install OpenClaw, connect Telegram, verify the first assistant reply, and continue through the 7-day learning path.',
       datePublished: '2026-06-30',
-      dateModified: '2026-07-05',
+      dateModified: '2026-07-06',
       inLanguage: getStructuredDataLanguage('en'),
       author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
       publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
@@ -254,7 +283,7 @@ export default function OpenClawTutorialPage() {
             ← OpenClaw 101
           </Link>
           <div className="inline-flex rounded-full border border-blue-400/25 bg-blue-400/10 px-4 py-2 text-sm font-semibold text-blue-200">
-            Complete beginner tutorial · checked 2026-07-03
+            Complete beginner tutorial · checked 2026-07-06
           </div>
           <h1 className="mt-8 max-w-4xl text-4xl font-black tracking-tight sm:text-6xl">
             OpenClaw Tutorial: Install, Connect Telegram, Verify the First Assistant Reply
@@ -340,6 +369,60 @@ export default function OpenClawTutorialPage() {
       </section>
 
       <section className="px-4 pb-20">
+        <div className="mx-auto max-w-5xl rounded-3xl border border-blue-400/20 bg-blue-400/10 p-6 sm:p-8">
+          <div className="max-w-3xl">
+            <div className="text-sm font-bold uppercase tracking-[0.18em] text-blue-200/75">Snippet answer</div>
+            <h2 className="mt-3 text-2xl font-black">OpenClaw tutorial answer block for beginners</h2>
+            <p className="mt-3 leading-7 text-white/64">
+              Google currently needs a clearer beginner answer for “OpenClaw tutorial”. These blocks summarize the setup path, verification proof, and when to continue into the longer guide.
+            </p>
+          </div>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {serpAnswerBlocks.map((block) => (
+              <article key={block.title} className="rounded-2xl border border-white/10 bg-gray-950/55 p-5">
+                <h3 className="text-lg font-black text-white">{block.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-white/62">{block.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 pb-20">
+        <div className="mx-auto grid max-w-5xl gap-6 lg:grid-cols-[1fr_360px]">
+          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 sm:p-8">
+            <h2 className="text-2xl font-black">How this tutorial complements videos and docs</h2>
+            <p className="mt-3 leading-7 text-white/62">
+              The current SERP is dominated by broad tutorials and videos. OpenClaw101 should win the specific first-run job: choose a runtime, connect Telegram, copy one command, and verify the first reply.
+            </p>
+            <div className="mt-6 overflow-hidden rounded-2xl border border-white/10">
+              {videoComparisonRows.map(([source, strength, useThisPage]) => (
+                <div key={source} className="grid gap-3 border-b border-white/10 p-4 last:border-b-0 md:grid-cols-[190px_1fr_1fr]">
+                  <div className="text-sm font-black text-white">{source}</div>
+                  <div className="text-sm leading-6 text-white/62">{strength}</div>
+                  <div className="text-sm leading-6 text-emerald-100/75">{useThisPage}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <aside className="rounded-3xl border border-emerald-400/20 bg-emerald-400/10 p-6">
+            <h2 className="text-xl font-black text-emerald-100">Internal links to reduce dead ends</h2>
+            <div className="mt-4 space-y-3 text-sm leading-6 text-emerald-50/75">
+              <TutorialTrackedLink href="/day/2" source="comparison_rail" intent="day2_setup" className="block rounded-xl border border-emerald-300/15 bg-emerald-300/10 px-4 py-3 font-bold text-emerald-100 hover:bg-emerald-300/15">
+                Day 2 setup guide →
+              </TutorialTrackedLink>
+              <TutorialTrackedLink href="/resources" source="comparison_rail" intent="resource_hub" className="block rounded-xl border border-emerald-300/15 bg-emerald-300/10 px-4 py-3 font-bold text-emerald-100 hover:bg-emerald-300/15">
+                Resource hub →
+              </TutorialTrackedLink>
+              <TutorialTrackedLink href="/start#first-message" source="comparison_rail" intent="first_reply_check" className="block rounded-xl border border-emerald-300/15 bg-emerald-300/10 px-4 py-3 font-bold text-emerald-100 hover:bg-emerald-300/15">
+                First reply checklist →
+              </TutorialTrackedLink>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section className="px-4 pb-20">
         <div className="mx-auto grid max-w-5xl gap-6 lg:grid-cols-[1fr_360px]">
           <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 sm:p-8">
             <h2 className="text-2xl font-black">Which OpenClaw setup path should I choose?</h2>
@@ -402,6 +485,15 @@ export default function OpenClawTutorialPage() {
                   {card.label} →
                 </TrackedOutboundLink>
               </article>
+            ))}
+          </div>
+          <div className="mt-6 overflow-hidden rounded-2xl border border-emerald-300/15 bg-gray-950/35">
+            {conversionContractRows.map(([eventName, leadType, meaning]) => (
+              <div key={eventName} className="grid gap-2 border-b border-emerald-300/10 p-4 last:border-b-0 md:grid-cols-[180px_170px_1fr]">
+                <div className="font-mono text-xs text-emerald-100">{eventName}</div>
+                <div className="text-sm font-bold text-white">{leadType}</div>
+                <div className="text-sm leading-6 text-white/62">{meaning}</div>
+              </div>
             ))}
           </div>
         </div>
