@@ -435,13 +435,28 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackEvent(item.eventName, {
-                  locale,
-                  page: locale === 'zh' ? '/zh/start' : '/start',
-                  source: 'start_lead_proxy_card',
-                  target: item.href,
-                  utm_medium: locale === 'zh' ? 'zh_start_page' : 'start_page',
-                })}
+                onClick={() => {
+                  const page = locale === 'zh' ? '/zh/start' : '/start';
+                  const goalType = item.eventName === 'product_referral'
+                    ? 'product_referral'
+                    : item.eventName === 'course_click'
+                      ? 'course'
+                      : 'community';
+
+                  trackEvent(item.eventName, {
+                    locale,
+                    page,
+                    source: 'start_lead_proxy_card',
+                    target: item.href,
+                    utm_medium: locale === 'zh' ? 'zh_start_page' : 'start_page',
+                  });
+                  trackConversionGoal(goalType, {
+                    locale,
+                    page,
+                    source: 'start_lead_proxy_card',
+                    target: item.href,
+                  });
+                }}
                 className="rounded-2xl border border-white/10 bg-gray-950/55 p-5 transition hover:border-blue-200/35 hover:bg-blue-300/10"
               >
                 <div className="text-sm font-black text-blue-100">{item.title}</div>

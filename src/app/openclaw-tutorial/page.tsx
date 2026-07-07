@@ -5,9 +5,9 @@ import TrackedOutboundLink from '@/components/TrackedOutboundLink';
 import { SITE_NAME, SITE_URL, buildPageMetadata, getStructuredDataLanguage } from '@/lib/seo';
 
 export const metadata: Metadata = buildPageMetadata({
-  title: 'OpenClaw Tutorial: Beginner Setup Guide',
+  title: 'OpenClaw Tutorial: Install and First Reply Guide',
   description:
-    'OpenClaw tutorial for beginners: choose Windows or server, install OpenClaw, connect Telegram, verify the first assistant reply, and keep learning.',
+    'OpenClaw tutorial for beginners: install OpenClaw, connect Telegram, choose Windows or server, verify the first assistant reply, and continue the 7-day guide.',
   locale: 'en',
   enPath: '/openclaw-tutorial',
   zhPath: '/zh/start',
@@ -51,6 +51,11 @@ const faq = [
     question: 'Is this OpenClaw tutorial for beginners?',
     answer:
       'Yes. Start with /start if you only want the fastest first-run checklist, or follow the 7-day path when you want installation, skills, integrations, and automation in order.',
+  },
+  {
+    question: 'What is the fastest OpenClaw tutorial path?',
+    answer:
+      'The fastest OpenClaw tutorial path is: create a Telegram bot, choose native Windows or a small server, run the installer, finish QuickStart, then verify a real first assistant reply.',
   },
   {
     question: 'Do I need Linux or WSL2 to run OpenClaw?',
@@ -251,7 +256,7 @@ const jsonLd = {
       headline: 'OpenClaw Tutorial: Beginner Setup Guide',
       description: 'Install OpenClaw, connect Telegram, verify the first assistant reply, and continue through the 7-day learning path.',
       datePublished: '2026-06-30',
-      dateModified: '2026-07-06',
+      dateModified: '2026-07-07',
       inLanguage: getStructuredDataLanguage('en'),
       author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
       publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
@@ -283,13 +288,13 @@ export default function OpenClawTutorialPage() {
             ← OpenClaw 101
           </Link>
           <div className="inline-flex rounded-full border border-blue-400/25 bg-blue-400/10 px-4 py-2 text-sm font-semibold text-blue-200">
-            Complete beginner tutorial · checked 2026-07-06
+            Complete beginner tutorial · checked 2026-07-07
           </div>
           <h1 className="mt-8 max-w-4xl text-4xl font-black tracking-tight sm:text-6xl">
             OpenClaw Tutorial: Install, Connect Telegram, Verify the First Assistant Reply
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-white/72 sm:text-xl">
-            This OpenClaw tutorial is built for beginners who want the fastest reliable first run: choose a runtime, connect Telegram, install OpenClaw, and verify the first assistant reply before continuing into the 7-day course.
+            This OpenClaw tutorial is built for beginners who want the fastest reliable first run: install OpenClaw, choose a runtime, connect Telegram, and verify the first assistant reply before continuing into the 7-day course.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <TutorialTrackedLink href="/start" source="hero_primary" intent="start_checklist" className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-4 font-bold text-white transition hover:bg-blue-500">
@@ -328,7 +333,7 @@ export default function OpenClawTutorialPage() {
             <div className="rounded-3xl border border-emerald-400/20 bg-emerald-400/10 p-6">
               <h2 className="text-xl font-black text-emerald-100">Fast answer</h2>
               <p className="mt-3 text-sm leading-6 text-emerald-50/75">
-                If you already know your runtime and have a Telegram bot token, go directly to /start. If not, read this page first and choose the right path.
+                If you already know your runtime and have a Telegram bot token, go directly to /start. If not, use this OpenClaw tutorial first and choose the right path.
               </p>
             </div>
             <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">

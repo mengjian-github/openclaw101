@@ -1,0 +1,58 @@
+{
+  "schema_version": "openclaw101.business_lead_proxy.v1",
+  "site_slug": "openclaw101",
+  "source_url": "https://openclaw101.dev/openclaw-tutorial",
+  "source_file": "/root/projects/openclaw101/public/data/openclaw101-lead-proxy.json",
+  "checked_at": "2026-07-07T02:12:00Z",
+  "conversion_contract_version": "openclaw101-lead-proxy-v1",
+  "paid_scope": "NO_GO_free_tutorial_asset_no_checkout",
+  "lead_proxy_total": null,
+  "lead_proxy_by_type": {
+    "course_click": {
+      "event_name": "course_click",
+      "goal_type": "course",
+      "primary_surfaces": ["/openclaw-tutorial", "/start", "/zh/start", "footer"],
+      "meaning": "Reader wants a guided OpenClaw first-assistant build after tutorial intent."
+    },
+    "community_click": {
+      "event_name": "community_click",
+      "goal_type": "community",
+      "primary_surfaces": ["/openclaw-tutorial", "/start", "/zh/start", "footer"],
+      "meaning": "Reader needs troubleshooting or community help after first-run attempt."
+    },
+    "product_referral": {
+      "event_name": "product_referral",
+      "goal_type": "product_referral",
+      "primary_surfaces": ["/openclaw-tutorial", "/start", "/zh/start", "footer"],
+      "meaning": "Reader is ready to browse skills, workflows, or adjacent product catalogs."
+    },
+    "copy_code": {
+      "event_name": "copy_code",
+      "goal_type": "tutorial_progress",
+      "primary_surfaces": ["/day/*", "/zh/day/*"],
+      "meaning": "Reader copied a tutorial command or code block."
+    },
+    "copy_install_command": {
+      "event_name": "copy_install_command",
+      "goal_type": "tutorial_progress",
+      "primary_surfaces": ["/start", "/zh/start"],
+      "meaning": "Reader copied the first-run install command."
+    },
+    "first_run_verified": {
+      "event_name": "first_run_verified",
+      "goal_type": "first_run_verified",
+      "primary_surfaces": ["/start", "/zh/start"],
+      "meaning": "Reader marked the first Telegram assistant reply as verified."
+    }
+  },
+  "events_verified_in_code": [
+    "course_click",
+    "community_click",
+    "product_referral",
+    "copy_code",
+    "copy_install_command",
+    "first_run_verified",
+    "conversion_goal"
+  ],
+  "atlas_notes": "Use Plausible/GA4 event counts to fill lead_proxy_total and lead_proxy_by_type during data closeout. Keep revenue/orders at 0 for this free tutorial asset unless a future paid contract is approved."
+}
