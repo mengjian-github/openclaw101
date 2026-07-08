@@ -3,7 +3,7 @@
   "site_slug": "openclaw101",
   "source_url": "https://openclaw101.dev/openclaw-tutorial",
   "source_file": "/root/projects/openclaw101/public/data/openclaw101-lead-proxy.json",
-  "checked_at": "2026-07-07T02:12:00Z",
+  "checked_at": "2026-07-08T01:53:45Z",
   "conversion_contract_version": "openclaw101-lead-proxy-v1",
   "paid_scope": "NO_GO_free_tutorial_asset_no_checkout",
   "lead_proxy_total": null,
@@ -43,6 +43,24 @@
       "goal_type": "first_run_verified",
       "primary_surfaces": ["/start", "/zh/start"],
       "meaning": "Reader marked the first Telegram assistant reply as verified."
+    },
+    "resource_search_query": {
+      "event_name": "resource_search_query",
+      "goal_type": "tutorial_progress",
+      "primary_surfaces": ["/resources", "/zh/resources"],
+      "meaning": "Reader used resource-hub search and received at least one result."
+    },
+    "resource_no_results": {
+      "event_name": "resource_no_results",
+      "goal_type": "tutorial_progress",
+      "primary_surfaces": ["/resources", "/zh/resources"],
+      "meaning": "Reader searched the resource hub but found no matching item; use as content-gap evidence."
+    },
+    "resource_recovery_click": {
+      "event_name": "resource_recovery_click",
+      "goal_type": "tutorial_progress",
+      "primary_surfaces": ["/resources", "/zh/resources"],
+      "meaning": "Reader clicked a recovery path after landing on the resource hub from the legacy Jellyfish redirect."
     }
   },
   "events_verified_in_code": [
@@ -52,7 +70,10 @@
     "copy_code",
     "copy_install_command",
     "first_run_verified",
-    "conversion_goal"
+    "conversion_goal",
+    "resource_search_query",
+    "resource_no_results",
+    "resource_recovery_click"
   ],
   "atlas_notes": "Use Plausible/GA4 event counts to fill lead_proxy_total and lead_proxy_by_type during data closeout. Keep revenue/orders at 0 for this free tutorial asset unless a future paid contract is approved."
 }

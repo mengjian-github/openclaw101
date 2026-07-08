@@ -27,6 +27,10 @@ export type AnalyticsEventName =
   | 'day2_guide_click'
   | 'start_setup_completed'
   | 'resource_click'
+  | 'resource_search_focus'
+  | 'resource_search_query'
+  | 'resource_no_results'
+  | 'resource_recovery_click'
   | 'utm_copy_click';
 
 interface AnalyticsEventProperties {

@@ -36,6 +36,13 @@ const texts = {
     contributeDesc: 'This is an open source project. Edit',
     contributeDesc2: ', submit a PR, and help more people.',
     submitPR: 'Submit PR',
+    legacyTitle: 'Landed here from an old Jellyfish link?',
+    legacyDesc: 'That legacy entry now points to this resource hub. Pick the shortest path below instead of bouncing back to search.',
+    legacyCards: [
+      ['OpenClaw tutorial', 'Install, connect Telegram, and verify the first reply.', '/openclaw-tutorial', 'openclaw_tutorial'],
+      ['10-minute checklist', 'Copy the install command and track first-run progress.', '/start', 'start_checklist'],
+      ['Curated resources', 'Search official docs, cloud guides, videos, and community tools.', '#resources-list', 'resources_list'],
+    ],
     footerMadeBy: 'Made with 🐈‍⬛ by',
     catDescriptions: {
       official: 'First-hand materials from the OpenClaw team',
@@ -72,6 +79,13 @@ const texts = {
     contributeDesc: '这是一个开源项目。编辑',
     contributeDesc2: '，提一个 PR，就能帮助更多人。',
     submitPR: '提交 PR',
+    legacyTitle: '从旧 Jellyfish 链接进来的？',
+    legacyDesc: '旧入口已回流到资源聚合页。先选下面的明确路径，避免在资源列表里来回跳出。',
+    legacyCards: [
+      ['OpenClaw 初学者教程', '安装、连接 Telegram，并验证第一条真实回复。', '/zh/start', 'openclaw_tutorial'],
+      ['10 分钟检查清单', '复制安装命令，并跟踪首次运行进度。', '/zh/start', 'start_checklist'],
+      ['资源聚合列表', '搜索官方文档、云部署教程、视频和社区工具。', '#resources-list', 'resources_list'],
+    ],
     footerMadeBy: 'Made with 🐈‍⬛ by',
     catDescriptions: {
       official: '来自 OpenClaw 团队的第一手资料',
@@ -309,6 +323,25 @@ export default function ResourcesPage({ locale }: ResourcesPageProps) {
     : [];
 
   useEffect(() => {
+    const query = search.trim();
+    if (!query) {
+      return;
+    }
+
+    const timeout = window.setTimeout(() => {
+      trackEvent(searchResults.length === 0 ? 'resource_no_results' : 'resource_search_query', {
+        locale,
+        page: locale === 'zh' ? '/zh/resources' : '/resources',
+        source: 'resource_search',
+        query,
+        result_count: searchResults.length,
+      });
+    }, 600);
+
+    return () => window.clearTimeout(timeout);
+  }, [locale, search, searchResults.length]);
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -377,7 +410,7 @@ export default function ResourcesPage({ locale }: ResourcesPageProps) {
                     placeholder={t.searchPlaceholder}
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    onFocus={() => trackEvent('resource_click', {
+                    onFocus={() => trackEvent('resource_search_focus', {
                       locale,
                       page: locale === 'zh' ? '/zh/resources' : '/resources',
                       source: 'resource_search_focus',
@@ -454,8 +487,45 @@ export default function ResourcesPage({ locale }: ResourcesPageProps) {
         </div>
       </div>
 
+      <section className="bg-white border-b border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 md:px-8 py-6">
+          <div className="rounded-2xl border border-blue-100 bg-blue-50/70 p-5 md:p-6">
+            <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+              <div className="max-w-2xl">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-500">Legacy route recovery</p>
+                <h2 className="mt-2 text-xl font-black text-gray-950">{t.legacyTitle}</h2>
+                <p className="mt-2 text-sm leading-6 text-gray-600">{t.legacyDesc}</p>
+              </div>
+              <span className="inline-flex w-fit rounded-full border border-blue-200 bg-white px-3 py-1.5 text-xs font-bold text-blue-700">
+                /jellyfish → /resources
+              </span>
+            </div>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              {t.legacyCards.map(([title, body, href, intent]) => (
+                <a
+                  key={intent}
+                  href={href}
+                  onClick={() => trackEvent('resource_recovery_click', {
+                    locale,
+                    page: locale === 'zh' ? '/zh/resources' : '/resources',
+                    source: 'legacy_jellyfish_recovery',
+                    target: href,
+                    intent,
+                  })}
+                  className="rounded-xl border border-blue-100 bg-white p-4 transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-sm"
+                >
+                  <h3 className="text-sm font-black text-gray-950">{title}</h3>
+                  <p className="mt-1.5 text-xs leading-5 text-gray-500">{body}</p>
+                  <div className="mt-3 text-xs font-bold text-blue-600">Open →</div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── main content ── */}
-      <div ref={mainRef} className="max-w-5xl mx-auto px-4 md:px-8 py-10">
+      <div id="resources-list" ref={mainRef} className="max-w-5xl mx-auto px-4 md:px-8 py-10">
         {search ? (
           <>
             <p className="text-sm text-gray-500 mb-6">
