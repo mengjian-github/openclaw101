@@ -69,7 +69,7 @@ export default function Hero({ locale, dict }: HeroProps) {
             isZh ? 'Telegram 首条回复' : 'Telegram first reply',
             '354k+ GitHub stars',
           ].map((chip) => (
-            <span key={chip} className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-2 text-[11px] font-semibold text-white/72">
+            <span key={chip} className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-2 text-[11px] font-semibold text-white/72 cursor-default select-none">
               ✓ {chip}
             </span>
           ))}
@@ -133,8 +133,8 @@ export default function Hero({ locale, dict }: HeroProps) {
           </a>
         </div>
 
-        {/* Stats */}
-        <div className="mt-8 sm:mt-16 mx-auto max-w-md grid grid-cols-2 gap-y-4 gap-x-6 sm:hidden">
+        {/* Stats — non-interactive, avoid dead clicks */}
+        <div className="mt-8 sm:mt-16 mx-auto max-w-md grid grid-cols-2 gap-y-4 gap-x-6 sm:hidden cursor-default select-none">
           <div className="text-center">
             <div className="text-xl font-bold" style={{ color: '#fff' }}>{stats.totalResources}+</div>
             <div className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>{isZh ? '教程收录' : 'Tutorials'}</div>
@@ -154,7 +154,7 @@ export default function Hero({ locale, dict }: HeroProps) {
         </div>
 
         {/* Desktop/tablet: inline bar */}
-        <div className="hidden sm:mt-16 sm:flex items-center justify-center gap-8 md:gap-12">
+        <div className="hidden sm:mt-16 sm:flex items-center justify-center gap-8 md:gap-12 cursor-default select-none">
           <div className="text-center">
             <div className="text-2xl md:text-3xl font-bold" style={{ color: '#fff' }}>{stats.totalResources}+</div>
             <div className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>{isZh ? '教程收录' : 'Tutorials'}</div>
@@ -176,12 +176,17 @@ export default function Hero({ locale, dict }: HeroProps) {
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="mt-12 animate-bounce">
+        {/* Scroll indicator — clickable to reduce dead clicks */}
+        <a
+          href="#what-is"
+          onClick={() => trackEvent('hero_scroll_indicator_click', { locale, page: isZh ? '/zh' : '/' })}
+          className="mt-12 inline-block animate-bounce cursor-pointer"
+          aria-label={isZh ? '向下滚动查看介绍' : 'Scroll down to learn more'}
+        >
           <svg className="w-6 h-6 mx-auto" style={{ color: 'rgba(255,255,255,0.3)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
-        </div>
+        </a>
       </div>
     </section>
   );

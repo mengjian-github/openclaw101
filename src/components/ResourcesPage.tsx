@@ -423,8 +423,8 @@ export default function ResourcesPage({ locale }: ResourcesPageProps) {
               </div>
             </div>
 
-            {/* Right: floating cards */}
-            <div className="hidden lg:block relative w-80 h-72 shrink-0">
+            {/* Right: decorative floating cards (non-interactive) */}
+            <div className="hidden lg:block relative w-80 h-72 shrink-0 pointer-events-none select-none">
               <div className="absolute top-2 right-0 w-56 rounded-xl p-4 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500" style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)', backdropFilter: 'blur(12px)' }}>
                 <div className="flex items-center gap-2.5 mb-2">
                   <div className="w-7 h-7 rounded-lg flex items-center justify-center text-sm" style={{ background: 'rgba(255, 106, 0, 0.2)' }}>☁️</div>

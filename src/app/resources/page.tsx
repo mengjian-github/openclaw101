@@ -18,18 +18,30 @@ export const metadata: Metadata = buildPageMetadata({
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'CollectionPage',
-  '@id': `${SITE_URL}/resources#collection`,
-  name: 'OpenClaw Resource Hub',
-  url: `${SITE_URL}/resources`,
-  description:
-    'Curated OpenClaw tutorials, deployment guides, videos, and integration resources in one place.',
-  inLanguage: getStructuredDataLanguage('en'),
-  isPartOf: {
-    '@type': 'WebSite',
-    name: SITE_NAME,
-    url: SITE_URL,
-  },
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${SITE_URL}/resources#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'OpenClaw 101', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'Resources', item: `${SITE_URL}/resources` },
+      ],
+    },
+    {
+      '@type': 'CollectionPage',
+      '@id': `${SITE_URL}/resources#collection`,
+      name: 'OpenClaw Resource Hub',
+      url: `${SITE_URL}/resources`,
+      description:
+        'Curated OpenClaw tutorials, deployment guides, videos, and integration resources in one place.',
+      inLanguage: getStructuredDataLanguage('en'),
+      isPartOf: {
+        '@type': 'WebSite',
+        name: SITE_NAME,
+        url: SITE_URL,
+      },
+    },
+  ],
 };
 
 export default function EnResourcesPage() {

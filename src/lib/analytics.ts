@@ -31,7 +31,8 @@ export type AnalyticsEventName =
   | 'resource_search_query'
   | 'resource_no_results'
   | 'resource_recovery_click'
-  | 'utm_copy_click';
+  | 'utm_copy_click'
+  | 'hero_scroll_indicator_click';
 
 interface AnalyticsEventProperties {
   [key: string]: string | number | boolean | undefined;
@@ -50,15 +51,28 @@ export function trackEvent(eventName: AnalyticsEventName, props: AnalyticsEventP
     return;
   }
 
-  window.plausible?.(eventName, { props });
-  window.gtag?.('event', eventName, {
-    ...props,
-    event_category: props.event_category || 'first_run_funnel',
-  });
+  try {
+    window.plausible?.(eventName, { props });
+  } catch {
+    // Plausible not loaded or blocked; fail silently to avoid breaking UX
+  }
 
-  if (window.clarity) {
-    window.clarity('event', eventName);
-    window.clarity('set', 'last_first_run_event', eventName);
+  try {
+    window.gtag?.('event', eventName, {
+      ...props,
+      event_category: props.event_category || 'first_run_funnel',
+    });
+  } catch {
+    // GA4 not loaded or blocked; fail silently
+  }
+
+  try {
+    if (window.clarity) {
+      window.clarity('event', eventName);
+      window.clarity('set', 'last_first_run_event', eventName);
+    }
+  } catch {
+    // Clarity not loaded or blocked; fail silently
   }
 }
 
@@ -66,10 +80,14 @@ export function trackConversionGoal(
   goalType: 'course' | 'community' | 'consulting' | 'product_referral' | 'first_run_verified' | 'tutorial_progress',
   props: AnalyticsEventProperties = {},
 ) {
-  trackEvent('conversion_goal', {
-    ...props,
-    event_category: 'business_lead_proxy',
-    goal_type: goalType,
-    conversion_contract_version: 'openclaw101-lead-proxy-v1',
-  });
+  try {
+    trackEvent('conversion_goal', {
+      ...props,
+      event_category: 'business_lead_proxy',
+      goal_type: goalType,
+      conversion_contract_version: 'openclaw101-lead-proxy-v1',
+    });
+  } catch {
+    // Conversion tracking should never block the funnel
+  }
 }

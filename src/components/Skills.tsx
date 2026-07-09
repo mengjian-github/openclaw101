@@ -367,20 +367,18 @@ export default function Skills({ locale, dict }: SkillsProps) {
               </div>
               <div className="space-y-1.5">
                 {cat.skills.map((skill, j) => (
-                  <a
+                  <div
                     key={j}
-                    href={`https://github.com/openclaw/skills/tree/main/skills`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between px-2.5 py-1.5 bg-white text-xs rounded-lg border border-gray-100 hover:border-primary/30 hover:bg-primary/5 transition-all duration-200 group"
+                    className="flex items-center justify-between px-2.5 py-1.5 bg-white text-xs rounded-lg border border-gray-100 cursor-default"
+                    title={skill.desc}
                   >
-                    <span className="font-mono text-gray-700 group-hover:text-primary truncate">
+                    <span className="font-mono text-gray-700 truncate">
                       {skill.name}
                     </span>
                     <span className="text-gray-400 text-[10px] ml-2 hidden sm:inline">
                       {skill.desc}
                     </span>
-                  </a>
+                  </div>
                 ))}
               </div>
             </div>

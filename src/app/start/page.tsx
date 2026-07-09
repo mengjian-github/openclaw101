@@ -13,21 +13,33 @@ export const metadata: Metadata = buildPageMetadata({
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'HowTo',
-  '@id': `${SITE_URL}/start#howto`,
-  name: 'Build your first OpenClaw AI assistant in 10 minutes',
-  description: 'A fast onboarding route for installing OpenClaw and sending the first message to your own AI assistant.',
-  inLanguage: getStructuredDataLanguage('en'),
-  isPartOf: {
-    '@type': 'WebSite',
-    name: SITE_NAME,
-    url: SITE_URL,
-  },
-  step: [
-    { '@type': 'HowToStep', name: 'Choose a runtime environment', url: `${SITE_URL}/start#runtime` },
-    { '@type': 'HowToStep', name: 'Prepare model and Telegram access', url: `${SITE_URL}/start#access` },
-    { '@type': 'HowToStep', name: 'Run the install command', url: `${SITE_URL}/start#install` },
-    { '@type': 'HowToStep', name: 'Send the first message', url: `${SITE_URL}/start#first-message` },
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${SITE_URL}/start#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'OpenClaw 101', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: '10-minute setup', item: `${SITE_URL}/start` },
+      ],
+    },
+    {
+      '@type': 'HowTo',
+      '@id': `${SITE_URL}/start#howto`,
+      name: 'Build your first OpenClaw AI assistant in 10 minutes',
+      description: 'A fast onboarding route for installing OpenClaw and sending the first message to your own AI assistant.',
+      inLanguage: getStructuredDataLanguage('en'),
+      isPartOf: {
+        '@type': 'WebSite',
+        name: SITE_NAME,
+        url: SITE_URL,
+      },
+      step: [
+        { '@type': 'HowToStep', name: 'Choose a runtime environment', url: `${SITE_URL}/start#runtime` },
+        { '@type': 'HowToStep', name: 'Prepare model and Telegram access', url: `${SITE_URL}/start#access` },
+        { '@type': 'HowToStep', name: 'Run the install command', url: `${SITE_URL}/start#install` },
+        { '@type': 'HowToStep', name: 'Send the first message', url: `${SITE_URL}/start#first-message` },
+      ],
+    },
   ],
 };
 

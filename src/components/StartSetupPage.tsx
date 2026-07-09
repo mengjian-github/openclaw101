@@ -342,10 +342,17 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
                   trackConversionGoal('first_run_verified', { locale, page: '/start', source: 'checklist_button' });
                   trackEvent('start_setup_completed', { locale, page: '/start', source: 'checklist_button' });
                 }}
-                className={`mt-4 w-full rounded-xl px-4 py-3 text-sm font-bold text-white transition ${canVerifyFirstReply ? 'bg-blue-600 hover:bg-blue-500' : 'border border-blue-300/20 bg-blue-500/20 hover:bg-blue-500/30'}`}
+                aria-disabled={!canVerifyFirstReply}
+                className={`mt-4 w-full rounded-xl px-4 py-3 text-sm font-bold text-white transition ${canVerifyFirstReply ? 'bg-blue-600 hover:bg-blue-500' : 'border border-blue-300/20 bg-blue-500/20 cursor-not-allowed'}`}
               >
                 {locale === 'zh' ? '我已经收到第一条回复' : 'I got the first reply'}
               </button>
+              <p className={`mt-2 text-xs leading-5 ${canVerifyFirstReply ? 'text-blue-100/70' : 'text-blue-200/80'}`}>
+                {canVerifyFirstReply
+                  ? (locale === 'zh' ? '检查清单已完成，现在可以标记第一条回复为已验证。' : 'Checklist complete. You can now mark the first reply as verified.')
+                  : (locale === 'zh' ? `先勾选上面 ${t.checklist.length} 项，再点此按钮，避免将未完成安装误记为完成。` : `Check all ${t.checklist.length} items first, then click this button to avoid counting an incomplete install as done.`)
+                }
+              </p>
               {!canVerifyFirstReply && verificationHint ? (
                 <p className="mt-2 text-xs leading-5 text-blue-100/70">
                   {locale === 'zh'
