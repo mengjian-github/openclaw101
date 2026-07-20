@@ -32,7 +32,8 @@ export type AnalyticsEventName =
   | 'resource_no_results'
   | 'resource_recovery_click'
   | 'utm_copy_click'
-  | 'hero_scroll_indicator_click';
+  | 'hero_scroll_indicator_click'
+  | 'botfather_click';
 
 interface AnalyticsEventProperties {
   [key: string]: string | number | boolean | undefined;

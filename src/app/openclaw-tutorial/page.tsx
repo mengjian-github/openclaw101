@@ -167,6 +167,16 @@ const conversionContractRows = [
 ];
 
 
+const dayPathLinks = [
+  { day: 1, title: 'Meet OpenClaw' },
+  { day: 2, title: 'Build Your Assistant in 10 Minutes' },
+  { day: 3, title: 'Give Your Assistant a Soul' },
+  { day: 4, title: 'Connect Your Digital Life' },
+  { day: 5, title: 'Unlock the Skill Tree' },
+  { day: 6, title: 'Make Your Assistant Work Proactively' },
+  { day: 7, title: 'Advanced Techniques & Future Outlook' },
+];
+
 const nextStepCards = [
   {
     title: 'Need the shortest route?',
@@ -367,6 +377,28 @@ export default function OpenClawTutorialPage() {
               <article key={section.title} className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
                 <h2 className="text-xl font-black text-white">{section.title}</h2>
                 <p className="mt-3 leading-7 text-white/66">{section.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 pb-20">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-8 max-w-3xl">
+            <h2 className="text-3xl font-black">Continue with the 7-day OpenClaw course</h2>
+            <p className="mt-3 leading-7 text-white/62">
+              After the first reply works, follow the full path in order. Each day builds on the previous setup: soul design, digital life access, skills, proactive jobs, and automation.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {dayPathLinks.map((item) => (
+              <article key={item.day} className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+                <div className="text-xs font-bold uppercase tracking-[0.16em] text-emerald-200/75">Day {item.day}</div>
+                <h3 className="mt-2 text-base font-black text-white">{item.title}</h3>
+                <TutorialTrackedLink href={`/day/${item.day}`} eventName="tutorial_step_click" source="day_path_grid" intent={`day_${item.day}_guide`} className="mt-4 inline-flex text-sm font-bold text-blue-300 hover:text-blue-200">
+                  Open Day {item.day} →
+                </TutorialTrackedLink>
               </article>
             ))}
           </div>

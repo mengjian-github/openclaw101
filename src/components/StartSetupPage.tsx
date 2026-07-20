@@ -48,6 +48,7 @@ const copy = {
     ],
     commandLabel: 'Install command',
     command: 'curl -fsSL https://openclaw.ai/install.sh | bash',
+    botfatherCta: 'Open @BotFather in Telegram ↗',
     trust: ['Native Windows supported', 'QuickStart wizard', 'Telegram first channel', 'No platform lock-in'],
     safetyTitle: 'Do not paste secrets into public chats',
     safety:
@@ -92,6 +93,7 @@ const copy = {
     ],
     commandLabel: '安装命令',
     command: 'curl -fsSL https://openclaw.ai/install.sh | bash',
+    botfatherCta: '打开 Telegram @BotFather ↗',
     trust: ['支持原生 Windows', 'QuickStart 向导', 'Telegram 首选通道', '不绑定平台'],
     safetyTitle: '不要把 secrets 发到公开聊天里',
     safety:
@@ -247,6 +249,10 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
               {t.secondaryCta}
             </a>
           </div>
+          <div className="mt-6 rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-4 lg:hidden">
+            <h2 className="text-base font-black text-emerald-100">{t.noteTitle}</h2>
+            <p className="mt-2 text-sm leading-6 text-emerald-50/75">{t.note}</p>
+          </div>
           <div className="mt-8 grid gap-3 sm:grid-cols-4">
             {t.trust.map((item) => (
               <div key={item} className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white/70">
@@ -275,6 +281,24 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
                     <div>
                       <h3 className="font-bold text-white">{title}</h3>
                       <p className="mt-2 text-sm leading-6 text-white/62">{desc}</p>
+                      {id === 'access' ? (
+                        <a
+                          href="https://t.me/BotFather"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() =>
+                            trackEvent('botfather_click', {
+                              locale,
+                              page: '/start',
+                              source: 'access_step',
+                              target: 'https://t.me/BotFather',
+                            })
+                          }
+                          className="mt-3 inline-flex items-center gap-1 rounded-lg border border-sky-300/25 bg-sky-300/10 px-3 py-1.5 text-xs font-bold text-sky-100 transition hover:bg-sky-300/15"
+                        >
+                          {t.botfatherCta}
+                        </a>
+                      ) : null}
                       <div className="mt-3 inline-flex rounded-full border border-white/10 px-3 py-1.5 text-xs font-bold text-blue-200">
                         {locale === 'zh' ? `第 ${number} 步` : `Step ${number}`}
                       </div>
@@ -286,7 +310,7 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
           </div>
 
           <aside className="space-y-6">
-            <div className="rounded-3xl border border-emerald-400/20 bg-emerald-400/10 p-6">
+            <div className="hidden rounded-3xl border border-emerald-400/20 bg-emerald-400/10 p-6 lg:block">
               <h2 className="text-xl font-black text-emerald-100">{t.noteTitle}</h2>
               <p className="mt-3 text-sm leading-6 text-emerald-50/75">{t.note}</p>
             </div>
