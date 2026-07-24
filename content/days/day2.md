@@ -147,7 +147,18 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 - 有 Claude 订阅的选 **setup-token 接入**（不需要 API Key，不产生额外费用）
 - 没有订阅的选 **Anthropic API Key**（按量付费）
 
-> 💡 **支持的模型**：除了 Anthropic Claude Opus 4.5（推荐），还支持 OpenAI GPT-5.2、Google Gemini 3 Pro、Moonshot（Kimi K2.5）、MiniMax M2.1、Z.AI（GLM-4.7）、xAI（Grok）、Qwen、Venice、OpenRouter 等 10+ 家模型。但 Claude 是第一选择。有 Claude 订阅的同学用 setup-token 接入最方便（不需要 API Key，不产生额外费用）。
+> 💡 **支持的模型**：除了 Anthropic Claude Opus 4.5（推荐），还支持 OpenAI GPT-5.2、Google Gemini 3 Pro、Moonshot（Kimi K2.5）、MiniMax M3 和 M2.7、Z.AI（GLM-4.7）、xAI（Grok）、Qwen、Venice、OpenRouter 等 10+ 家模型。但 Claude 是第一选择。有 Claude 订阅的同学用 setup-token 接入最方便（不需要 API Key，不产生额外费用）。
+
+### MiniMax 当前配置参考
+
+接入 MiniMax 时，根据所需能力选择对应的模型 ID：
+
+| 模型 ID | 上下文 | 输入 | Thinking | 每 100 万 Token 价格（美元） |
+| --- | ---: | --- | --- | --- |
+| `MiniMax-M3` | 1,000,000 Token | 文本、图片、视频 | 自适应或关闭 | 输入 $0.60，输出 $2.40，缓存读取 $0.12 |
+| `MiniMax-M2.7` | 204,800 Token | 文本 | 始终开启 | 输入 $0.30，输出 $1.20，缓存读取 $0.06，缓存写入 $0.375 |
+
+全球英文部署可使用 OpenAI 兼容端点 `https://api.minimax.io/v1` 或 Anthropic 兼容端点 `https://api.minimax.io/anthropic`；中国大陆部署使用 `https://api.minimaxi.com/v1` 或 `https://api.minimaxi.com/anthropic`。具体接入方式请参考 [全球 MiniMax 文档](https://platform.minimax.io/docs) 或 [中国 MiniMax 文档](https://platform.minimaxi.com/docs)。
 
 ![选择 Model Provider](/images/days/day2/model-provider.jpg)
 
