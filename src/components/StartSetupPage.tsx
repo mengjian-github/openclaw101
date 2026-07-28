@@ -152,6 +152,7 @@ const leadOptions = {
 
 export default function StartSetupPage({ locale }: StartSetupPageProps) {
   const t = copy[locale];
+  const pagePath = locale === 'zh' ? '/zh/start' : '/start';
   const [copied, setCopied] = useState(false);
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
   const [verificationHint, setVerificationHint] = useState(false);
@@ -165,17 +166,17 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
 
     trackEvent('first_run_checklist_complete', {
       locale,
-      page: '/start',
+      page: pagePath,
       total_count: t.checklist.length,
     });
-  }, [completedCount, locale, t.checklist.length]);
+  }, [completedCount, locale, pagePath, t.checklist.length]);
 
   const copyInstallCommand = async () => {
     try {
       await navigator.clipboard.writeText(t.command);
-      trackEvent('install_command_copy', { locale, page: '/start', source: 'start_page' });
-      trackEvent('copy_install_command', { locale, page: '/start', source: 'start_page' });
-      trackEvent('first_run_install_copy', { locale, page: '/start', source: 'start_page' });
+      trackEvent('install_command_copy', { locale, page: pagePath, source: 'start_page' });
+      trackEvent('copy_install_command', { locale, page: pagePath, source: 'start_page' });
+      trackEvent('first_run_install_copy', { locale, page: pagePath, source: 'start_page' });
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -189,13 +190,13 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
       const nextItems = nextChecked ? [...current, item] : current.filter((value) => value !== item);
       trackEvent('checklist_item_toggle', {
         locale,
-        page: '/start',
+        page: pagePath,
         item,
         checked: nextChecked,
       });
       trackEvent('first_run_checklist_progress', {
         locale,
-        page: '/start',
+        page: pagePath,
         item,
         checked: nextChecked,
         checked_count: nextItems.length,
@@ -234,8 +235,8 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
             <a
               href={t.guideHref}
               onClick={() => {
-                trackEvent('start_cta_click', { locale, page: '/start', target: t.guideHref });
-                trackEvent('day2_guide_click', { locale, page: '/start', target: t.guideHref });
+                trackEvent('start_cta_click', { locale, page: pagePath, target: t.guideHref });
+                trackEvent('day2_guide_click', { locale, page: pagePath, target: t.guideHref });
               }}
               className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-4 font-bold text-white transition hover:bg-blue-500"
             >
@@ -243,7 +244,7 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
             </a>
             <a
               href={t.pathHref}
-              onClick={() => trackEvent('start_cta_click', { locale, page: '/start', target: t.pathHref })}
+              onClick={() => trackEvent('start_cta_click', { locale, page: pagePath, target: t.pathHref })}
               className="inline-flex items-center justify-center rounded-xl border border-white/15 px-6 py-4 font-bold text-white/80 transition hover:border-white/35 hover:text-white"
             >
               {t.secondaryCta}
@@ -289,7 +290,7 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
                           onClick={() =>
                             trackEvent('botfather_click', {
                               locale,
-                              page: '/start',
+                              page: pagePath,
                               source: 'access_step',
                               target: 'https://t.me/BotFather',
                             })
@@ -353,7 +354,7 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
                     setVerificationHint(true);
                     trackEvent('first_run_verified_attempt_blocked', {
                       locale,
-                      page: '/start',
+                      page: pagePath,
                       source: 'checklist_button',
                       checked_count: completedCount,
                       total_count: t.checklist.length,
@@ -361,10 +362,10 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
                     return;
                   }
                   setVerificationHint(false);
-                  trackEvent('first_reply_verified_click', { locale, page: '/start', source: 'checklist_button' });
-                  trackEvent('first_run_verified', { locale, page: '/start', source: 'checklist_button' });
-                  trackConversionGoal('first_run_verified', { locale, page: '/start', source: 'checklist_button' });
-                  trackEvent('start_setup_completed', { locale, page: '/start', source: 'checklist_button' });
+                  trackEvent('first_reply_verified_click', { locale, page: pagePath, source: 'checklist_button' });
+                  trackEvent('first_run_verified', { locale, page: pagePath, source: 'checklist_button' });
+                  trackConversionGoal('first_run_verified', { locale, page: pagePath, source: 'checklist_button' });
+                  trackEvent('start_setup_completed', { locale, page: pagePath, source: 'checklist_button' });
                 }}
                 aria-disabled={!canVerifyFirstReply}
                 className={`mt-4 w-full rounded-xl px-4 py-3 text-sm font-bold text-white transition ${canVerifyFirstReply ? 'bg-blue-600 hover:bg-blue-500' : 'border border-blue-300/20 bg-blue-500/20 cursor-not-allowed'}`}
@@ -395,7 +396,7 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
                     onClick={() =>
                       trackEvent('first_run_help_click', {
                         locale,
-                        page: '/start',
+                        page: pagePath,
                         target,
                         source: 'verification_proof',
                       })
@@ -433,7 +434,7 @@ export default function StartSetupPage({ locale }: StartSetupPageProps) {
               <a
                 key={id}
                 href={id === 'process' ? '#trouble' : `#${id === 'token' || id === 'allowlist' || id === 'model' ? 'access' : 'install'}`}
-                onClick={() => trackEvent('first_run_help_click', { locale, page: '/start', source: 'rescue_rail', target: id })}
+                onClick={() => trackEvent('first_run_help_click', { locale, page: pagePath, source: 'rescue_rail', target: id })}
                 className="rounded-2xl border border-white/10 bg-gray-900/70 p-5 transition hover:border-blue-300/35 hover:bg-blue-400/10"
               >
                 <div className="text-sm font-black text-blue-200">{title}</div>
