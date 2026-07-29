@@ -306,7 +306,7 @@ export const resources: Resource[] = [
   },
   {
     title: 'MiniMax — Build AI Assistant on Telegram',
-    desc: 'Connect MiniMax M2.1 to Telegram via OpenClaw',
+    desc: 'Connect MiniMax M3 or M2.7 to Telegram via OpenClaw',
     url: 'https://platform.minimax.io/docs/solutions/moltbot',
     source: 'MiniMax',
     lang: 'en',

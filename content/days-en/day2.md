@@ -147,7 +147,18 @@ The wizard will guide you through all configuration step by step, just follow th
 - If you have a Claude subscription, choose **setup-token connection** (no API Key needed, no extra charges)
 - If no subscription, choose **Anthropic API Key** (pay as you go)
 
-> 💡 **Supported Models**: Besides Anthropic Claude Opus 4.5 (recommended), it also supports OpenAI GPT-5.2, Google Gemini 3 Pro, Moonshot (Kimi K2.5), MiniMax M2.1, Z.AI (GLM-4.7), xAI (Grok), Qwen, Venice, OpenRouter, and 10+ other providers. But Claude is the first choice. Those with Claude subscriptions should use setup-token connection for convenience (no API Key needed, no extra charges).
+> 💡 **Supported Models**: Besides Anthropic Claude Opus 4.5 (recommended), it also supports OpenAI GPT-5.2, Google Gemini 3 Pro, Moonshot (Kimi K2.5), MiniMax M3 and M2.7, Z.AI (GLM-4.7), xAI (Grok), Qwen, Venice, OpenRouter, and 10+ other providers. But Claude is the first choice. Those with Claude subscriptions should use setup-token connection for convenience (no API Key needed, no extra charges).
+
+### MiniMax Current Setup Reference
+
+For MiniMax setup, use the model ID that matches the capability you need:
+
+| Model ID | Context | Input | Thinking | Price per 1M tokens (USD) |
+| --- | ---: | --- | --- | --- |
+| `MiniMax-M3` | 1,000,000 tokens | Text, image, video | Adaptive or disabled | $0.60 input, $2.40 output, $0.12 cache read |
+| `MiniMax-M2.7` | 204,800 tokens | Text | Always on | $0.30 input, $1.20 output, $0.06 cache read, $0.375 cache write |
+
+For global English deployments, the OpenAI-compatible endpoint is `https://api.minimax.io/v1` and the Anthropic-compatible endpoint is `https://api.minimax.io/anthropic`. For China deployments, use `https://api.minimaxi.com/v1` or `https://api.minimaxi.com/anthropic`. See the [global MiniMax documentation](https://platform.minimax.io/docs) or [China MiniMax documentation](https://platform.minimaxi.com/docs) for provider-specific setup details.
 
 ![Choose Model Provider](/images/days/day2/model-provider.jpg)
 
